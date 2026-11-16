@@ -4,6 +4,8 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current change
 
+[add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md) adds the initial standalone editor scheme; native IDE review remains a follow-up.
+
 [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/proposal.md) implements the owner-approved ANSI design. Workbench appearance is accepted; native terminal acceptance remains pending.
 
 [add-vscode-editor-theme](changes/add-vscode-editor-theme/tasks.md) and [define-workbench-states](changes/define-workbench-states/tasks.md) retain completed implementation checklists. Archive completed changes after their review and integration requirements are satisfied. Tasks are checked off only after their stated verification is complete.
@@ -30,6 +32,8 @@ The [workbench change](changes/define-workbench-states/proposal.md) implements t
 - [ ] Apply reviewed states to VS Code while preserving native layouts and interactions. Done when editor and surrounding UI are reviewed together.
 
 ### 3. JetBrains — `add-jetbrains-theme`
+
+The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
 
 - [ ] Generate an editor color scheme and minimal UI theme resources from approved mappings. Done when they load in Rider and IntelliJ IDEA and language-specific differences are documented.
 - [ ] Package a standalone theme plugin with MIT notice and installation instructions. Done when a local build installs successfully and fixtures are reviewed in the relevant IDEs.
