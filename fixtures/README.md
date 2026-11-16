@@ -1,5 +1,9 @@
 # Fixture review
 
+The [JetBrains setup](jetbrains/README.md) reuses the C# example in a minimal
+project and adds `LabelRenderer.java`; its [native review](../previews/jetbrains/editor/README.md)
+records the initial Rider and IntelliJ observations.
+
 Open each `showcase` file in VS Code with its relevant language provider. These
 are examples for visual review. The [review record](../previews/vscode/README.md)
 shows observed rendering for one set of providers; classifications can vary.
