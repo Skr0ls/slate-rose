@@ -24,7 +24,7 @@ targets, architecture, and outstanding UI design work.
 The project plans separate adapters for VS Code, JetBrains IDEs, and Zed, with
 Visual Studio investigated separately. VS Code is the first editor and workbench
 implementation. An initial [JetBrains editor scheme](packages/jetbrains/README.md)
-is available, pending native review. Host-specific limitations and mappings are
+is available with an initial [C#/Java import review](previews/jetbrains/editor/README.md); the UI plugin remains pending. Host-specific limitations and mappings are
 documented as each adapter is built.
 
 ## Development

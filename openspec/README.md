@@ -4,7 +4,7 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current change
 
-[add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md) adds the initial standalone editor scheme; native IDE review remains a follow-up.
+[validate-jetbrains-editor-scheme](changes/validate-jetbrains-editor-scheme/tasks.md) records bounded C# review on Rider and one Java import smoke check on IntelliJ. The [initial adapter](changes/add-jetbrains-editor-scheme/tasks.md) is integrated.
 
 [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/proposal.md) implements the owner-approved ANSI design. Workbench appearance is accepted; native terminal acceptance remains pending.
 
@@ -34,6 +34,8 @@ The [workbench change](changes/define-workbench-states/proposal.md) implements t
 ### 3. JetBrains — `add-jetbrains-theme`
 
 The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
+
+Next priority: an Islands-based UI plugin reviewed first on Rider, including outer framing/gaps. Defer a wider JetBrains IDE matrix until that UI/package exists. The [native editor review](../previews/jetbrains/editor/README.md) also identifies a focused C# builtin-type override (`ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` → `primitive`) for a separate small change with native verification.
 
 - [ ] Generate an editor color scheme and minimal UI theme resources from approved mappings. Done when they load in Rider and IntelliJ IDEA and language-specific differences are documented.
 - [ ] Package a standalone theme plugin with MIT notice and installation instructions. Done when a local build installs successfully and fixtures are reviewed in the relevant IDEs.
