@@ -3,6 +3,9 @@
 Keep changes small and reviewable. A feature should have a clear scope and
 acceptance criteria that can be completed in one pull request. The approved
 palette is immutable unless the project owner explicitly requests a change.
+Split independent behaviors into separate pull requests, and start follow-up
+work from the updated integration branch after its parent merges. Keep review
+artifacts concise without imposing artificial line limits.
 See [AGENTS.md](AGENTS.md) and the [design baseline](docs/design-baseline.md)
 for project constraints.
 

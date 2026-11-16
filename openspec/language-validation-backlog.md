@@ -61,7 +61,9 @@ results are recorded separately.
 - [ ] **Web:** JavaScript, JSX, TSX, PHP and Ruby; cover functions, properties,
   interpolation and embedded markup where applicable.
   JavaScript, JSX and TSX have a bounded [review record](../previews/vscode/web/README.md);
-  PHP and Ruby remain queued, so this batch is still open.
+  PHP and Ruby have a bounded [built-in review](../previews/vscode/php-ruby/README.md);
+  third-party PHP and Ruby semantic-provider reviews remain queued, so this batch
+  is still open.
 - [ ] **Scripting:** Lua, PowerShell, POSIX shell and Bash; distinguish shell
   dialects and inspect their applicable command and variable constructs.
 - [ ] **Lisps:** Clojure, Common Lisp and Scheme; cover definitions, calls,
