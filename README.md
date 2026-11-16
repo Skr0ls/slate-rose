@@ -58,9 +58,10 @@ python scripts/check_vsix.py dist/slate-rose.vsix
 In VS Code, run **Extensions: Install from VSIX...**, choose the generated file,
 then select **Slate Rose** using **Preferences: Color Theme**. The manifest
 supports VS Code 1.143 and newer; compatibility review currently covers only
-the 1.143 series. Open the [fixtures](fixtures/README.md) for review and see
-[VS Code mappings](docs/vscode-mappings.md) for provider limitations. Actual
-fixture rendering remains unverified.
+the 1.143 series. The four [fixtures](fixtures/README.md) were reviewed in
+that version; see the [visual review](previews/vscode/README.md) and
+[VS Code mappings](docs/vscode-mappings.md) for observations and provider
+limitations. Owner acceptance remains pending.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and local checks.
 [OpenSpec](openspec/README.md) contains the backlog and specifications; the

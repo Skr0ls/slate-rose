@@ -22,8 +22,8 @@
 ## 4. Cross-language acceptance
 
 - [x] 4.1 Add representative C++, C#, TypeScript and Python fixtures with documented expected roles; verify every fixture exposes types, functions, fields, declarations, flow control and literals.
-- [ ] 4.2 Review fixtures in VS Code with relevant language providers and record provider versions, screenshots and coverage limitations; verify documentation distinguishes observed and unverified behavior.
-- [ ] 4.3 Run the complete documented build/check flow from a clean output state; verify no palette changes and no unexplained generated diff remain.
+- [x] 4.2 Review fixtures in VS Code with relevant language providers and record provider versions, screenshots and coverage limitations; verify documentation distinguishes observed and unverified behavior.
+- [x] 4.3 Run the complete documented build/check flow from a clean output state; verify no palette changes and no unexplained generated diff remain.
 
 ## Workflow follow-up
 
