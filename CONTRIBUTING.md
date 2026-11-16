@@ -52,6 +52,7 @@ python -m pre_commit install
 python -m pre_commit run --all-files --show-diff-on-failure
 python -m unittest discover -s tests -v
 python -m generators validate
+python -m generators check vscode
 ```
 
 Run either Python hook separately when working on Python files:

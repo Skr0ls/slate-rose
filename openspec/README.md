@@ -4,7 +4,7 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current change
 
-[add-vscode-editor-theme](changes/add-vscode-editor-theme/proposal.md) has a complete proposal, design, specifications and [implementation checklist](changes/add-vscode-editor-theme/tasks.md). Start implementation with `$openspec-apply-change add-vscode-editor-theme` in Codex. Tasks are checked off only after their stated verification is complete.
+[add-vscode-editor-theme](changes/add-vscode-editor-theme/proposal.md) has a complete proposal, design, specifications and [implementation checklist](changes/add-vscode-editor-theme/tasks.md). Continue implementation with `$openspec-apply-change add-vscode-editor-theme` in Codex. Tasks are checked off only after their stated verification is complete.
 
 The [delivery plan](delivery-plan.md) defines five small PRs: Python tooling, palette validation, VS Code generation, local packaging and visual acceptance. [CONTRIBUTING.md](../CONTRIBUTING.md) defines agent roles and branch/review rules.
 
