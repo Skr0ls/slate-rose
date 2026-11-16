@@ -1,6 +1,8 @@
 # VS Code mapping and limitations
 
-The generated JSON uses the [VS Code theme schema](https://raw.githubusercontent.com/microsoft/vscode/main/src/vs/workbench/services/themes/common/colorThemeSchema.ts), [editor color keys](https://code.visualstudio.com/api/references/theme-color), and [semantic highlighting](https://raw.githubusercontent.com/microsoft/vscode-docs/main/api/language-extensions/semantic-highlight-guide.md). Semantic tokens overlay TextMate grammar colors. Provider classifications vary, so the mappings do not promise parity between languages or providers. Actual rendering remains unverified until fixture review. This generated file is not an installable extension; packaging is planned separately.
+The generated JSON uses the [VS Code theme schema](https://raw.githubusercontent.com/microsoft/vscode/main/src/vs/workbench/services/themes/common/colorThemeSchema.ts), [editor color keys](https://code.visualstudio.com/api/references/theme-color), and [semantic highlighting](https://raw.githubusercontent.com/microsoft/vscode-docs/main/api/language-extensions/semantic-highlight-guide.md). Semantic tokens overlay TextMate grammar colors. Provider classifications vary, so the mappings do not promise parity between languages or providers. Actual rendering remains unverified until fixture review. A local VSIX can be built and installed using the [instructions](../README.md#local-vs-code-installation); actual fixture rendering remains unverified.
+
+Local verification on VS Code 1.143.1 arm64 confirmed VSIX installation and Slate Rose selection using the official VS Code API; a native theme export matched all 10 configured editor colors. Rendering with the four language providers and screenshots remain unverified and are the next review task.
 
 | Role | Semantic token types | TextMate scopes |
 | --- | --- | --- |
