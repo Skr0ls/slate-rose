@@ -8,11 +8,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from generators.palette import load_palette
+from generators.palette import load_palette, load_terminal_palette
 from generators.vscode import render_theme
 
 ROOT = Path(__file__).resolve().parent.parent
 PALETTE = ROOT / "palette/colors.json"
+TERMINAL = ROOT / "palette/terminal.json"
 ARTIFACT = ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
@@ -21,7 +22,9 @@ class ThemeTests(unittest.TestCase):
         palette = load_palette(PALETTE)
         scopes = {
             scope: rule["settings"]["foreground"]
-            for rule in json.loads(render_theme(palette))["tokenColors"]
+            for rule in json.loads(
+                render_theme(palette, load_terminal_palette(TERMINAL))
+            )["tokenColors"]
             for scope in rule["scope"]
         }
         for scope in (
@@ -40,7 +43,9 @@ class ThemeTests(unittest.TestCase):
 
     def test_workbench_states_and_overlays(self) -> None:
         palette = load_palette(PALETTE)
-        colors = json.loads(render_theme(palette))["colors"]
+        colors = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))[
+            "colors"
+        ]
         for key, role in {
             "tab.activeBackground": "bg",
             "tab.inactiveBackground": "surface",
@@ -62,6 +67,9 @@ class ThemeTests(unittest.TestCase):
             "editor.findMatchHighlightBackground": ("accent", "1A"),
             "editor.wordHighlightBackground": ("accent", "1A"),
             "editor.wordHighlightStrongBackground": ("accent", "1A"),
+            "terminal.inactiveSelectionBackground": ("selection", "80"),
+            "terminal.findMatchBackground": ("accent", "33"),
+            "terminal.findMatchHighlightBackground": ("accent", "1A"),
             "scrollbarSlider.background": ("muted", "33"),
             "scrollbarSlider.hoverBackground": ("muted", "55"),
             "scrollbarSlider.activeBackground": ("muted", "77"),
@@ -92,7 +100,9 @@ class ThemeTests(unittest.TestCase):
 
     def test_modern_shell_and_title_bar_colors(self) -> None:
         palette = load_palette(PALETTE)
-        colors = json.loads(render_theme(palette))["colors"]
+        colors = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))[
+            "colors"
+        ]
         for key, role in {
             "modernUI.shellBackground": "bg",
             "modernUI.inactiveShellBackground": "bg",
@@ -112,7 +122,7 @@ class ThemeTests(unittest.TestCase):
 
     def test_roles_and_shape(self) -> None:
         palette = load_palette(PALETTE)
-        theme = json.loads(render_theme(palette))
+        theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
         self.assertEqual(
             set(theme),
             {
@@ -166,9 +176,19 @@ class ThemeTests(unittest.TestCase):
             + list(semantic.values())
             + list(scopes.values())
         )
-        self.assertTrue(set(values) <= set(palette.colors.values()))
-        self.assertEqual(render_theme(palette), render_theme(palette))
-        self.assertEqual(ARTIFACT.read_bytes(), render_theme(palette).encode())
+        self.assertTrue(
+            set(values)
+            <= set(palette.colors.values())
+            | set(load_terminal_palette(TERMINAL).colors.values())
+        )
+        self.assertEqual(
+            render_theme(palette, load_terminal_palette(TERMINAL)),
+            render_theme(palette, load_terminal_palette(TERMINAL)),
+        )
+        self.assertEqual(
+            ARTIFACT.read_bytes(),
+            render_theme(palette, load_terminal_palette(TERMINAL)).encode(),
+        )
 
 
 class CliTests(unittest.TestCase):
