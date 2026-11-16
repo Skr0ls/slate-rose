@@ -44,6 +44,33 @@ Use VS Code's [language overview](https://code.visualstudio.com/docs/languages/o
 and [semantic highlighting guide](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide)
 to distinguish grammar tokenization from provider semantics.
 
+## Semantic role adaptations
+
+Select small language batches incrementally. For each language, host, provider
+and version, inspect actual lexical and semantic categories before choosing a
+mapping. Prefer supported, narrow overrides for meaningful roles: types sand,
+declarations lilac and flow control coral. Do not recolor broad keyword groups,
+disable semantic highlighting by default, or modify language parsers/runtime behavior.
+If a category mixes inseparable roles, document the limitation and seek an
+owner decision. For an actual fix, use relevant fixtures, before/after evidence,
+regression checks and native verification under the [criteria above](#review-and-completion-criteria).
+The [JetBrains native editor review](../previews/jetbrains/editor/README.md)
+records the current evidence. Islands UI on Rider remains the next priority;
+wider IDE validation follows the UI plugin.
+
+- [ ] **Rider C# builtin aliases:** Investigate `int`, `string`, `float` and
+  `bool` using the registered `ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` category
+  and the existing `primitive` color, keeping ordinary keywords unchanged.
+  Inspect declaration and usage locations and mixed `var` or contextual
+  identifier cases where applicable; do not automatically treat `var` as a
+  primitive. Retain the prior owner decision to leave and document VS Code C#;
+  investigate it only if its provider exposes a narrow category.
+- [ ] **Java primitive keywords:** Verify classifications and supported narrow
+  host selectors for `int`, `boolean` and `float` before promising a mapping.
+  Java defines primitive types with reserved keywords, while `String` is a
+  reference class ([primitive types](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.2),
+  [String class](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.3.3)).
+
 ## Batches
 
 Every checkbox is a candidate future PR/OpenSpec change. Done means the review
