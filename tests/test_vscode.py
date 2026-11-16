@@ -38,6 +38,58 @@ class ThemeTests(unittest.TestCase):
         ):
             self.assertNotIn(scope, scopes)
 
+    def test_workbench_states_and_overlays(self) -> None:
+        palette = load_palette(PALETTE)
+        colors = json.loads(render_theme(palette))["colors"]
+        for key, role in {
+            "tab.activeBackground": "bg",
+            "tab.inactiveBackground": "surface",
+            "tab.activeBorderTop": "accent",
+            "list.focusOutline": "accent",
+            "list.inactiveFocusOutline": "accent",
+            "list.hoverBackground": "surface2",
+            "disabledForeground": "muted",
+            "editorInfo.foreground": "accent",
+            "editorHint.foreground": "muted",
+            "gitDecoration.modifiedResourceForeground": "func",
+            "editorGutter.addedBackground": "string",
+            "editorGutter.deletedBackground": "error",
+        }.items():
+            self.assertEqual(colors[key], palette.colors[role], key)
+        overlays = {
+            "editor.inactiveSelectionBackground": ("selection", "80"),
+            "editor.findMatchBackground": ("accent", "33"),
+            "editor.findMatchHighlightBackground": ("accent", "1A"),
+            "editor.wordHighlightBackground": ("accent", "1A"),
+            "editor.wordHighlightStrongBackground": ("accent", "1A"),
+            "scrollbarSlider.background": ("muted", "33"),
+            "scrollbarSlider.hoverBackground": ("muted", "55"),
+            "scrollbarSlider.activeBackground": ("muted", "77"),
+            "diffEditor.insertedTextBackground": ("string", "33"),
+            "diffEditor.removedTextBackground": ("error", "33"),
+            "diffEditor.insertedLineBackground": ("string", "1A"),
+            "diffEditor.removedLineBackground": ("error", "1A"),
+        }
+        self.assertEqual({k for k, v in colors.items() if len(v) != 7}, set(overlays))
+        for key, (role, alpha) in overlays.items():
+            self.assertEqual(colors[key], palette.colors[role] + alpha, key)
+        self.assertEqual(colors["editor.findMatchBorder"], palette.colors["accent"])
+        self.assertNotEqual(
+            colors["tab.activeBackground"], colors["tab.inactiveBackground"]
+        )
+        self.assertNotEqual(
+            colors["editor.selectionBackground"],
+            colors["editor.inactiveSelectionBackground"],
+        )
+        self.assertNotEqual(
+            colors["scrollbarSlider.background"],
+            colors["scrollbarSlider.hoverBackground"],
+        )
+        self.assertNotEqual(
+            colors["scrollbarSlider.hoverBackground"],
+            colors["scrollbarSlider.activeBackground"],
+        )
+
     def test_roles_and_shape(self) -> None:
         palette = load_palette(PALETTE)
         theme = json.loads(render_theme(palette))
@@ -90,7 +142,7 @@ class ThemeTests(unittest.TestCase):
         self.assertNotIn("storage.type", scopes)
         self.assertNotIn("keyword.control", scopes)
         values = (
-            list(theme["colors"].values())
+            [value for value in theme["colors"].values() if len(value) == 7]
             + list(semantic.values())
             + list(scopes.values())
         )

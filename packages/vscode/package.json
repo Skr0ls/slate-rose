@@ -3,7 +3,7 @@
   "displayName": "Slate Rose",
   "publisher": "skr0ls",
   "version": "0.3.0",
-  "description": "Slate Rose is an original dark editor color theme.",
+  "description": "A dark color theme for the VS Code editor and workbench.",
   "license": "MIT",
   "engines": { "vscode": "^1.143.0" },
   "categories": ["Themes"],

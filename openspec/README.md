@@ -21,6 +21,8 @@ Python quality tooling, palette validation and validator tests run in basic PR c
 
 ### 2. UI design — `define-workbench-states`
 
+The [active change](changes/define-workbench-states/proposal.md) implements the approved palette allocation; the [native review](../previews/vscode/workbench/README.md) records the tested workbench slice. Terminal ANSI remains a separate follow-up. The broader checkboxes below retain owner acceptance and remaining state coverage.
+
 - [ ] Review cursor, active line, search, tabs, panels, menus, completion, focus and disabled states. Done when provisional mappings and any requested new colors have owner approval.
 - [ ] Define diagnostic, Git/diff and terminal roles separately from approved syntax colors. Done when representative states have reviewed previews and contrast observations, with no automatic palette changes.
 - [ ] Apply reviewed states to VS Code while preserving native layouts and interactions. Done when editor and surrounding UI are reviewed together.

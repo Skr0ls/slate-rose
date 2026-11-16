@@ -1,0 +1,16 @@
+{
+  "name": "slate-rose-ui-review",
+  "displayName": "Slate Rose UI Review",
+  "publisher": "local-review",
+  "version": "0.0.1",
+  "engines": {"vscode": "^1.143.0"},
+  "main": "extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "capabilities": {"untrustedWorkspaces": {"supported": true}},
+  "contributes": {"commands": [
+    {"command": "slateReview.overview", "title": "Slate Rose Review: Overview"},
+    {"command": "slateReview.diff", "title": "Slate Rose Review: Diff"},
+    {"command": "slateReview.completion", "title": "Slate Rose Review: Completion"},
+    {"command": "slateReview.hover", "title": "Slate Rose Review: Hover"}
+  ]}
+}
