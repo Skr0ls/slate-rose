@@ -23,17 +23,20 @@ targets, architecture, and outstanding UI design work.
 
 The project plans separate adapters for VS Code, JetBrains IDEs, and Zed, with
 Visual Studio investigated separately. VS Code is the first editor and workbench
-implementation. Host-specific limitations and mappings will be documented as
-each adapter is built.
+implementation. An initial [JetBrains editor scheme](packages/jetbrains/README.md)
+is available, pending native review. Host-specific limitations and mappings are
+documented as each adapter is built.
 
 ## Development
 
-With Python 3.11 or newer, validate the palette, build or check the generated VS Code theme, and run the tests:
+With Python 3.11 or newer, validate the palette, build or check the generated themes, and run the tests:
 
 ```sh
 python -m generators validate
 python -m generators build vscode
 python -m generators check vscode
+python -m generators build jetbrains
+python -m generators check jetbrains
 python -m unittest discover -s tests -v
 ```
 
