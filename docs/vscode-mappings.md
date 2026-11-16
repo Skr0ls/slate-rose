@@ -24,6 +24,8 @@ There is no semantic keyword override: generic keyword tokens cannot distinguish
 
 The lexical mappings were informed by the official [C++](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/cpp/syntaxes/cpp.tmLanguage.json), [C#](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/csharp/syntaxes/csharp.tmLanguage.json), [TypeScript](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-basics/syntaxes/TypeScript.tmLanguage.json), and [Python](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/python/syntaxes/MagicPython.tmLanguage.json) grammars. The exact selectors are in the generator.
 
+The JavaScript, JSX, and TSX grammars group `try`, `catch`, `finally`, and `throw` under `keyword.control.trycatch`. Language-scoped lexical rules color that group as flow control in those modes; the group cannot distinguish `throw` from the other three keywords. The [web review](../previews/vscode/web/README.md) records the observed scopes and provider limitations.
+
 The editor background, foreground and selection use their corresponding approved tokens. These remaining editor colors reuse existing palette tokens provisionally:
 
 | VS Code key | Palette token |
