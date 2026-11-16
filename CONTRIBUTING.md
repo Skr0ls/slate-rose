@@ -62,5 +62,8 @@ python -m pre_commit run ruff-check --all-files
 python -m pre_commit run ruff-format --all-files
 ```
 
+The [local VSIX instructions](README.md#local-vs-code-installation) also describe
+the package check. CI builds a downloadable VS Code artifact without publishing.
+
 The formatter may modify files. Review and restage those changes, then rerun
 the checks. Publishing is not automatic.

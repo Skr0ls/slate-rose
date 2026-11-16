@@ -17,11 +17,11 @@
 - [x] 3.1 Implement explicit semantic and TextMate mappings using official VS Code documentation; verify representative roles use approved tokens and document unsupported distinctions alongside mappings.
 - [x] 3.2 Generate basic editor colors and document every provisional mapping; verify all keys are documented VS Code keys and no unapproved colors enter the output.
 - [x] 3.3 Implement deterministic build and read-only check commands; verify repeated output is byte-identical, stale output fails check mode without rewriting it, and invalid palettes fail before output is written.
-- [ ] 3.4 Add a minimal declarative VS Code package with MIT metadata and license notice, plus local installation instructions; verify the built package contains the notice and Slate Rose is selectable in VS Code.
+- [x] 3.4 Add a minimal declarative VS Code package with MIT metadata and license notice, plus local installation instructions; verify the built package contains the notice and Slate Rose is selectable in VS Code.
 
 ## 4. Cross-language acceptance
 
-- [ ] 4.1 Add representative C++, C#, TypeScript and Python fixtures with documented expected roles; verify every fixture exposes types, functions, fields, declarations, flow control and literals.
+- [x] 4.1 Add representative C++, C#, TypeScript and Python fixtures with documented expected roles; verify every fixture exposes types, functions, fields, declarations, flow control and literals.
 - [ ] 4.2 Review fixtures in VS Code with relevant language providers and record provider versions, screenshots and coverage limitations; verify documentation distinguishes observed and unverified behavior.
 - [ ] 4.3 Run the complete documented build/check flow from a clean output state; verify no palette changes and no unexplained generated diff remain.
 

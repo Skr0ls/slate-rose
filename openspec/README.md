@@ -16,8 +16,8 @@ These are queued work items, not active or approved implementation specification
 
 Python quality tooling, palette validation and validator tests run in basic PR checks. Extend that baseline as each adapter lands.
 
-- [ ] Run generated-output checks on pull requests when generation is implemented. Done when stale artifacts fail CI.
-- [ ] Build the implemented host packages as downloadable CI artifacts. Done when artifacts can be installed locally and contain their license notices; no marketplace credentials are needed.
+- [x] Run generated-output checks on pull requests when generation is implemented. Stale artifacts fail CI.
+- [ ] Build implemented host packages as downloadable CI artifacts. VS Code packaging is configured; local installation and license verification remain part of acceptance.
 
 ### 2. UI design — `define-workbench-states`
 
