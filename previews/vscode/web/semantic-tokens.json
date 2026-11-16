@@ -1,0 +1,629 @@
+{
+  "vscode": "1.146.0",
+  "provider": "vscode.typescript-language-features",
+  "providerVersion": "10.0.0",
+  "results": [
+    {
+      "name": "showcase.js",
+      "languageId": "javascript",
+      "tokenCount": 18,
+      "tokens": [
+        {
+          "line": 1,
+          "character": 6,
+          "text": "LabelRenderer",
+          "type": "class",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 2,
+          "character": 14,
+          "text": "prefix",
+          "type": "parameter",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 3,
+          "character": 18,
+          "text": "prefix",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 6,
+          "character": 8,
+          "text": "render",
+          "type": "method",
+          "modifiers": [
+            "declaration",
+            "async"
+          ]
+        },
+        {
+          "line": 6,
+          "character": 15,
+          "text": "label",
+          "type": "parameter",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 7,
+          "character": 9,
+          "text": "label",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 8,
+          "character": 16,
+          "text": "Error",
+          "type": "class",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 11,
+          "character": 10,
+          "text": "result",
+          "type": "variable",
+          "modifiers": [
+            "declaration",
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 11,
+          "character": 25,
+          "text": "Promise",
+          "type": "class",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 11,
+          "character": 33,
+          "text": "resolve",
+          "type": "method",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 11,
+          "character": 41,
+          "text": "label",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 12,
+          "character": 30,
+          "text": "result",
+          "type": "variable",
+          "modifiers": [
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 16,
+          "character": 6,
+          "text": "renderer",
+          "type": "variable",
+          "modifiers": [
+            "declaration",
+            "readonly"
+          ]
+        },
+        {
+          "line": 16,
+          "character": 21,
+          "text": "LabelRenderer",
+          "type": "class",
+          "modifiers": []
+        },
+        {
+          "line": 17,
+          "character": 6,
+          "text": "count",
+          "type": "variable",
+          "modifiers": [
+            "declaration",
+            "readonly"
+          ]
+        },
+        {
+          "line": 18,
+          "character": 0,
+          "text": "renderer",
+          "type": "variable",
+          "modifiers": [
+            "readonly"
+          ]
+        },
+        {
+          "line": 18,
+          "character": 9,
+          "text": "render",
+          "type": "method",
+          "modifiers": [
+            "async"
+          ]
+        },
+        {
+          "line": 18,
+          "character": 25,
+          "text": "count",
+          "type": "variable",
+          "modifiers": [
+            "readonly"
+          ]
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "name": "showcase.jsx",
+      "languageId": "javascriptreact",
+      "tokenCount": 19,
+      "tokens": [
+        {
+          "line": 1,
+          "character": 9,
+          "text": "Label",
+          "type": "function",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 1,
+          "character": 17,
+          "text": "text",
+          "type": "parameter",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 1,
+          "character": 23,
+          "text": "count",
+          "type": "parameter",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 2,
+          "character": 7,
+          "text": "text",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 3,
+          "character": 14,
+          "text": "Error",
+          "type": "class",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 6,
+          "character": 34,
+          "text": "text",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 6,
+          "character": 42,
+          "text": "count",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 9,
+          "character": 15,
+          "text": "loadLabel",
+          "type": "function",
+          "modifiers": [
+            "declaration",
+            "async"
+          ]
+        },
+        {
+          "line": 10,
+          "character": 8,
+          "text": "item",
+          "type": "variable",
+          "modifiers": [
+            "declaration",
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 10,
+          "character": 21,
+          "text": "Promise",
+          "type": "class",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 10,
+          "character": 29,
+          "text": "resolve",
+          "type": "method",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 10,
+          "character": 39,
+          "text": "text",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 10,
+          "character": 54,
+          "text": "count",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 11,
+          "character": 22,
+          "text": "item",
+          "type": "variable",
+          "modifiers": [
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 11,
+          "character": 27,
+          "text": "text",
+          "type": "property",
+          "modifiers": []
+        },
+        {
+          "line": 11,
+          "character": 40,
+          "text": "item",
+          "type": "variable",
+          "modifiers": [
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 11,
+          "character": 45,
+          "text": "count",
+          "type": "property",
+          "modifiers": []
+        },
+        {
+          "line": 14,
+          "character": 6,
+          "text": "preview",
+          "type": "variable",
+          "modifiers": [
+            "declaration",
+            "readonly"
+          ]
+        },
+        {
+          "line": 14,
+          "character": 47,
+          "text": "loadLabel",
+          "type": "function",
+          "modifiers": [
+            "async"
+          ]
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "name": "showcase.tsx",
+      "languageId": "typescriptreact",
+      "tokenCount": 31,
+      "tokens": [
+        {
+          "line": 1,
+          "character": 18,
+          "text": "JSX",
+          "type": "namespace",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 2,
+          "character": 12,
+          "text": "IntrinsicElements",
+          "type": "interface",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 3,
+          "character": 4,
+          "text": "span",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 3,
+          "character": 12,
+          "text": "className",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 3,
+          "character": 32,
+          "text": "children",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 4,
+          "character": 4,
+          "text": "section",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 4,
+          "character": 38,
+          "text": "children",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 8,
+          "character": 10,
+          "text": "LabelProps",
+          "type": "interface",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 9,
+          "character": 2,
+          "text": "text",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 10,
+          "character": 2,
+          "text": "count",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 13,
+          "character": 9,
+          "text": "Label",
+          "type": "function",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 13,
+          "character": 17,
+          "text": "text",
+          "type": "parameter",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 13,
+          "character": 23,
+          "text": "count",
+          "type": "parameter",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 13,
+          "character": 32,
+          "text": "LabelProps",
+          "type": "interface",
+          "modifiers": []
+        },
+        {
+          "line": 14,
+          "character": 7,
+          "text": "text",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 15,
+          "character": 14,
+          "text": "Error",
+          "type": "class",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 18,
+          "character": 34,
+          "text": "text",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 18,
+          "character": 42,
+          "text": "count",
+          "type": "parameter",
+          "modifiers": []
+        },
+        {
+          "line": 21,
+          "character": 15,
+          "text": "loadLabel",
+          "type": "function",
+          "modifiers": [
+            "declaration",
+            "async"
+          ]
+        },
+        {
+          "line": 22,
+          "character": 8,
+          "text": "item",
+          "type": "variable",
+          "modifiers": [
+            "declaration",
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 22,
+          "character": 14,
+          "text": "LabelProps",
+          "type": "interface",
+          "modifiers": []
+        },
+        {
+          "line": 22,
+          "character": 33,
+          "text": "Promise",
+          "type": "class",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 22,
+          "character": 41,
+          "text": "resolve",
+          "type": "method",
+          "modifiers": [
+            "defaultLibrary"
+          ]
+        },
+        {
+          "line": 22,
+          "character": 51,
+          "text": "text",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 22,
+          "character": 66,
+          "text": "count",
+          "type": "property",
+          "modifiers": [
+            "declaration"
+          ]
+        },
+        {
+          "line": 23,
+          "character": 22,
+          "text": "item",
+          "type": "variable",
+          "modifiers": [
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 23,
+          "character": 27,
+          "text": "text",
+          "type": "property",
+          "modifiers": []
+        },
+        {
+          "line": 23,
+          "character": 40,
+          "text": "item",
+          "type": "variable",
+          "modifiers": [
+            "readonly",
+            "local"
+          ]
+        },
+        {
+          "line": 23,
+          "character": 45,
+          "text": "count",
+          "type": "property",
+          "modifiers": []
+        },
+        {
+          "line": 26,
+          "character": 6,
+          "text": "preview",
+          "type": "variable",
+          "modifiers": [
+            "declaration",
+            "readonly"
+          ]
+        },
+        {
+          "line": 26,
+          "character": 47,
+          "text": "loadLabel",
+          "type": "function",
+          "modifiers": [
+            "async"
+          ]
+        }
+      ],
+      "diagnostics": []
+    }
+  ]
+}

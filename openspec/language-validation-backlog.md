@@ -60,6 +60,8 @@ results are recorded separately.
   properties and language-specific syntax.
 - [ ] **Web:** JavaScript, JSX, TSX, PHP and Ruby; cover functions, properties,
   interpolation and embedded markup where applicable.
+  JavaScript, JSX and TSX have a bounded [review record](../previews/vscode/web/README.md);
+  PHP and Ruby remain queued, so this batch is still open.
 - [ ] **Scripting:** Lua, PowerShell, POSIX shell and Bash; distinguish shell
   dialects and inspect their applicable command and variable constructs.
 - [ ] **Lisps:** Clojure, Common Lisp and Scheme; cover definitions, calls,

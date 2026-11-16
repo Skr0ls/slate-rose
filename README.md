@@ -1,6 +1,6 @@
 # Slate Rose
 
-Slate Rose is an original dark color theme for VS Code, JetBrains IDEs, and Zed.
+Slate Rose is a dark color theme for VS Code, JetBrains IDEs, and Zed.
 
 **Status:** The v0.2 Contrast design baseline is approved and palette validation
 and VS Code theme generation and local VSIX packaging are available. Visual
@@ -57,11 +57,12 @@ python scripts/check_vsix.py dist/slate-rose.vsix
 
 In VS Code, run **Extensions: Install from VSIX...**, choose the generated file,
 then select **Slate Rose** using **Preferences: Color Theme**. The manifest
-supports VS Code 1.143 and newer; compatibility review currently covers only
-the 1.143 series. The four [fixtures](fixtures/README.md) were reviewed in
-that version; see the [visual review](previews/vscode/README.md) and
-[VS Code mappings](docs/vscode-mappings.md) for observations and provider
-limitations. Owner acceptance remains pending.
+supports VS Code 1.143 and newer. The initial four fixtures were reviewed in
+VS Code 1.143.1; JavaScript, JSX, and TSX were reviewed in 1.146.0. See the
+[initial review](previews/vscode/README.md), [web review](previews/vscode/web/README.md),
+and [VS Code mappings](docs/vscode-mappings.md) for observations and provider
+limitations. These reviews do not cover every intermediate version or host.
+Owner acceptance remains pending.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and local checks.
 [OpenSpec](openspec/README.md) contains the backlog and specifications; the

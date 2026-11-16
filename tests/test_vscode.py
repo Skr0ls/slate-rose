@@ -17,6 +17,27 @@ ARTIFACT = ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
 class ThemeTests(unittest.TestCase):
+    def test_web_trycatch_control_scope(self) -> None:
+        palette = load_palette(PALETTE)
+        scopes = {
+            scope: rule["settings"]["foreground"]
+            for rule in json.loads(render_theme(palette))["tokenColors"]
+            for scope in rule["scope"]
+        }
+        for scope in (
+            "source.js keyword.control.trycatch",
+            "source.tsx keyword.control.trycatch",
+        ):
+            self.assertEqual(scopes[scope], palette.colors["control"])
+        self.assertEqual(scopes["keyword"], palette.colors["keyword"])
+        self.assertEqual(scopes["storage"], palette.colors["keyword"])
+        for scope in (
+            "keyword.control.trycatch",
+            "source.ts keyword.control.trycatch",
+            "source.cs keyword.control.trycatch",
+        ):
+            self.assertNotIn(scope, scopes)
+
     def test_roles_and_shape(self) -> None:
         palette = load_palette(PALETTE)
         theme = json.loads(render_theme(palette))
