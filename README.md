@@ -5,6 +5,7 @@ Slate Rose is a dark color theme for VS Code, JetBrains IDEs, and Zed.
 **Status:** The v0.2 Contrast design baseline is approved and palette validation
 and VS Code theme generation and local VSIX packaging are available. Workbench
 mappings and a representative native workbench review are available; owner acceptance is pending.
+Modern UI shell gutters and frame colors are included; native window controls and layout settings are preserved.
 
 ## Design
 

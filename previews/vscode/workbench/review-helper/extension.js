@@ -46,13 +46,24 @@ exports.activate = async function(context) {
     view.selection = new vscode.Selection(10, 9, 10, 9);
     await vscode.commands.executeCommand('editor.action.showHover');
   }));
-  await editor();
-  fs.writeFileSync('/tmp/sr-ui-probe-state.json', JSON.stringify({
+  context.subscriptions.push(vscode.commands.registerCommand('slateReview.exportTheme', async () => {
+    await vscode.commands.executeCommand('workbench.action.generateColorTheme');
+    const document = vscode.window.activeTextEditor?.document;
+    if (document) fs.writeFileSync('/tmp/sr-ui-native-theme.jsonc', document.getText());
+  }));
+  function writeState() {
+    fs.writeFileSync('/tmp/sr-ui-probe-state.json', JSON.stringify({
     version:vscode.version, trusted:vscode.workspace.isTrusted,
     theme:vscode.workspace.getConfiguration('workbench').get('colorTheme'),
     titleBarStyle:vscode.workspace.getConfiguration('window').get('titleBarStyle'),
+    modernUI:vscode.workspace.getConfiguration('workbench').get('experimental.modernUI'),
+    windowFocused:vscode.window.state.focused,
     colorCustomizations:vscode.workspace.getConfiguration('workbench').get('colorCustomizations'),
     extension:vscode.extensions.getExtension('skr0ls.slate-rose')?.extensionPath,
     fixture:uri.fsPath, diagnostics:definitions.length
-  },null,2)+'\n');
+    },null,2)+'\n');
+  }
+  context.subscriptions.push(vscode.window.onDidChangeWindowState(writeState));
+  await editor();
+  writeState();
 };

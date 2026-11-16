@@ -15,6 +15,12 @@
 - [x] 3.1 Run validator, generator build/check, unit tests, hooks, strict OpenSpec validation and VSIX checks; confirm palette and syntax preservation and clean generated output.
 - [x] 3.2 Obtain independent read-only review of implementation and native evidence, resolve findings and re-review meaningful fixes; verify task completion accurately reflects results.
 
+## 4. Modern UI framing correction
+
+- [x] 4.1 Add the approved Modern UI shell/frame and custom title-bar color mappings with focused emitted-output regressions and exact key/version documentation; verify unchanged palette, syntax and unrelated UI mappings against the first workbench commit.
+- [x] 4.2 Rebuild and install the corrected VSIX, verify repeated package identity and installed theme bytes, and retain native Modern UI active/inactive window framing evidence with updated hashes and honest platform/version limits.
+- [x] 4.3 Run integration checks and independent read-only review of the correction, resolve findings, and verify the complete checklist and review documents reflect final artifacts.
+
 ## Workflow follow-up
 
 - Open a small PR into dev; do not merge or publish automatically.

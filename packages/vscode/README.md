@@ -19,6 +19,8 @@ the theme retains semantic highlighting without a generic keyword override,
 which cannot distinguish those roles. Workbench mappings are provisional; a representative
 [native workbench review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/workbench/README.md)
 records tested states, contrast observations and remaining coverage. Owner acceptance
-remains pending. This package is not published to the Marketplace.
+remains pending. Modern UI shell gutters, floating-card borders and supported custom
+title bars use the theme palette without changing window settings or controls.
+This package is not published to the Marketplace.
 
 Licensed under the MIT License; see the included LICENSE notice.

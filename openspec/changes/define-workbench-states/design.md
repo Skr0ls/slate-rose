@@ -8,7 +8,7 @@ See proposal.md for motivation. The existing Python standard-library generator h
 
 **Goals:** Extend the existing explicit mapping approach; document every emitted UI key and derived opacity; validate emitted behavior and inspect installed native UI.
 
-**Non-Goals:** Terminal ANSI, bracket rainbow redesign, OS title bars, custom CSS, layout changes, provider changes, palette changes, other host adapters or publication. Custom title-bar color keys can be omitted because this slice leaves window chrome to the host. No editor configuration is contributed by the package.
+**Non-Goals:** Terminal ANSI, bracket rainbow redesign, OS window controls and title-bar settings, custom CSS, layout changes, provider changes, palette changes, other host adapters or publication. Supported custom title-bar colors and Modern UI shell/frame colors are in scope following owner screenshot feedback; the theme does not force a title-bar style. No editor configuration is contributed by the package.
 
 ## Decisions
 
@@ -18,6 +18,7 @@ See proposal.md for motivation. The existing Python standard-library generator h
 4. Diagnostics use error/warning/accent/muted for error/warning/info/hint. Git add/modified/delete use string/func/error. No opaque diagnostic background. For buttons and badges on accent use bg text; input validation can use severity borders with neutral surface2 backgrounds. Keep focus visible in active and inactive list contexts.
 5. Consult the current official [color reference](https://code.visualstudio.com/api/references/theme-color) and [theme guide](https://code.visualstudio.com/api/extension-guides/color-theme). Check every emitted key against documentation, and document version limitations rather than inventing unsupported keys. Version compatibility review includes the existing minimum host if supported keys are newer.
 6. Root orchestrates an explicit Terra medium executor contract and independent Sol high read-only review. Root captures UI evidence in an isolated test profile. Reviewer checks the final generated artifact, documents and screenshots against this scope.
+7. Owner feedback identified gray shell gutters and frame lines in the first native review as unfinished theme work. These are Modern UI theme surfaces, not necessarily OS decoration. Map modernUI.shellBackground and modernUI.inactiveShellBackground to bg; titleBar active/inactive backgrounds and titleBar.border to bg; titleBar active/inactive foregrounds to fg/muted; surface.background/foreground/border to surface/fg/surface2; editor.border, modernPanel.border and modernActivityBar.border to surface2. Preserve native gap sizes, rounding, layout, controls and settings. Verify exact keys and version registrations against official Modern UI documentation; record active/inactive native evidence and supported fallback behavior. This corrects the earlier omission without adding palette colors or changing unrelated UI families.
 
 ## Risks / Trade-offs
 

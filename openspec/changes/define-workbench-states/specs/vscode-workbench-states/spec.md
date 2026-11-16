@@ -47,3 +47,10 @@ The theme SHALL remain deterministically generated and locally installable. Revi
 #### Scenario: Review a local package
 - **WHEN** fixed-metadata packages are built and the final package is installed in an isolated profile
 - **THEN** repeated package bytes match, installed theme bytes match generated output, and native screenshots document the UI states actually inspected
+
+### Requirement: Modern UI shell and frame colors
+The theme SHALL color Modern UI gutters and supported custom title-bar backgrounds with bg in active and inactive windows, and floating-card frame borders with surface2. Title foregrounds SHALL remain readable. It SHALL preserve native gap sizes, rounding, controls and user title-bar style settings.
+
+#### Scenario: Inspect Modern UI window framing
+- **WHEN** the installed theme is displayed with Modern UI and the window gains or loses focus
+- **THEN** shell gutters and supported title-bar fills use the approved background, frame lines use the documented palette mapping, and native geometry remains unchanged

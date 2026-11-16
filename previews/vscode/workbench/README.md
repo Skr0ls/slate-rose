@@ -1,8 +1,8 @@
 # VS Code workbench review
 
-Local native review on 2026-11-17, VS Code 1.146.0 arm64 on macOS, commit `69047191fc427f2f92828279aae1d90d8eeda7ab`. This review covers the installed workbench slice, not owner acceptance or universal host/provider support. [Mappings](../../../docs/vscode-mappings.md) list all 120 configured colors and alpha bytes.
+Local native review on 2026-11-17, VS Code 1.146.0 arm64 on macOS, commit `69047191fc427f2f92828279aae1d90d8eeda7ab`. This review covers the installed workbench slice, not owner acceptance or universal host/provider support. [Mappings](../../../docs/vscode-mappings.md) list all 133 configured colors and alpha bytes. The initial ten screenshots below retain the first workbench build; three framing screenshots document the subsequent owner-requested correction. Existing UI colors and syntax were unchanged by that correction.
 
-## Package identity
+## Initial review package identity
 
 [verification.json](verification.json) records exact identities and fixture hashes:
 
@@ -11,7 +11,19 @@ Local native review on 2026-11-17, VS Code 1.146.0 arm64 on macOS, commit `69047
 - VSIX SHA-256: `8daffc8033450cd4298f375fc516a5f85fa392ccb0d7913d01cb5dfcff8404e4`; two packages built with VSCE 4.1.1, `SOURCE_DATE_EPOCH=1794787200` and `TZ=UTC` matched byte-for-byte. After capture, the package README was updated with this review link; repackaging and reinstalling preserved identical theme bytes.
 - Palette bytes and complete lexical/semantic payloads match the implementation base `8399f2cfd33328173906ee2a00145b15762d86bf`. PHP/Ruby PR 8 is independent of this branch.
 
-The isolated profile was `/tmp/sr-ui-data`, extensions `/tmp/sr-ui-ext`, with Slate Rose selected and no `workbench.colorCustomizations`. Final screenshots show a no-folder Extension Development Host opening only local review files. The public API reported `isTrusted: true` for this empty workspace; no folder trust was granted or security protection disabled. The host's existing/default `window.titleBarStyle` was `custom`; the theme neither set it nor configured title-bar colors. Gray outer chrome, native traffic-light controls and host spacing remain visible.
+The isolated profile was `/tmp/sr-ui-data`, extensions `/tmp/sr-ui-ext`, with Slate Rose selected and no `workbench.colorCustomizations`. Screenshots show a no-folder Extension Development Host opening only local review files. The public API reported `isTrusted: true` for this empty workspace; no folder trust was granted or security protection disabled. The host's existing/default `window.titleBarStyle` was `custom`. The initial theme did not configure title-bar or Modern UI shell colors, leaving gray gutters and frame lines. Owner feedback identified that omission; the framing correction below replaces those colors while preserving native controls and spacing.
+
+## Modern UI framing correction
+
+The gray strips were themeable Modern UI shell surfaces. The [official 1.146.0 Modern UI documentation](https://github.com/microsoft/vscode/blob/1.146.0/src/vs/workbench/contrib/modernUI/README.md#colors) documents separate active/inactive shell colors and shared or region-specific frame borders. All 13 added keys are also registered in 1.143.0; layout availability remains build/configuration dependent.
+
+| State | Corrected native evidence |
+| --- | --- |
+| Active window | [Active framing](framing-active.png): the title bar and shell gutters around the editor, Activity Bar and secondary sidebar use bg; frame contours use surface2. Native gaps, rounded corners and traffic-light controls remain. [API state](framing-active-state.json) confirms Modern UI enabled and window focused. |
+| Inactive window | [Inactive framing](framing-inactive.png): the same shell stays dark after focus moves to Finder, with native inactive controls/text treatment. [API state](framing-inactive-state.json) confirms window focus false. |
+| Sidebar and panel overview | [Corrected overview](framing-overview.png): the primary sidebar, editor and Problems panel retain the existing colors with subdued frame borders and bg gutters. |
+
+[framing-native-colors.json](framing-native-colors.json) records the 13 added values from VS Code's native **Developer: Generate Color Theme From Current Settings** export, matching generated output case-insensitively. [framing-verification.json](framing-verification.json) records the final corrected package/theme identity, reproducible builds and the comparison against first workbench commit `a8f9cda`: palette, complete syntax payloads and every pre-existing UI value remain unchanged. Theme RGB values remain those in the approved palette; only native shell/frame colors were added. No layout, title-bar style, Modern UI or security setting was changed by the product.
 
 ## Observed states
 
@@ -41,8 +53,8 @@ code --user-data-dir /tmp/sr-ui-data --extensions-dir /tmp/sr-ui-ext --install-e
 code --user-data-dir /tmp/sr-ui-data --extensions-dir /tmp/sr-ui-ext --extensionDevelopmentPath /tmp/sr-ui-probe --new-window
 ```
 
-Select Slate Rose if the profile is new. Run `Slate Rose Review: Overview`, `Hover`, `Completion` or `Diff` from the Command Palette. Search for `label`; compare editor selection while moving focus to the Problems filter, then compare the selected warning row while moving focus back to the editor. Hover the scrollbar with the long fixture open. No repository clone, language server, fixture execution, sign-in or folder trust is required. The helper writes a small identity report to `/tmp/sr-ui-probe-state.json`.
+Select Slate Rose if the profile is new. Run `Slate Rose Review: Overview`, `Hover`, `Completion` or `Diff` from the Command Palette. Search for `label`; compare editor selection while moving focus to the Problems filter, then compare the selected warning row while moving focus back to the editor. Hover the scrollbar with the long fixture open. For framing, show the secondary sidebar and compare the window before and after focusing another app. The profile must already have Modern UI enabled; this review did not enable it or alter its geometry. The helper's added `Export Theme` command exports current native theme data to `/tmp/sr-ui-native-theme.jsonc`. No repository clone, language server, fixture execution, sign-in or folder trust is required. The helper writes an identity and window-focus report to `/tmp/sr-ui-probe-state.json`.
 
 ## Remaining coverage
 
-Windows/Linux, older host rendering, inactive application windows, repository Git file decorations and gutters, debugger status, notifications, validation error popups, disabled controls and custom-rendered menus remain unreviewed natively. Their configured colors are checked in generated output only. Native macOS menus and window chrome retain host behavior. This is a representative state review, not inspection of every one of the 120 keys. Terminal ANSI colors, bracket rainbow redesign, specialized extension views and other editor adapters are separate work. Owner acceptance remains pending.
+Windows/Linux, older host rendering, repository Git file decorations and gutters, debugger status, notifications, validation error popups, disabled controls and custom-rendered menus remain unreviewed natively. Their configured colors are checked in generated output only. Native macOS controls and menus retain host behavior; custom title-bar and shell colors now follow the theme. This is a representative state review, not inspection of every one of the 133 keys. Terminal ANSI colors, bracket rainbow redesign, specialized extension views and other editor adapters are separate work. Owner acceptance remains pending.

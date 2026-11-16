@@ -8,6 +8,7 @@
   "activationEvents": ["onStartupFinished"],
   "capabilities": {"untrustedWorkspaces": {"supported": true}},
   "contributes": {"commands": [
+    {"command": "slateReview.exportTheme", "title": "Slate Rose Review: Export Theme"},
     {"command": "slateReview.overview", "title": "Slate Rose Review: Overview"},
     {"command": "slateReview.diff", "title": "Slate Rose Review: Diff"},
     {"command": "slateReview.completion", "title": "Slate Rose Review: Completion"},

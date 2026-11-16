@@ -30,6 +30,19 @@ The following provisional workbench and editor mappings use the approved palette
 
 | VS Code key | Palette token | Alpha |
 | --- | --- | --- |
+| `modernUI.shellBackground` | `bg` | opaque |
+| `modernUI.inactiveShellBackground` | `bg` | opaque |
+| `titleBar.activeBackground` | `bg` | opaque |
+| `titleBar.inactiveBackground` | `bg` | opaque |
+| `titleBar.border` | `bg` | opaque |
+| `titleBar.activeForeground` | `fg` | opaque |
+| `titleBar.inactiveForeground` | `muted` | opaque |
+| `surface.background` | `surface` | opaque |
+| `surface.foreground` | `fg` | opaque |
+| `surface.border` | `surface2` | opaque |
+| `editor.border` | `surface2` | opaque |
+| `modernPanel.border` | `surface2` | opaque |
+| `modernActivityBar.border` | `surface2` | opaque |
 | `activityBar.activeBorder` | `accent` | opaque |
 | `activityBar.background` | `surface` | opaque |
 | `activityBar.border` | `surface2` | opaque |
@@ -151,4 +164,4 @@ The following provisional workbench and editor mappings use the approved palette
 | `scrollbarSlider.background` | `muted` | `33` |
 | `scrollbarSlider.hoverBackground` | `muted` | `55` |
 
-Bracket pair colors, terminal ANSI, title-bar colors and OS window decorations are not configured. Specialized views and host-dependent behavior remain unreviewed. Overlay colors composite with underlying content; the native review records observed search/diff text legibility and contrast limitations. No user settings or window layout are changed.
+Bracket pair colors, terminal ANSI and OS window decorations are not configured. The theme colors supported custom title bars without changing the user’s title-bar style or window controls. [VS Code 1.146.0 Modern UI theming](https://raw.githubusercontent.com/microsoft/vscode/1.146.0/src/vs/workbench/contrib/modernUI/README.md) describes these experimental surfaces; they require a host build supporting Modern UI and the relevant setting. All 13 shell, frame and title-bar keys are registered in [VS Code 1.143.0](https://github.com/microsoft/vscode/blob/1.143.0/src/vs/workbench/common/theme.ts); registration does not guarantee the Modern UI layout is enabled or visually identical across hosts. Specialized views and host-dependent behavior remain unreviewed. Overlay colors composite with underlying content; the native review records observed search/diff text legibility and contrast limitations. No user settings or window layout are changed.

@@ -1,0 +1,22 @@
+{
+  "command": "Developer: Generate Color Theme From Current Settings",
+  "command_id": "workbench.action.generateColorTheme",
+  "host_version": "1.146.0",
+  "all_configured_colors_match_case_insensitively": true,
+  "configured_color_count": 133,
+  "added_colors": {
+    "editor.border": "#2b323e",
+    "modernActivityBar.border": "#2b323e",
+    "modernPanel.border": "#2b323e",
+    "modernUI.inactiveShellBackground": "#191d25",
+    "modernUI.shellBackground": "#191d25",
+    "surface.background": "#242a34",
+    "surface.border": "#2b323e",
+    "surface.foreground": "#d1d4dc",
+    "titleBar.activeBackground": "#191d25",
+    "titleBar.activeForeground": "#d1d4dc",
+    "titleBar.border": "#191d25",
+    "titleBar.inactiveBackground": "#191d25",
+    "titleBar.inactiveForeground": "#8992a1"
+  }
+}

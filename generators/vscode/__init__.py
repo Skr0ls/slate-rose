@@ -126,6 +126,19 @@ EDITOR: dict[str, str] = {
 
 # Explicit host color keys reference validated palette tokens.
 WORKBENCH: dict[str, str] = {
+    "modernUI.shellBackground": "bg",
+    "modernUI.inactiveShellBackground": "bg",
+    "titleBar.activeBackground": "bg",
+    "titleBar.inactiveBackground": "bg",
+    "titleBar.border": "bg",
+    "titleBar.activeForeground": "fg",
+    "titleBar.inactiveForeground": "muted",
+    "surface.background": "surface",
+    "surface.foreground": "fg",
+    "surface.border": "surface2",
+    "editor.border": "surface2",
+    "modernPanel.border": "surface2",
+    "modernActivityBar.border": "surface2",
     "foreground": "fg",
     "disabledForeground": "muted",
     "descriptionForeground": "muted",

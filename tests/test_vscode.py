@@ -90,6 +90,26 @@ class ThemeTests(unittest.TestCase):
             colors["scrollbarSlider.activeBackground"],
         )
 
+    def test_modern_shell_and_title_bar_colors(self) -> None:
+        palette = load_palette(PALETTE)
+        colors = json.loads(render_theme(palette))["colors"]
+        for key, role in {
+            "modernUI.shellBackground": "bg",
+            "modernUI.inactiveShellBackground": "bg",
+            "titleBar.activeBackground": "bg",
+            "titleBar.inactiveBackground": "bg",
+            "titleBar.border": "bg",
+            "titleBar.activeForeground": "fg",
+            "titleBar.inactiveForeground": "muted",
+            "surface.background": "surface",
+            "surface.foreground": "fg",
+            "surface.border": "surface2",
+            "editor.border": "surface2",
+            "modernPanel.border": "surface2",
+            "modernActivityBar.border": "surface2",
+        }.items():
+            self.assertEqual(colors[key], palette.colors[role], key)
+
     def test_roles_and_shape(self) -> None:
         palette = load_palette(PALETTE)
         theme = json.loads(render_theme(palette))
