@@ -1,8 +1,8 @@
 # Fixture review
 
 Open each `showcase` file in VS Code with its relevant language provider. These
-are examples for visual review, not evidence that a provider assigns a specific
-classification. Provider classifications and actual rendering remain unverified.
+are examples for visual review. The [review record](../previews/vscode/README.md)
+shows observed rendering for one set of providers; classifications can vary.
 
 | Example | Intended palette role |
 | --- | --- |
