@@ -21,6 +21,11 @@ declaration collisions between the examples.
 | Example | Intended palette role |
 | --- | --- |
 | `LabelRenderer` | Type (sand) |
+| PHP `string`, `int` | Primitive type (sand) |
+| Ruby `ArgumentError` | Named type (sand) |
+| PHP `$this->prefix`; Ruby `@prefix` | Field (rose) |
+| PHP `self::MaxLabels`; Ruby `MAX_LABELS` | Named constant (rose) |
+| PHP `throw`; Ruby `raise`, `return` | Flow control (coral), where distinguishable |
 | `render`, `RenderAsync` | Function (blue) |
 | `prefix`, `prefix_`, `Prefix` | Field or property (rose) |
 | `class`, `private`, `const`, `if` | Keyword or declaration (lilac) |
@@ -30,6 +35,11 @@ declaration collisions between the examples.
 | `preview`, `Preview` | Namespace (rose) |
 | `[[nodiscard]]`, `[Description]`, `@describe`, `@dataclass` | Attribute (lilac) |
 | `label`, `count`, `result` | Parameter or variable (foreground) |
+
+The PHP and Ruby fixtures use the `php` and `ruby` language modes. They are
+standalone visual examples and do not require a framework. Their [review record](../previews/vscode/php-ruby/README.md) identifies the
+actual grammar and semantic provider context and distinguishes the intended
+roles above from observed colors.
 
 Not every syntax category is present in every language. See the
 [VS Code mappings](../docs/vscode-mappings.md) for fallback and provider limits.
