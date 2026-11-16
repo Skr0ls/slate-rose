@@ -17,6 +17,21 @@ ARTIFACT = ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
 class ThemeTests(unittest.TestCase):
+    def test_ruby_instance_field_scope(self) -> None:
+        palette = load_palette(PALETTE)
+        scopes = {
+            scope: rule["settings"]["foreground"]
+            for rule in json.loads(render_theme(palette))["tokenColors"]
+            for scope in rule["scope"]
+        }
+        self.assertEqual(
+            scopes["source.ruby variable.other.readwrite.instance"],
+            palette.colors["property"],
+        )
+        self.assertEqual(scopes["variable.other.readwrite"], palette.colors["fg"])
+        self.assertNotIn("variable.other.readwrite.instance", scopes)
+        self.assertNotIn("source.ruby variable.other.readwrite.class", scopes)
+
     def test_web_trycatch_control_scope(self) -> None:
         palette = load_palette(PALETTE)
         scopes = {

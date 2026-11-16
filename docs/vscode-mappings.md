@@ -8,7 +8,7 @@ Local verification on VS Code 1.143.1 arm64 confirmed VSIX installation and Slat
 | --- | --- | --- |
 | Type | type, class, enum, struct, typeParameter; interface uses interface | entity.name.type, support.type |
 | Function | function, method | entity.name.function, support.function |
-| Property | property, event | specific variable and entity property scopes, including C# fields |
+| Property | property, event | specific variable and entity property scopes, including C# fields and Ruby instance variables |
 | Variable / parameter | variable / parameter | variable.other.readwrite, entity.name.variable, variable.other.constant / variable.parameter, entity.name.variable.parameter |
 | Namespace | namespace | entity.name.namespace, entity.name.type.namespace, entity.name.type.module |
 | Constant | enumMember | variable.other.constant.cs, variable.other.enummember, entity.name.variable.enum-member, constant.other |
@@ -25,6 +25,8 @@ There is no semantic keyword override: generic keyword tokens cannot distinguish
 The lexical mappings were informed by the official [C++](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/cpp/syntaxes/cpp.tmLanguage.json), [C#](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/csharp/syntaxes/csharp.tmLanguage.json), [TypeScript](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-basics/syntaxes/TypeScript.tmLanguage.json), and [Python](https://raw.githubusercontent.com/microsoft/vscode/main/extensions/python/syntaxes/MagicPython.tmLanguage.json) grammars. The exact selectors are in the generator.
 
 The JavaScript, JSX, and TSX grammars group `try`, `catch`, `finally`, and `throw` under `keyword.control.trycatch`. Language-scoped lexical rules color that group as flow control in those modes; the group cannot distinguish `throw` from the other three keywords. The [web review](../previews/vscode/web/README.md) records the observed scopes and provider limitations.
+
+Ruby instance variables use the language-scoped `source.ruby variable.other.readwrite.instance` property rule. Ordinary parameters and local variables retain the foreground role. The built-in Ruby grammar groups `return` with declarations and predicates, and groups `raise` with other special methods; those groups remain lilac. The PHP grammar groups primitive and pseudo-types, including PHPDoc `self` and `static`, under the same type scope, and its exception scope includes `exception` alongside control words. These mixed groups retain their existing mappings. The [PHP and Ruby review](../previews/vscode/php-ruby/README.md) records observed colors and provider limits.
 
 The editor background, foreground and selection use their corresponding approved tokens. These remaining editor colors reuse existing palette tokens provisionally:
 

@@ -32,6 +32,7 @@ LEXICAL: tuple[tuple[str, tuple[str, ...]], ...] = (
         "property",
         (
             "entity.name.variable.field",
+            "source.ruby variable.other.readwrite.instance",
             "variable.other.property",
             "variable.object.property",
             "variable.other.object.property",
