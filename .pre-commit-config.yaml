@@ -4,9 +4,17 @@ repos:
     hooks:
       - id: check-json
       - id: check-yaml
+      - id: check-toml
       - id: check-merge-conflict
         args: [--assume-in-merge]
       - id: trailing-whitespace
         exclude: ^(palette/colors\.json|\.agents/skills/)
       - id: end-of-file-fixer
         exclude: ^(palette/colors\.json|\.agents/skills/)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.5
+    hooks:
+      - id: ruff-check
+        types_or: [python, pyi]
+      - id: ruff-format
+        types_or: [python, pyi]

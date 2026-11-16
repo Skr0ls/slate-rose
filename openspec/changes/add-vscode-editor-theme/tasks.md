@@ -5,7 +5,7 @@
 - [x] 1.1 Record owner approval for the monorepository layout and Python generator in design.md; approved on 2026-11-16.
 - [x] 1.2 Add the MIT license and document it in the README; verify LICENSE includes the copyright and permission notice.
 - [ ] 1.3 Document implemented build/check entry points in the README; verify the commands run as written and paths match created files.
-- [ ] 1.4 Add pinned Python development tooling, Ruff lint/format hooks, and minimal pull request CI checks using the same local and CI commands; verify checks run on real files as they are added, without a fake test suite.
+- [x] 1.4 Add pinned Python development tooling, Ruff lint/format hooks, and minimal pull request CI checks using the same local and CI commands; verify checks run on real files as they are added, without a fake test suite.
 
 ## 2. Palette validation
 
