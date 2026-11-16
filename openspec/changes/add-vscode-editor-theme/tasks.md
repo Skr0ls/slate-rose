@@ -9,8 +9,8 @@
 
 ## 2. Palette validation
 
-- [ ] 2.1 Implement typed palette loading and validation with actionable errors; verify the canonical palette succeeds and malformed JSON, invalid metadata, missing/unknown/duplicate tokens and invalid hex fail.
-- [ ] 2.2 Add focused validator tests and command documentation; verify the tests pass and validation preserves the palette bytes.
+- [x] 2.1 Implement typed palette loading and validation with actionable errors; verify the canonical palette succeeds and malformed JSON, invalid metadata, missing/unknown/duplicate tokens and invalid hex fail.
+- [x] 2.2 Add focused validator tests and command documentation; verify the tests pass and validation preserves the palette bytes.
 
 ## 3. VS Code generation
 

@@ -2,8 +2,8 @@
 
 Slate Rose is an original dark color theme for VS Code, JetBrains IDEs, and Zed.
 
-**Status:** The v0.2 Contrast design baseline is approved; implementation has
-not started. There are no installable themes yet.
+**Status:** The v0.2 Contrast design baseline is approved and palette validation
+is available. There are no installable themes yet.
 
 ## Design
 
@@ -25,6 +25,17 @@ implementation. Host-specific limitations and mappings will be documented as
 each adapter is built.
 
 ## Development
+
+With Python 3.11 or newer, validate the canonical palette and run the tests:
+
+```sh
+python -m generators validate
+python -m unittest discover -s tests -v
+```
+
+Pass a path after `validate` to check another palette. The schema requires only
+`name`, `version`, and `colors` at the root, with all 24 supported color tokens.
+Validation reads the input without modifying it.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and local checks.
 [OpenSpec](openspec/README.md) contains the backlog and specifications; the
