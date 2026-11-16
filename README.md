@@ -3,8 +3,9 @@
 Slate Rose is a dark color theme for VS Code, JetBrains IDEs, and Zed.
 
 **Status:** The v0.2 Contrast design baseline is approved and palette validation
-and VS Code theme generation and local VSIX packaging are available. Visual
-acceptance is pending.
+and VS Code theme generation and local VSIX packaging are available. Workbench
+mappings and a representative native workbench review are available and accepted by the owner. The ANSI design is approved; native terminal acceptance is pending.
+Modern UI shell gutters and frame colors are included; native window controls and layout settings are preserved.
 
 ## Design
 
@@ -21,7 +22,7 @@ targets, architecture, and outstanding UI design work.
 ## Editor support
 
 The project plans separate adapters for VS Code, JetBrains IDEs, and Zed, with
-Visual Studio investigated separately. VS Code is the first editor-only
+Visual Studio investigated separately. VS Code is the first editor and workbench
 implementation. Host-specific limitations and mappings will be documented as
 each adapter is built.
 
@@ -36,10 +37,10 @@ python -m generators check vscode
 python -m unittest discover -s tests -v
 ```
 
-Pass a path after `validate` to check another palette. The schema requires only
+Pass a path after `validate` to check another core palette. The schema requires only
 `name`, `version`, and `colors` at the root, with all 24 supported color tokens.
 Validation reads the input without modifying it. Build and check accept optional
-`--palette PATH` and `--output PATH`; defaults resolve relative to this project
+`--palette PATH`, `--terminal-palette PATH` and `--output PATH`; validate also accepts `--terminal-palette PATH`. Both palettes are validated before output is written. The terminal source contains sixteen ANSI tokens; see [terminal mappings](docs/vscode-terminal.md). Defaults resolve relative to this project
 even from another working directory. Check is read-only and reports missing or
 stale output. See [VS Code mappings](docs/vscode-mappings.md) for limitations.
 
@@ -60,9 +61,11 @@ then select **Slate Rose** using **Preferences: Color Theme**. The manifest
 supports VS Code 1.143 and newer. The initial four fixtures were reviewed in
 VS Code 1.143.1; JavaScript, JSX, TSX, PHP and Ruby were reviewed in 1.146.0. See the
 [initial review](previews/vscode/README.md), [web review](previews/vscode/web/README.md),
-[PHP and Ruby review](previews/vscode/php-ruby/README.md), and [VS Code mappings](docs/vscode-mappings.md) for observations and provider
+[PHP and Ruby review](previews/vscode/php-ruby/README.md),
+[workbench review](previews/vscode/workbench/README.md),
+[terminal review](previews/vscode/terminal/README.md), and [VS Code mappings](docs/vscode-mappings.md) for observations and provider
 limitations. These reviews do not cover every intermediate version or host.
-Owner acceptance remains pending.
+Terminal implementation acceptance remains pending.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and local checks.
 [OpenSpec](openspec/README.md) contains the backlog and specifications; the

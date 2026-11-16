@@ -4,7 +4,9 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current change
 
-[add-vscode-editor-theme](changes/add-vscode-editor-theme/proposal.md) has a complete proposal, design, specifications and [implementation checklist](changes/add-vscode-editor-theme/tasks.md). Continue implementation with `$openspec-apply-change add-vscode-editor-theme` in Codex. Tasks are checked off only after their stated verification is complete.
+[add-vscode-terminal-colors](changes/add-vscode-terminal-colors/proposal.md) implements the owner-approved ANSI design. Workbench appearance is accepted; native terminal acceptance remains pending.
+
+[add-vscode-editor-theme](changes/add-vscode-editor-theme/tasks.md) and [define-workbench-states](changes/define-workbench-states/tasks.md) retain completed implementation checklists. Archive completed changes after their review and integration requirements are satisfied. Tasks are checked off only after their stated verification is complete.
 
 The [delivery plan](delivery-plan.md) defines five stages: Python tooling, palette validation, VS Code generation, local packaging and visual acceptance. Visual review was delivered as a follow-up commit in the still-open package PR 4; a separate PR 5 branch is not needed. [CONTRIBUTING.md](../CONTRIBUTING.md) defines agent roles and branch/review rules.
 
@@ -20,6 +22,8 @@ Python quality tooling, palette validation and validator tests run in basic PR c
 - [ ] Build implemented host packages as downloadable CI artifacts. VS Code packaging is configured; local installation and license verification remain part of acceptance.
 
 ### 2. UI design — `define-workbench-states`
+
+The [workbench change](changes/define-workbench-states/proposal.md) implements the accepted palette allocation; the [native review](../previews/vscode/workbench/README.md) records the tested workbench slice. Terminal ANSI is tracked in [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/tasks.md). The broader checkboxes below retain remaining state coverage and terminal implementation acceptance.
 
 - [ ] Review cursor, active line, search, tabs, panels, menus, completion, focus and disabled states. Done when provisional mappings and any requested new colors have owner approval.
 - [ ] Define diagnostic, Git/diff and terminal roles separately from approved syntax colors. Done when representative states have reviewed previews and contrast observations, with no automatic palette changes.
@@ -57,8 +61,8 @@ Python quality tooling, palette validation and validator tests run in basic PR c
 
 ```sh
 openspec list
-openspec status --change add-vscode-editor-theme
-openspec validate add-vscode-editor-theme --strict
+openspec status --change add-vscode-terminal-colors
+openspec validate add-vscode-terminal-colors --strict
 ```
 
 OpenSpec CLI must be available in the active PATH. Repository-local workflows are versioned under .agents/skills/.

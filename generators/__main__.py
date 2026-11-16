@@ -5,11 +5,12 @@ import sys
 from collections.abc import Sequence
 from pathlib import Path
 
-from .palette import PaletteValidationError, load_palette
+from .palette import PaletteValidationError, load_palette, load_terminal_palette
 from .vscode import render_theme
 
 _ROOT = Path(__file__).resolve().parent.parent
 _PALETTE = _ROOT / "palette/colors.json"
+_TERMINAL_PALETTE = _ROOT / "palette/terminal.json"
 _OUTPUT = _ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
@@ -29,25 +30,38 @@ def main(argv: Sequence[str] | None = None) -> int:
         "validate", help="validate a palette without modifying it"
     )
     validate.add_argument("path", nargs="?", type=Path, default=_PALETTE)
+    validate.add_argument("--terminal-palette", type=Path, default=_TERMINAL_PALETTE)
     for command in ("build", "check"):
         sub = commands.add_parser(command, help=f"{command} a generated theme")
         sub.add_argument("host", choices=("vscode",))
         sub.add_argument("--palette", type=Path, default=_PALETTE)
+        sub.add_argument("--terminal-palette", type=Path, default=_TERMINAL_PALETTE)
         sub.add_argument("--output", type=Path, default=_OUTPUT)
     args = parser.parse_args(argv)
     try:
-        palette = load_palette(
-            args.path if args.command == "validate" else args.palette
+        palette_path = args.path if args.command == "validate" else args.palette
+        palette = load_palette(palette_path)
+        terminal_palette = load_terminal_palette(args.terminal_palette)
+        print(
+            f"Valid palette: {palette.name} (version {palette.version}, {len(palette.colors)} tokens) [{palette_path}]"
+        )
+        print(
+            f"Valid palette: {terminal_palette.name} (version {terminal_palette.version}, {len(terminal_palette.colors)} tokens) [{args.terminal_palette}]"
         )
         if args.command == "validate":
-            print(
-                f"Valid palette: {palette.name} (version {palette.version}, {len(palette.colors)} tokens)"
-            )
             return 0
-        if _same_file(args.output, args.palette) or _same_file(args.output, _PALETTE):
+        if any(
+            _same_file(args.output, path)
+            for path in (
+                args.palette,
+                _PALETTE,
+                args.terminal_palette,
+                _TERMINAL_PALETTE,
+            )
+        ):
             print(f"Output {args.output} conflicts with a palette", file=sys.stderr)
             return 1
-        expected = render_theme(palette).encode("utf-8")
+        expected = render_theme(palette, terminal_palette).encode("utf-8")
         if args.command == "check":
             if args.output.read_bytes() != expected:
                 print(f"Generated theme is stale: {args.output}", file=sys.stderr)

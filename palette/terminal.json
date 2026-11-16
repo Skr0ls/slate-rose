@@ -1,0 +1,22 @@
+{
+  "name": "Slate Rose Terminal",
+  "version": "0.1",
+  "colors": {
+    "black": "#2B323E",
+    "red": "#E47691",
+    "green": "#A9CE91",
+    "yellow": "#D8B981",
+    "blue": "#8CC6F1",
+    "magenta": "#CAA1DE",
+    "cyan": "#8FCBC5",
+    "white": "#D1D4DC",
+    "bright_black": "#8992A1",
+    "bright_red": "#F19DB0",
+    "bright_green": "#C1DFA9",
+    "bright_yellow": "#E0C38C",
+    "bright_blue": "#ACD7F5",
+    "bright_magenta": "#DEB9EC",
+    "bright_cyan": "#A9E0D9",
+    "bright_white": "#EFF1F5"
+  }
+}

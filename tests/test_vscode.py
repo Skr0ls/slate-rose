@@ -8,11 +8,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from generators.palette import load_palette
+from generators.palette import load_palette, load_terminal_palette
 from generators.vscode import render_theme
 
 ROOT = Path(__file__).resolve().parent.parent
 PALETTE = ROOT / "palette/colors.json"
+TERMINAL = ROOT / "palette/terminal.json"
 ARTIFACT = ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
@@ -21,7 +22,9 @@ class ThemeTests(unittest.TestCase):
         palette = load_palette(PALETTE)
         scopes = {
             scope: rule["settings"]["foreground"]
-            for rule in json.loads(render_theme(palette))["tokenColors"]
+            for rule in json.loads(
+                render_theme(palette, load_terminal_palette(TERMINAL))
+            )["tokenColors"]
             for scope in rule["scope"]
         }
         self.assertEqual(
@@ -36,7 +39,9 @@ class ThemeTests(unittest.TestCase):
         palette = load_palette(PALETTE)
         scopes = {
             scope: rule["settings"]["foreground"]
-            for rule in json.loads(render_theme(palette))["tokenColors"]
+            for rule in json.loads(
+                render_theme(palette, load_terminal_palette(TERMINAL))
+            )["tokenColors"]
             for scope in rule["scope"]
         }
         for scope in (
@@ -53,9 +58,88 @@ class ThemeTests(unittest.TestCase):
         ):
             self.assertNotIn(scope, scopes)
 
+    def test_workbench_states_and_overlays(self) -> None:
+        palette = load_palette(PALETTE)
+        colors = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))[
+            "colors"
+        ]
+        for key, role in {
+            "tab.activeBackground": "bg",
+            "tab.inactiveBackground": "surface",
+            "tab.activeBorderTop": "accent",
+            "list.focusOutline": "accent",
+            "list.inactiveFocusOutline": "accent",
+            "list.hoverBackground": "surface2",
+            "disabledForeground": "muted",
+            "editorInfo.foreground": "accent",
+            "editorHint.foreground": "muted",
+            "gitDecoration.modifiedResourceForeground": "func",
+            "editorGutter.addedBackground": "string",
+            "editorGutter.deletedBackground": "error",
+        }.items():
+            self.assertEqual(colors[key], palette.colors[role], key)
+        overlays = {
+            "editor.inactiveSelectionBackground": ("selection", "80"),
+            "editor.findMatchBackground": ("accent", "33"),
+            "editor.findMatchHighlightBackground": ("accent", "1A"),
+            "editor.wordHighlightBackground": ("accent", "1A"),
+            "editor.wordHighlightStrongBackground": ("accent", "1A"),
+            "terminal.inactiveSelectionBackground": ("selection", "80"),
+            "terminal.findMatchBackground": ("accent", "33"),
+            "terminal.findMatchHighlightBackground": ("accent", "1A"),
+            "scrollbarSlider.background": ("muted", "33"),
+            "scrollbarSlider.hoverBackground": ("muted", "55"),
+            "scrollbarSlider.activeBackground": ("muted", "77"),
+            "diffEditor.insertedTextBackground": ("string", "33"),
+            "diffEditor.removedTextBackground": ("error", "33"),
+            "diffEditor.insertedLineBackground": ("string", "1A"),
+            "diffEditor.removedLineBackground": ("error", "1A"),
+        }
+        self.assertEqual({k for k, v in colors.items() if len(v) != 7}, set(overlays))
+        for key, (role, alpha) in overlays.items():
+            self.assertEqual(colors[key], palette.colors[role] + alpha, key)
+        self.assertEqual(colors["editor.findMatchBorder"], palette.colors["accent"])
+        self.assertNotEqual(
+            colors["tab.activeBackground"], colors["tab.inactiveBackground"]
+        )
+        self.assertNotEqual(
+            colors["editor.selectionBackground"],
+            colors["editor.inactiveSelectionBackground"],
+        )
+        self.assertNotEqual(
+            colors["scrollbarSlider.background"],
+            colors["scrollbarSlider.hoverBackground"],
+        )
+        self.assertNotEqual(
+            colors["scrollbarSlider.hoverBackground"],
+            colors["scrollbarSlider.activeBackground"],
+        )
+
+    def test_modern_shell_and_title_bar_colors(self) -> None:
+        palette = load_palette(PALETTE)
+        colors = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))[
+            "colors"
+        ]
+        for key, role in {
+            "modernUI.shellBackground": "bg",
+            "modernUI.inactiveShellBackground": "bg",
+            "titleBar.activeBackground": "bg",
+            "titleBar.inactiveBackground": "bg",
+            "titleBar.border": "bg",
+            "titleBar.activeForeground": "fg",
+            "titleBar.inactiveForeground": "muted",
+            "surface.background": "surface",
+            "surface.foreground": "fg",
+            "surface.border": "surface2",
+            "editor.border": "surface2",
+            "modernPanel.border": "surface2",
+            "modernActivityBar.border": "surface2",
+        }.items():
+            self.assertEqual(colors[key], palette.colors[role], key)
+
     def test_roles_and_shape(self) -> None:
         palette = load_palette(PALETTE)
-        theme = json.loads(render_theme(palette))
+        theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
         self.assertEqual(
             set(theme),
             {
@@ -105,13 +189,23 @@ class ThemeTests(unittest.TestCase):
         self.assertNotIn("storage.type", scopes)
         self.assertNotIn("keyword.control", scopes)
         values = (
-            list(theme["colors"].values())
+            [value for value in theme["colors"].values() if len(value) == 7]
             + list(semantic.values())
             + list(scopes.values())
         )
-        self.assertTrue(set(values) <= set(palette.colors.values()))
-        self.assertEqual(render_theme(palette), render_theme(palette))
-        self.assertEqual(ARTIFACT.read_bytes(), render_theme(palette).encode())
+        self.assertTrue(
+            set(values)
+            <= set(palette.colors.values())
+            | set(load_terminal_palette(TERMINAL).colors.values())
+        )
+        self.assertEqual(
+            render_theme(palette, load_terminal_palette(TERMINAL)),
+            render_theme(palette, load_terminal_palette(TERMINAL)),
+        )
+        self.assertEqual(
+            ARTIFACT.read_bytes(),
+            render_theme(palette, load_terminal_palette(TERMINAL)).encode(),
+        )
 
 
 class CliTests(unittest.TestCase):
