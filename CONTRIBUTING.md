@@ -36,12 +36,26 @@ only in a separate, documented cleanup, without rewriting Git history.
 
 ## Local checks
 
-Install the hooks and run them across the repository:
+Use Python 3.11 or newer for development; Python source must remain compatible
+with 3.11. CI runs the checks with Python 3.14. Create a virtual environment,
+install the pinned tools and hooks, and run the same checks as CI:
 
 ```sh
-uvx --from pre-commit==4.7.0 pre-commit install
-uvx --from pre-commit==4.7.0 pre-commit run --all-files
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-dev.txt
+python -m pre_commit install
+python -m pre_commit run --all-files --show-diff-on-failure
 ```
 
-Python Ruff checks, formatting, and semantic tests will arrive with the first
-Python feature. No CI workflow or automatic publishing is configured yet.
+Run either Python hook separately when working on Python files:
+
+```sh
+python -m pre_commit run ruff-check --all-files
+python -m pre_commit run ruff-format --all-files
+```
+
+The formatter may modify files. Review and restage those changes, then rerun
+the checks. There is no Python source yet, so the Ruff hooks currently skip;
+meaningful tests will arrive with the palette validator. Publishing is not
+automatic.
