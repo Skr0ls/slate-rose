@@ -17,6 +17,6 @@ Native bracket pair colors were visible because the theme does not configure the
 
 ## Build verification
 
-A clean temporary output directory was used for validation, theme generation, and packaging. The checked-in theme and approved palette were unchanged; a separately generated theme matched byte for byte. All 15 unit tests and all pre-commit hooks passed. Two VSIX builds were byte-identical, and both passed the package checker. Their SHA-256 was `ce60197bb708caf5f9889e9f11043a3a538f1783cbedb14cdbcfd4aebe57cd05`. Python 3.14.3 and Node 26.13.0 were used.
+A clean temporary output directory was used for validation, theme generation, and packaging. The checked-in theme and approved palette were unchanged; a separately generated theme matched byte for byte. All 15 unit tests and all pre-commit hooks passed. Two VSIX builds were byte-identical, and both passed the package checker. Their SHA-256 was `060002b113301a953b9ffb4e332c894a30ff56dab5e262520444e9492056ec4c`. Python 3.14.3 and Node 26.13.0 were used.
 
 The checks follow the [development](../../README.md#development), [contribution](../../CONTRIBUTING.md#local-checks), and [local installation](../../README.md#local-vs-code-installation) instructions. For the reproducibility check, package twice from `packages/vscode` with `SOURCE_DATE_EPOCH=1794787200 TZ=UTC npx --yes @vscode/vsce@4.1.1 package --no-dependencies --out <fresh-output-path>`, run `python scripts/check_vsix.py` on each archive from the repository root, and compare the archives byte for byte.

@@ -1,6 +1,6 @@
 # Delivery Plan
 
-This plan splits the current theme change into small PRs. The [change checklist](changes/add-vscode-editor-theme/tasks.md) remains the task source of truth; this document defines PR boundaries and executor handoffs. Follow [CONTRIBUTING.md](../CONTRIBUTING.md) for roles and Gitflow.
+This plan divides the current theme change into small delivery stages. The [change checklist](changes/add-vscode-editor-theme/tasks.md) remains the task source of truth; this document defines PR boundaries and executor handoffs. Follow [CONTRIBUTING.md](../CONTRIBUTING.md) for roles and Gitflow.
 
 ## Before every executor handoff
 
@@ -33,18 +33,18 @@ The orchestrator supplies the exact change requirements, checklist items, base b
 - Verification: meaningful mapping assertions, byte-identical repeated builds, stale-output check failure without rewriting, invalid-input failure before writing, lint and hooks.
 - Non-goals: marketplace packaging, full workbench or other editor adapters.
 
-## PR 4 — Local VS Code package and fixtures
+## PR 4 — Local VS Code package and fixture acceptance
 
 - Branch: `feature/vscode-package` from updated `dev`.
-- Checklist: current change 3.4 and 4.1.
+- Checklist: current change 3.4 and 4.1–4.3.
 - Scope: extension manifest, local packaging instructions, MIT notice and four small original language fixtures.
 - Acceptance: locally installable package with the correct license notice; fixtures exercise the required roles without unrelated application scaffolding.
 - Verification: build and inspect the package, follow installation instructions, lint and hooks. Record actual IDE verification separately from automated artifact checks.
 - Non-goals: publication or new colors.
 
-## PR 5 — Visual acceptance
+## Visual acceptance stage
 
-- Branch: `feature/vscode-visual-review` from updated `dev`.
+- Delivery: follow-up commit in the still-open PR 4; no separate PR 5 branch is needed.
 - Checklist: current change 4.2–4.3.
 - Scope: screenshots, language-provider/version notes, semantic coverage and minimal fixes demonstrated by fixture review.
 - Acceptance: observed behavior is distinguished from unverified coverage; documented clean build/check flow passes; approved palette bytes remain unchanged.
