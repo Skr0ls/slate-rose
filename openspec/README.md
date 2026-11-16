@@ -37,6 +37,10 @@ Python quality tooling, palette validation and validator tests run in basic PR c
 - [ ] Review syntax, completion, search, tabs and panels while preserving Zed's native UI character. Done when screenshots and the host coverage table record observed results and limitations.
 - [ ] Add host validation and packaging to CI. Done when shared-input changes also validate Zed output.
 
+### Language validation
+
+- [ ] Work through the [language validation backlog](language-validation-backlog.md) in small, separately scoped changes. Done when each selected batch has the recorded review evidence and limitations described there.
+
 ### 5. Release preparation — `prepare-theme-releases`
 
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
