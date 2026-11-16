@@ -1,0 +1,37 @@
+schema: spec-driven
+
+context: |
+  Language: en
+  All artifacts must be written in en.
+  Keep OpenSpec structural headings and SHALL/MUST keywords in English.
+  Slate Rose is an original cross-editor color theme, not a recovered upstream theme.
+  Read README.md and AGENTS.md before planning or implementing changes.
+  palette/colors.json contains the approved, immutable v0.2 Contrast palette.
+  Preserve semantic roles and native editor interaction patterns, especially Zed UI.
+  Consult current official host documentation; keep each host's mappings separate.
+  Start with palette validation and one VS Code editor-only adapter with fixtures.
+  JetBrains and Zed adapters follow; Visual Studio and Neovim are later candidates.
+  Significant design decisions and new palette values require owner approval.
+  Keep generation deterministic and document semantic limitations and provisional UI mappings.
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always state what is out of scope
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing

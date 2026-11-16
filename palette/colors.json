@@ -1,0 +1,30 @@
+{
+  "name": "Slate Rose",
+  "version": "0.2",
+  "colors": {
+    "bg": "#191D25",
+    "surface": "#242A34",
+    "surface2": "#2B323E",
+    "fg": "#D1D4DC",
+    "muted": "#8992A1",
+    "type": "#E0C38C",
+    "primitive": "#D8B981",
+    "func": "#8CC6F1",
+    "property": "#E28DA4",
+    "keyword": "#CAA1DE",
+    "control": "#D7829B",
+    "string": "#A9CE91",
+    "number": "#E0B77C",
+    "namespace": "#C98BA8",
+    "parameter": "#D1D4DC",
+    "variable": "#D1D4DC",
+    "constant": "#D99AAB",
+    "interface": "#E0C38C",
+    "attribute": "#CAA1DE",
+    "operator": "#AEB5C1",
+    "error": "#E47691",
+    "warning": "#E0B77C",
+    "selection": "#364455",
+    "accent": "#99C4E6"
+  }
+}
