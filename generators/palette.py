@@ -47,6 +47,22 @@ _TOKENS = frozenset(
         "accent",
     }
 )
+_TERMINAL_TOKENS = frozenset(
+    {
+        prefix + color
+        for prefix in ("", "bright_")
+        for color in (
+            "black",
+            "red",
+            "green",
+            "yellow",
+            "blue",
+            "magenta",
+            "cyan",
+            "white",
+        )
+    }
+)
 _HEX = re.compile(r"#[0-9a-fA-F]{6}")
 
 
@@ -60,7 +76,16 @@ def _unique_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
 
 
 def load_palette(path: Path) -> Palette:
-    """Read and validate a palette, preserving all supplied values unchanged."""
+    """Read the 24-token syntax and UI palette."""
+    return _load_palette(path, _TOKENS)
+
+
+def load_terminal_palette(path: Path) -> Palette:
+    """Read the sixteen-token terminal palette."""
+    return _load_palette(path, _TERMINAL_TOKENS)
+
+
+def _load_palette(path: Path, expected_tokens: frozenset[str]) -> Palette:
     try:
         text = path.read_text(encoding="utf-8")
     except (OSError, UnicodeError) as exc:
@@ -90,8 +115,8 @@ def load_palette(path: Path) -> Palette:
     colors = data["colors"]
     if not isinstance(colors, dict):
         raise PaletteValidationError("Palette colors must be an object")
-    missing_tokens = _TOKENS - colors.keys()
-    unknown_tokens = colors.keys() - _TOKENS
+    missing_tokens = expected_tokens - colors.keys()
+    unknown_tokens = colors.keys() - expected_tokens
     if missing_tokens:
         raise PaletteValidationError(
             f"Missing color tokens: {', '.join(sorted(missing_tokens))}"

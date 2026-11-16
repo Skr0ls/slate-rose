@@ -1,0 +1,14 @@
+{
+  "name": "slate-rose-terminal-review",
+  "displayName": "Slate Rose Terminal Review",
+  "publisher": "local-review",
+  "version": "0.0.1",
+  "engines": {"vscode": "^1.143.0"},
+  "main": "extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "capabilities": {"untrustedWorkspaces": {"supported": true}},
+  "contributes": {"commands": [
+    {"command": "slateTerminal.show", "title": "Slate Rose Terminal Review: Show ANSI"},
+    {"command": "slateTerminal.export", "title": "Slate Rose Terminal Review: Export Theme"}
+  ]}
+}

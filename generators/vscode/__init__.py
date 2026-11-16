@@ -256,7 +256,41 @@ OVERLAYS: dict[str, tuple[str, str]] = {
 }
 
 
-def render_theme(palette: Palette) -> str:
+TERMINAL_ANSI = {
+    "terminal.ansiBlack": "black",
+    "terminal.ansiRed": "red",
+    "terminal.ansiGreen": "green",
+    "terminal.ansiYellow": "yellow",
+    "terminal.ansiBlue": "blue",
+    "terminal.ansiMagenta": "magenta",
+    "terminal.ansiCyan": "cyan",
+    "terminal.ansiWhite": "white",
+    "terminal.ansiBrightBlack": "bright_black",
+    "terminal.ansiBrightRed": "bright_red",
+    "terminal.ansiBrightGreen": "bright_green",
+    "terminal.ansiBrightYellow": "bright_yellow",
+    "terminal.ansiBrightBlue": "bright_blue",
+    "terminal.ansiBrightMagenta": "bright_magenta",
+    "terminal.ansiBrightCyan": "bright_cyan",
+    "terminal.ansiBrightWhite": "bright_white",
+}
+TERMINAL_UI = {
+    "terminal.background": "bg",
+    "terminal.foreground": "fg",
+    "terminalCursor.foreground": "accent",
+    "terminalCursor.background": "bg",
+    "terminal.border": "surface2",
+    "terminal.selectionBackground": "selection",
+    "terminal.findMatchBorder": "accent",
+}
+TERMINAL_OVERLAYS = {
+    "terminal.inactiveSelectionBackground": ("selection", "80"),
+    "terminal.findMatchBackground": ("accent", "33"),
+    "terminal.findMatchHighlightBackground": ("accent", "1A"),
+}
+
+
+def render_theme(palette: Palette, terminal_palette: Palette) -> str:
     """Render deterministic JSON without touching the filesystem."""
     colors = palette.colors
     theme = {
@@ -265,6 +299,15 @@ def render_theme(palette: Palette) -> str:
         "colors": {
             **{key: colors[token] for key, token in EDITOR.items()},
             **{key: colors[token] for key, token in WORKBENCH.items()},
+            **{
+                key: terminal_palette.colors[token]
+                for key, token in TERMINAL_ANSI.items()
+            },
+            **{key: colors[token] for key, token in TERMINAL_UI.items()},
+            **{
+                key: colors[token] + alpha
+                for key, (token, alpha) in TERMINAL_OVERLAYS.items()
+            },
             **{key: colors[token] + alpha for key, (token, alpha) in OVERLAYS.items()},
         },
         "tokenColors": [
