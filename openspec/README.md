@@ -14,9 +14,9 @@ These are queued work items, not active or approved implementation specification
 
 ### 1. Basic continuous integration — `add-theme-ci`
 
-Python quality tooling and basic PR checks are configured. Extend that baseline as each adapter lands.
+Python quality tooling, palette validation and validator tests run in basic PR checks. Extend that baseline as each adapter lands.
 
-- [ ] Run palette validation, meaningful tests and generated-output checks on pull requests. Done when valid changes pass and invalid inputs or stale artifacts fail CI.
+- [ ] Run generated-output checks on pull requests when generation is implemented. Done when stale artifacts fail CI.
 - [ ] Build the implemented host packages as downloadable CI artifacts. Done when artifacts can be installed locally and contain their license notices; no marketplace credentials are needed.
 
 ### 2. UI design — `define-workbench-states`

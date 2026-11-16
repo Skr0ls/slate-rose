@@ -16,6 +16,10 @@ for project constraints.
 - Create a hotfix from `main` and merge it into both `main` and `dev`.
 - The initial bootstrap may be committed directly to `main`; subsequent work
   uses feature pull requests. Publishing is never automatic.
+- Rebase a small linear feature branch when it has no dependent branches; use
+  a merge to preserve meaningful branch or integration history. After a remote
+  rebase, start new features from the updated `origin/dev` without carrying
+  pre-rebase commits forward.
 
 ## Collaboration and planning
 
@@ -37,7 +41,7 @@ only in a separate, documented cleanup, without rewriting Git history.
 ## Local checks
 
 Use Python 3.11 or newer for development; Python source must remain compatible
-with 3.11. CI runs the checks with Python 3.14. Create a virtual environment,
+with 3.11. CI runs the checks with Python 3.11 and 3.14. Create a virtual environment,
 install the pinned tools and hooks, and run the same checks as CI:
 
 ```sh
@@ -46,6 +50,8 @@ source .venv/bin/activate
 python -m pip install -r requirements-dev.txt
 python -m pre_commit install
 python -m pre_commit run --all-files --show-diff-on-failure
+python -m unittest discover -s tests -v
+python -m generators validate
 ```
 
 Run either Python hook separately when working on Python files:
@@ -56,6 +62,4 @@ python -m pre_commit run ruff-format --all-files
 ```
 
 The formatter may modify files. Review and restage those changes, then rerun
-the checks. There is no Python source yet, so the Ruff hooks currently skip;
-meaningful tests will arrive with the palette validator. Publishing is not
-automatic.
+the checks. Publishing is not automatic.
