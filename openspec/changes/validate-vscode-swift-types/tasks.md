@@ -12,7 +12,7 @@
 
 ## 3. Integration
 
-- [ ] 3.1 Run relevant hooks and strict OpenSpec validation, verify protected outputs unchanged, obtain independent review and open one small PR into dev.
+- [x] 3.1 Run relevant hooks and strict OpenSpec validation, verify protected outputs unchanged, obtain independent review and open one small PR into dev.
 
 ## Workflow follow-up
 
