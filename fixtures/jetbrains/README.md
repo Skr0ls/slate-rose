@@ -21,3 +21,19 @@ with the JDK bundled with IntelliJ IDEA.
 Open `projects/rider/jetbrains/Review.csproj` in Rider and `projects/idea` in
 IntelliJ IDEA under `/tmp/sr-jb-review`. The Java source uses package `preview`;
 the C# project links the sibling `showcase.cs`. Neither fixture needs to run.
+
+For the focused Rider C# builtin type review, create a separate disposable
+project under the same trusted root. Select an installed .NET 8 SDK; the local
+review used `8.0.418` from `~/.dotnet`:
+
+```sh
+mkdir -p /tmp/sr-jb-review/projects/rider/builtins/jetbrains
+cp fixtures/jetbrains/BuiltinTypes.cs /tmp/sr-jb-review/projects/rider/builtins/BuiltinTypes.cs
+sed 's/showcase.cs/BuiltinTypes.cs/g' fixtures/jetbrains/Review.csproj > /tmp/sr-jb-review/projects/rider/builtins/jetbrains/Builtins.csproj
+printf '{"sdk":{"version":"8.0.418"}}\n' > /tmp/sr-jb-review/projects/rider/builtins/global.json
+(cd /tmp/sr-jb-review/projects/rider/builtins && ~/.dotnet/dotnet build jetbrains/Builtins.csproj --ignore-failed-sources -p:NuGetAudit=false)
+```
+
+Open `builtins/jetbrains/Builtins.csproj` in Rider and verify successful loading.
+The project links the sibling fixture; compilation is optional, and the fixture
+must not be run.

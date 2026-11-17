@@ -1,0 +1,11 @@
+{
+  "host": "Rider 2026.2.4",
+  "build": "262.11879.110",
+  "sdk": "8.0.418",
+  "beforePluginSha256": "db5ad7238a57cdb84dead9c56af24ecfa1d8768020db1969e17bf956addf37ca",
+  "afterPluginSha256": "1d704d9ee610146779dd071a4d2a0c6bd6960098d4c3a1268e2c531582233e12",
+  "screenshots": {
+    "before.png": "a65aafcd425e4f3481b9b57ef8006074ceb337503ce7c7a6e02884bcd3a3dbf0",
+    "after.png": "e5465423bbb914088fffaafd3b28feddc402a61a0ff2ade9c23aeea008bff66c"
+  }
+}

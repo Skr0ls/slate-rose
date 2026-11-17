@@ -16,6 +16,8 @@ Add one C#-specific mapping without a language framework. Java/Kotlin review, fl
 - Regression verification checks the exact external key and literal approved color, shared keyword/class values and unchanged other attributes. Avoid deriving the test's expected map from the implementation map. Rebuild the generated scheme and deterministic JAR; compare both palette files, UI JSON and VS Code output against the integration baseline.
 - Native review uses Jump to Colors and Fonts for declaration/use/negative controls, records the effective category and exported override, and compares before/after under unchanged preferences. [JetBrains SDK guidance](https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html) distinguishes layered text keys; JetBrains' optional variable/parameter semantic coloring is not equivalent to VS Code's semantic-token provider.
 
+  The completed review could not obtain a native export: equivalent bounded verification combines the exact installed-package value, registered-key bytecode, native categories and visual before/after evidence; it does not claim an exported runtime value or measured pixel equality.
+
 ## Risks / Trade-offs
 
 - A registered key may be shadowed by a layered style -> prove effective behavior in Rider before marking complete; do not infer acceptance from XML alone.

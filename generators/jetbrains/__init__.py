@@ -58,6 +58,18 @@ def render_scheme(palette: Palette) -> str:
         ET.SubElement(
             value, "option", name="FOREGROUND", value=palette.colors[token][1:].upper()
         )
+    value = ET.SubElement(
+        ET.SubElement(
+            attributes, "option", name="ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD"
+        ),
+        "value",
+    )
+    ET.SubElement(
+        value,
+        "option",
+        name="FOREGROUND",
+        value=palette.colors["primitive"][1:].upper(),
+    )
     ET.indent(scheme, space="  ")
     xml = ET.tostring(scheme, encoding="unicode", short_empty_elements=True) + "\n"
     try:
