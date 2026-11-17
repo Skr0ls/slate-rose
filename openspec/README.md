@@ -37,13 +37,15 @@ The [workbench change](changes/define-workbench-states/proposal.md) implements t
 
 The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
 
-Next priority: an Islands-based UI plugin reviewed first on Rider, including outer framing/gaps. Defer a wider JetBrains IDE matrix until that UI/package exists. The [native editor review](../previews/jetbrains/editor/README.md) also identifies a focused C# builtin-type override (`ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` → `primitive`) for a separate small change with native verification.
+The Islands-based UI plugin PR 14 is ready for review and has not merged. After it merges, start the [focused Rider C# builtin change](changes/fix-rider-csharp-builtins/tasks.md) from fresh `dev`, followed by the language reviews in the [validation backlog](language-validation-backlog.md). The [native editor review](../previews/jetbrains/editor/README.md) records the existing evidence.
 
 - [ ] Generate an editor color scheme and minimal UI theme resources from approved mappings. Done when they load in Rider and IntelliJ IDEA and language-specific differences are documented.
 - [ ] Package a standalone theme plugin with MIT notice and installation instructions. Done when a local build installs successfully and fixtures are reviewed in the relevant IDEs.
 - [ ] Add host validation and packaging to CI. Done when shared-input changes also validate the JetBrains output.
 
 ### 4. Zed — `add-zed-theme`
+
+Return to Zed after the prioritized language reviews and remaining selected batches in the [language backlog](language-validation-backlog.md).
 
 - [ ] Generate native theme JSON and extension.toml using the current official schema. Done when schema checks pass and the theme installs locally.
 - [ ] Review syntax, completion, search, tabs and panels while preserving Zed's native UI character. Done when screenshots and the host coverage table record observed results and limitations.

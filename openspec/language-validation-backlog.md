@@ -1,9 +1,10 @@
 # Language validation backlog
 
 This is a queue for future OpenSpec changes, not approval to implement them or a
-claim of language support. Start with VS Code and its existing C++, C#,
-TypeScript and Python fixtures. Review other hosts separately after their
-JetBrains and Zed adapters exist; results do not imply parity across hosts.
+claim of language support. Review each host separately; results do not imply
+parity across hosts. After the ready JetBrains UI PR 14 merges, start language
+work from fresh `dev`.
+Review the selected language changes below before returning to Zed.
 The batches below are practical groupings, not a popularity ranking. Split a
 batch further if it cannot fit in a small, reviewable PR.
 
@@ -40,6 +41,14 @@ semantic highlighting. For mapping changes run the existing validator,
 generator check, tests and relevant hooks. Screenshots and token inspections
 are review evidence, not automated tests.
 
+For JetBrains, use a minimal valid loaded project and fix missing SDK setup
+before inspecting; record the host, version and provider. Its optional
+**Semantic highlighting** setting colors variables and parameters; it is not
+the same as a VS Code semantic-token provider. Inspect lexical and annotator
+keys using Jump to Colors and Fonts or UI Inspector as described in the
+[JetBrains highlighting documentation](https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html).
+Do not disable semantic highlighting globally or recolor broad keyword groups.
+
 Use VS Code's [language overview](https://code.visualstudio.com/docs/languages/overview)
 and [semantic highlighting guide](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide)
 to distinguish grammar tokenization from provider semantics.
@@ -55,10 +64,14 @@ If a category mixes inseparable roles, document the limitation and seek an
 owner decision. For an actual fix, use relevant fixtures, before/after evidence,
 regression checks and native verification under the [criteria above](#review-and-completion-criteria).
 The [JetBrains native editor review](../previews/jetbrains/editor/README.md)
-records the current evidence. Islands UI on Rider remains the next priority;
-wider IDE validation follows the UI plugin.
+records the current evidence. After UI PR 14 merges, execute the selected
+changes in the order below, then review remaining systems, scripting, JVM and
+configuration batches in small PRs before returning to Zed. Other batches
+remain open. A review may identify limitations without requiring a code fix.
 
-- [ ] **Rider C# builtin aliases:** Investigate `int`, `string`, `float` and
+- [ ] **Rider C# builtin aliases:** The ready
+  [focused change](changes/fix-rider-csharp-builtins/tasks.md) starts after UI
+  PR 14 merges, from fresh `dev`. Investigate `int`, `string`, `float` and
   `bool` using the registered `ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` category
   and the existing `primitive` color, keeping ordinary keywords unchanged.
   Inspect declaration and usage locations and mixed `var` or contextual
@@ -67,9 +80,23 @@ wider IDE validation follows the UI plugin.
   investigate it only if its provider exposes a narrow category.
 - [ ] **Java primitive keywords:** Verify classifications and supported narrow
   host selectors for `int`, `boolean` and `float` before promising a mapping.
-  Java defines primitive types with reserved keywords, while `String` is a
-  reference class ([primitive types](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.2),
+  Compare `String` and `Integer` reference types with these keyword
+  primitives; inspect `var` and `void` separately without promising broad
+  keyword recoloring. Java defines primitive types with reserved keywords,
+  while `String` is a reference class ([primitive types](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.2),
   [String class](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.3.3)).
+
+- [ ] **Kotlin types and contextual words:** Review `Int`, `String`, `Boolean`
+  and `Float` as built-in class types, not keywords; their JVM representation
+  does not change that classification. Compare the named type role baseline
+  and nullable forms, `Unit` as type versus value, and a `typealias` name
+  versus its keyword. Inspect `fun`, `val`, `var` and `class` alongside
+  `if`, `when`, `return` and `throw`, plus contextual `get` and `field`.
+  Choose mappings only for observed narrow keys. See the
+  [keyword reference](https://kotlinlang.org/docs/keyword-reference.html) and
+  [`Int` API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/).
+
+After these focused reviews, review the baseline regressions batch below.
 
 ## Batches
 
