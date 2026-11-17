@@ -83,15 +83,12 @@ remain open. A review may identify limitations without requiring a code fix.
   identifier cases where applicable; do not automatically treat `var` as a
   primitive. Retain the prior owner decision to leave and document VS Code C#;
   investigate it only if its provider exposes a narrow category.
-- [ ] **Java primitive keywords:** Verify classifications and supported narrow
-  host selectors for `int`, `boolean` and `float` before promising a mapping.
-  The [focused review plan](changes/validate-jetbrains-java-primitives/tasks.md)
-  covers one IntelliJ host and preserves current theme output.
-  Compare `String` and `Integer` reference types with these keyword
-  primitives; inspect `var` and `void` separately without promising broad
-  keyword recoloring. Java defines primitive types with reserved keywords,
-  while `String` is a reference class ([primitive types](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.2),
-  [String class](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.3.3)).
+- [ ] **Java primitive keywords:** **Limited** in the focused
+  [IntelliJ review](../previews/jetbrains/java-primitives/README.md): inspected
+  primitive keywords share Java Keyword with ordinary keywords; no narrow
+  selector was established. Named types, `var`, `void` and a contextual
+  identifier were compared. Current theme output is retained; other providers
+  and contexts remain unverified.
 
 - [ ] **Kotlin types and contextual words:** Review `Int`, `String`, `Boolean`
   and `Float` as built-in class types, not keywords; their JVM representation
