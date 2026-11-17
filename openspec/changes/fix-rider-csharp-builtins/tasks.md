@@ -11,7 +11,7 @@
 
 ## 3. Integration
 
-- [ ] 3.1 Run all unit tests/hooks, palette validation, VS Code/JetBrains editor/UI generator checks, package consistency check and strict OpenSpec validation; confirm palettes, UI JSON and VS Code artifact unchanged, obtain independent final review and open the implementation PR into dev.
+- [x] 3.1 Run all unit tests/hooks, palette validation, VS Code/JetBrains editor/UI generator checks, package consistency check and strict OpenSpec validation; confirm palettes, UI JSON and VS Code artifact unchanged, obtain independent final review and open the implementation PR into dev.
 
 ## Workflow follow-up
 

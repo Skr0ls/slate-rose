@@ -2,8 +2,8 @@
 
 This is a queue for future OpenSpec changes, not approval to implement them or a
 claim of language support. Review each host separately; results do not imply
-parity across hosts. After the ready JetBrains UI PR 14 merges, start language
-work from fresh `dev`.
+parity across hosts. The JetBrains UI plugin is integrated; start each selected
+language change from fresh `dev` after its predecessor integrates.
 Review the selected language changes below before returning to Zed.
 The batches below are practical groupings, not a popularity ranking. Split a
 batch further if it cannot fit in a small, reviewable PR.
@@ -69,17 +69,17 @@ If a category mixes inseparable roles, document the limitation and seek an
 owner decision. For an actual fix, use relevant fixtures, before/after evidence,
 regression checks and native verification under the [criteria above](#review-and-completion-criteria).
 The [JetBrains native editor review](../previews/jetbrains/editor/README.md)
-records the current evidence. After UI PR 14 merges, execute the selected
-changes in the order below, then review remaining systems, scripting, JVM and
+records the initial evidence. Execute the selected changes in the order below,
+then review remaining systems, scripting, JVM and
 configuration batches in small PRs before returning to Zed. Other batches
 remain open. A review may identify limitations without requiring a code fix.
 
-- [ ] **Rider C# builtin aliases:** The ready
-  [focused change](changes/fix-rider-csharp-builtins/tasks.md) starts after UI
-  PR 14 merges, from fresh `dev`. Investigate `int`, `string`, `float` and
+- [x] **Rider C# builtin aliases:** The
+  [focused change](changes/fix-rider-csharp-builtins/tasks.md) and
+  [bounded native review](../previews/jetbrains/csharp-builtins/README.md) cover `int`, `string`, `float` and
   `bool` using the registered `ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` category
   and the existing `primitive` color, keeping ordinary keywords unchanged.
-  Inspect declaration and usage locations and mixed `var` or contextual
+  Reviewed declaration and usage locations and mixed `var` or contextual
   identifier cases where applicable; do not automatically treat `var` as a
   primitive. Retain the prior owner decision to leave and document VS Code C#;
   investigate it only if its provider exposes a narrow category.

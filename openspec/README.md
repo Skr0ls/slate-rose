@@ -4,7 +4,7 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current change
 
-[add-jetbrains-islands-shell](changes/add-jetbrains-islands-shell/tasks.md) tracks the Islands shell, local package and native Rider review.
+[fix-rider-csharp-builtins](changes/fix-rider-csharp-builtins/tasks.md) tracks the focused alias mapping and native Rider review. The Islands shell and local package are integrated.
 
 [validate-jetbrains-editor-scheme](changes/validate-jetbrains-editor-scheme/tasks.md) records bounded C# review on Rider and one Java import smoke check on IntelliJ. The [initial adapter](changes/add-jetbrains-editor-scheme/tasks.md) is integrated.
 
@@ -37,7 +37,7 @@ The [workbench change](changes/define-workbench-states/proposal.md) implements t
 
 The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
 
-The Islands-based UI plugin PR 14 is ready for review and has not merged. After it merges, start the [focused Rider C# builtin change](changes/fix-rider-csharp-builtins/tasks.md) from fresh `dev`, followed by the language reviews in the [validation backlog](language-validation-backlog.md). The [native editor review](../previews/jetbrains/editor/README.md) records the existing evidence.
+The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrains/csharp-builtins/README.md) records alias styling; Java, Kotlin and Swift reviews follow in the [language backlog](language-validation-backlog.md). Start each implementation from updated `dev` after its predecessor integrates.
 
 - [ ] Generate an editor color scheme and minimal UI theme resources from approved mappings. Done when they load in Rider and IntelliJ IDEA and language-specific differences are documented.
 - [ ] Package a standalone theme plugin with MIT notice and installation instructions. Done when a local build installs successfully and fixtures are reviewed in the relevant IDEs.
