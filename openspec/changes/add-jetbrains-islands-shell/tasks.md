@@ -7,11 +7,10 @@
 
 ## 2. Native Rider verification
 
-- [ ] 2.1 After code review, install/select the concrete package in the isolated Rider test context and record representative active/inactive shell framing and tabs with package hash/version and limitations; preserve native layout and preferences.
+- [x] 2.1 After code review, install/select the concrete package in the isolated Rider test context and record representative active/inactive shell framing and tabs with package hash/version and limitations; preserve native layout and preferences.
 
-  Installation and editor/tool-window focus evidence are recorded in
-  [the partial Rider review](../../../previews/jetbrains/islands/README.md).
-  Whole-window inactivity remains unverified.
+  Installation and active/inactive window evidence are recorded in
+  [the bounded Rider review](../../../previews/jetbrains/islands/README.md).
 
 ## 3. Integration
 

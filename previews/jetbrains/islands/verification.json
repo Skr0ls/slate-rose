@@ -4,8 +4,9 @@
   "pluginVersion": "0.1.0",
   "pluginSha256": "db5ad7238a57cdb84dead9c56af24ecfa1d8768020db1969e17bf956addf37ca",
   "themeProviderId": "b981d7bb-b7a6-4d8b-a2c1-94d502763610",
+  "activeProjectSdk": "8.0.418",
   "screenshots": {
-    "editor-focused.png": "88de5a820523ea218192e105c5c550928dd4da2cb2d0be1676a6546d492cd0d9",
-    "tool-window-focused.png": "db6798cb092f0fe0792a37b7d0e25862674ed84ef13e74d5ffdfe4a030ccbdaf"
+    "active.png": "db2fcfe85f3a9d242eb9007d39947982d449cf1576909a0ff1933ca97caed9e3",
+    "inactive.png": "22d8a78d4c1cfb6eb8fcba14161c171888e3b41ce62e4a508aaabc6a11b1fb69"
   }
 }
