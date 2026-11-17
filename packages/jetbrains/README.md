@@ -1,7 +1,9 @@
 # JetBrains theme
 
 The Islands Dark shell slice covers framing, panels and tabs. Menus and controls
-inherit the host; native shell acceptance is pending. Generate and check it with
+inherit the host; [partial Rider review](../../previews/jetbrains/islands/README.md)
+is recorded, while whole-window inactivity and native shell acceptance remain pending.
+Generate and check it with
 `python -m generators build jetbrains-ui` and `python -m generators check jetbrains-ui`.
 
 Build the local resource-only plugin with `python -m scripts.package_jetbrains`;
