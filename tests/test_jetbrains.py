@@ -75,6 +75,7 @@ class JetBrainsTests(unittest.TestCase):
             for key, token in roles.items()
         }
         expected["TEXT"] = {"FOREGROUND": "D1D4DC", "BACKGROUND": "191D25"}
+        expected["ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD"] = {"FOREGROUND": "D8B981"}
         self.assertEqual(attrs, expected)
         self.assertEqual(set(root.attrib), {"name", "version", "parent_scheme"})
         for value in list(colors.values()) + [

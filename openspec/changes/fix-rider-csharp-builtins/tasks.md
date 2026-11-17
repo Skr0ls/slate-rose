@@ -2,12 +2,12 @@
 
 ## 1. Focused implementation
 
-- [ ] 1.1 From updated dev after Islands integration, add the exact C# builtin external-key override, regenerate the scheme, and add a regression assertion for primitive `D8B981`, unaffected keywords/types and every existing shared attribute; verify determinism, relevant unit tests and generator checks, and document the key and scope.
-- [ ] 1.2 Add the dedicated alias/negative-control fixture and disposable project instructions described in design.md; verify valid source/project loading with an installed SDK and document the selected version without executing the fixture.
+- [x] 1.1 From updated dev after Islands integration, add the exact C# builtin external-key override, regenerate the scheme, and add a regression assertion for primitive `D8B981`, unaffected keywords/types and every existing shared attribute; verify determinism, relevant unit tests and generator checks, and document the key and scope.
+- [x] 1.2 Add the dedicated alias/negative-control fixture and disposable project instructions described in design.md; verify valid source/project loading with an installed SDK and document the selected version without executing the fixture.
 
 ## 2. Native acceptance
 
-- [ ] 2.1 Independently review the code and rebuilt/checkable JAR before installation; in the isolated Rider profile record before/after alias declaration/use categories and unaffected keyword, var, identifier and named-type controls using native color inspection, package hash/build/SDK and compact evidence; verify successful project loading and effective approved colors without changing host preferences.
+- [x] 2.1 Independently review the code and rebuilt/checkable JAR before installation; in the isolated Rider profile record before/after alias declaration/use categories and unaffected keyword, var, identifier and named-type controls using native color inspection, package hash/build/SDK and compact evidence; verify successful project loading and effective approved colors without changing host preferences.
 
 ## 3. Integration
 

@@ -119,5 +119,10 @@
         <option name="FOREGROUND" value="AEB5C1" />
       </value>
     </option>
+    <option name="ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="D8B981" />
+      </value>
+    </option>
   </attributes>
 </scheme>

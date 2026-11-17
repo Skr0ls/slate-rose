@@ -20,7 +20,11 @@ instructions](https://www.jetbrains.com/help/idea/settings-colors-and-fonts.html
 
 This initial scheme has automated XML checks and a bounded [native C#/Java review](../../previews/jetbrains/editor/README.md)
 in Rider and IntelliJ IDEA. Language plugins may override shared defaults. Flow
-control, primitives and namespaces have no separate override mapped here;
+control and namespaces have no separate override mapped here. The Rider C# key
+`ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` maps builtin aliases to the approved
+primitive color; a bounded [native Rider review](../../previews/jetbrains/csharp-builtins/README.md)
+records its observed behavior. Other
+languages' primitive mappings are unchanged;
 unmapped styles and states inherit Darcula. Font settings, IDE UI and terminal
 colors are outside this scheme. Broader IDE validation, language mapping fixes
 and terminal support remain follow-ups.
