@@ -4,6 +4,8 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current change
 
+[add-jetbrains-islands-shell](changes/add-jetbrains-islands-shell/tasks.md) tracks the Islands shell, local package and native Rider review.
+
 [validate-jetbrains-editor-scheme](changes/validate-jetbrains-editor-scheme/tasks.md) records bounded C# review on Rider and one Java import smoke check on IntelliJ. The [initial adapter](changes/add-jetbrains-editor-scheme/tasks.md) is integrated.
 
 [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/proposal.md) implements the owner-approved ANSI design. Workbench appearance is accepted; native terminal acceptance remains pending.
