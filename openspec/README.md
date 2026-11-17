@@ -64,6 +64,7 @@ Return to Zed after the prioritized language reviews and remaining selected batc
 
 ### Later candidates
 
+- Xcode: investigate the native theme format, supported editor/UI surfaces and local installation before proposing a separate adapter.
 - Visual Studio for Windows: investigate the current native distribution format before proposing an adapter.
 - Neovim: optional adapter after the three primary hosts are stable.
 

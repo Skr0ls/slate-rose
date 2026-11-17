@@ -1,0 +1,17 @@
+{
+  "status": "limited native review complete",
+  "fixture_sha256": "de2c116872c1c423e950532311386435a35cf4c0322453611d873b86b3f2aa14",
+  "generated_theme_sha256": "e58481e490e2712fef1444f68066bf68f6cd98f00fd9e9d5ce32b9c5ade7c3e3",
+  "vsix_sha256": "f1e3f3b52f58e213d16510e4e4f62853abba2c8c8fbc7fe6ad740d2dd19087e6",
+  "inspector_sha256": "cea97b1ebe8ac1a422b88b674adb474199c63a6af3975ac4d97718a6b7392130",
+  "overview_sha256": "3e5259a27e90d30fc022a82881dc1992892bed6804af94b8e52070dec26d9f55",
+  "vscode": "1.146.0 arm64 (69047191fc427f2f92828279aae1d90d8eeda7ab)",
+  "swift_grammar": "10.0.0",
+  "swift_extension": "swiftlang.swift-vscode 2.18.0",
+  "toolchain": "Apple Swift 6.4 (swiftlang-6.4.0.34.1), arm64-apple-macosx27.0.0",
+  "project": "dependency-free SwiftPM library; offline typecheck with explicit Command Line Tools SDK",
+  "lexical_probe": "installed grammar; vscode-textmate 9.3.2; vscode-oniguruma 1.7.0",
+  "direct_provider_probe": "SourceKit-LSP with explicit SDK; 53 tokens decoded against advertised legend; not VS Code selected-token evidence",
+  "native_theme_selection": "Slate Rose selected in isolated profile; editor background #191D25",
+  "native_semantic_provider": "SourceKit semantic tokens selected; Swift 6.4.0 status; zero Problems"
+}

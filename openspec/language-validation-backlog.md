@@ -100,13 +100,17 @@ remain open. A review may identify limitations without requiring a code fix.
   contexts remain unreviewed. See the [keyword reference](https://kotlinlang.org/docs/keyword-reference.html)
   and [`Int` API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/).
 
-- [ ] **Swift types and contextual words:** Review `Int`, `String`, `Bool` and
+- [x] **Swift types and contextual words:** Reviewed `Int`, `String`, `Bool` and
   `Float` as named standard-library types, not reserved primitive keyword
   aliases. Inspect optional, generic and `typealias` declarations and uses;
   distinguish type identifiers from initializer calls. Compare `typealias`,
   `struct`, `func`, `let` and `var` with `if`, `return` and `throw`; inspect
   contextual `any` and `some` in type positions without blanket coloring them
-  as types. See Swift's [types](https://docs.swift.org/latest/documentation/the-swift-programming-language/types/)
+  as types. The [limited VS Code review](../previews/vscode/swift/README.md)
+  found built-in types sand, flow-control `if`/`throw`/`return` lilac, and a
+  generic declaration foreground. Narrow flow-control and generic declaration
+  mapping candidates remain separate follow-up work; other hosts and contexts
+  remain unreviewed. See Swift's [types](https://docs.swift.org/latest/documentation/the-swift-programming-language/types/)
   and [lexical structure](https://docs.swift.org/latest/documentation/the-swift-programming-language/lexicalstructure/).
 
 After these focused reviews, review the baseline regressions batch below.
