@@ -53,3 +53,29 @@ level, and allow indexing to finish before reviewing. The local compiler reports
 `javac 25.0.4.1`. Compilation is optional; do not execute the fixture. See the
 [review notes](../../previews/jetbrains/java-primitives/README.md) for source
 evidence and the bounded native review.
+
+## Kotlin type-role review
+
+Copy the focused fixture into the existing disposable IDEA source root:
+
+```sh
+mkdir -p /tmp/sr-jb-review/projects/idea/preview
+cp fixtures/jetbrains/TypeRoles.kt /tmp/sr-jb-review/projects/idea/preview/TypeRoles.kt
+```
+
+Open `/tmp/sr-jb-review/projects/idea` in IntelliJ IDEA, retain its Java SDK
+and source root, and attach the installed IDEA Kotlin plugin's
+`kotlinc/lib/kotlin-stdlib.jar` and `kotlinc/lib/annotations-13.0.jar` as a
+module library. The local review used IDEA build 263.7307.112 and Kotlin
+plugin 263.7307.112-IJ. Wait for indexing and verify standard-library type
+resolution before reviewing highlighting. This setup is disposable and does
+not add dependencies to the repository. See the [native review](../../previews/jetbrains/kotlin-types/README.md).
+
+Optionally compile with the installed compiler and an installed JDK, without
+executing the result (adjust paths to the local installation):
+
+```sh
+JAVA_HOME=/opt/homebrew/opt/java/libexec/openjdk.jdk/Contents/Home \
+  '/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/kotlinc/bin/kotlinc' \
+  fixtures/jetbrains/TypeRoles.kt -d /tmp/sr-jb-review/kotlin-classes
+```

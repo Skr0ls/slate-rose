@@ -90,15 +90,15 @@ remain open. A review may identify limitations without requiring a code fix.
   identifier were compared. Current theme output is retained; other providers
   and contexts remain unverified.
 
-- [ ] **Kotlin types and contextual words:** Review `Int`, `String`, `Boolean`
-  and `Float` as built-in class types, not keywords; their JVM representation
-  does not change that classification. Compare the named type role baseline
-  and nullable forms, `Unit` as type versus value, and a `typealias` name
-  versus its keyword. Inspect `fun`, `val`, `var` and `class` alongside
-  `if`, `when`, `return` and `throw`, plus contextual `get` and `field`.
-  Choose mappings only for observed narrow keys. See the
-  [keyword reference](https://kotlinlang.org/docs/keyword-reference.html) and
-  [`Int` API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/).
+- [x] **Kotlin types and contextual words:** **Limited** in IntelliJ IDEA
+  263.7307.112 with Kotlin plugin 263.7307.112-IJ, Kotlin/JVM and project JDK
+  25; the focused [fixture and evidence](../previews/jetbrains/kotlin-types/README.md)
+  record semantic review of built-in class types, aliases and `Unit`. The
+  selected declaration and flow-control words share a keyword category, and
+  the backing-field reference has a quiet foreground. A narrow backing-field
+  candidate needs separate review; no mapping was changed. Other hosts and
+  contexts remain unreviewed. See the [keyword reference](https://kotlinlang.org/docs/keyword-reference.html)
+  and [`Int` API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/).
 
 - [ ] **Swift types and contextual words:** Review `Int`, `String`, `Bool` and
   `Float` as named standard-library types, not reserved primitive keyword
