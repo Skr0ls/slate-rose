@@ -12,7 +12,7 @@
 
 ## 3. Integration
 
-- [ ] 3.1 Run relevant hooks and strict OpenSpec validation, confirm palettes/generators/generated artifacts unchanged, obtain independent review and open one small PR into dev.
+- [x] 3.1 Run relevant hooks and strict OpenSpec validation, confirm palettes/generators/generated artifacts unchanged, obtain independent review and open one small PR into dev.
 
 ## Workflow follow-up
 
