@@ -85,6 +85,8 @@ remain open. A review may identify limitations without requiring a code fix.
   investigate it only if its provider exposes a narrow category.
 - [ ] **Java primitive keywords:** Verify classifications and supported narrow
   host selectors for `int`, `boolean` and `float` before promising a mapping.
+  The [focused review plan](changes/validate-jetbrains-java-primitives/tasks.md)
+  covers one IntelliJ host and preserves current theme output.
   Compare `String` and `Integer` reference types with these keyword
   primitives; inspect `var` and `void` separately without promising broad
   keyword recoloring. Java defines primitive types with reserved keywords,
