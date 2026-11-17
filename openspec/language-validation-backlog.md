@@ -34,6 +34,11 @@ Done for a batch means every selected item has:
    relevant. Apply semantic roles only where meaningful; do not force field or
    function roles onto every configuration format.
 
+For each selected language, compare built-in keyword types, named standard types
+and contextual keywords where applicable. Base findings on the host category,
+not spelling alone; fix only observed narrow keys or document inseparable
+limitations.
+
 Fix native mappings only for observed issues, with a small regression test that
 fails before and passes after the fix. Keep the approved palette unchanged;
 significant design choices require owner approval. Do not blanket-disable
@@ -95,6 +100,15 @@ remain open. A review may identify limitations without requiring a code fix.
   Choose mappings only for observed narrow keys. See the
   [keyword reference](https://kotlinlang.org/docs/keyword-reference.html) and
   [`Int` API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/).
+
+- [ ] **Swift types and contextual words:** Review `Int`, `String`, `Bool` and
+  `Float` as named standard-library types, not reserved primitive keyword
+  aliases. Inspect optional, generic and `typealias` declarations and uses;
+  distinguish type identifiers from initializer calls. Compare `typealias`,
+  `struct`, `func`, `let` and `var` with `if`, `return` and `throw`; inspect
+  contextual `any` and `some` in type positions without blanket coloring them
+  as types. See Swift's [types](https://docs.swift.org/latest/documentation/the-swift-programming-language/types/)
+  and [lexical structure](https://docs.swift.org/latest/documentation/the-swift-programming-language/lexicalstructure/).
 
 After these focused reviews, review the baseline regressions batch below.
 
