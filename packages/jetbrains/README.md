@@ -1,4 +1,16 @@
-# JetBrains editor scheme
+# JetBrains theme
+
+The Islands Dark shell slice covers framing, panels and tabs. Menus and controls
+inherit the host; native shell acceptance is pending. Generate and check it with
+`python -m generators build jetbrains-ui` and `python -m generators check jetbrains-ui`.
+
+Build the local resource-only plugin with `python -m scripts.package_jetbrains`;
+verify it with `python -m scripts.package_jetbrains --check`. In Rider, use
+**Settings | Plugins | gear | Install Plugin from Disk**, select
+`dist/slate-rose-jetbrains.jar`, restart if prompted, then select Slate Rose in
+**Settings | Appearance & Behavior | Appearance**. The descriptor requires
+platform build 262 or newer; native acceptance is pending and compatibility with
+other IDEs has not been reviewed. See [Rider plugin installation](https://www.jetbrains.com/help/rider/Managing_Plugins.html).
 
 Generate the scheme with `python -m generators build jetbrains`. In a JetBrains
 IDE, open **Settings | Editor | Color Scheme**, use the scheme menu to import
@@ -9,8 +21,8 @@ This initial scheme has automated XML checks and a bounded [native C#/Java revie
 in Rider and IntelliJ IDEA. Language plugins may override shared defaults. Flow
 control, primitives and namespaces have no separate override mapped here;
 unmapped styles and states inherit Darcula. Font settings, IDE UI and terminal
-colors are outside this scheme. The next priority is an Islands-based UI plugin;
-broader IDE validation, language mapping fixes and terminal support remain follow-ups.
+colors are outside this scheme. Broader IDE validation, language mapping fixes
+and terminal support remain follow-ups.
 
 The scheme follows the [official format example](https://blog.jetbrains.com/platform/2017/12/export-intellij-editor-themes-as-plugins/),
 [scheme version](https://github.com/JetBrains/intellij-community/blob/master/platform/editor-ui-ex/src/com/intellij/openapi/editor/colors/impl/AbstractColorsScheme.java),

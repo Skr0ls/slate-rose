@@ -1,0 +1,25 @@
+{
+  "name": "Slate Rose",
+  "author": "Skr0ls",
+  "dark": true,
+  "parentTheme": "Islands Dark",
+  "editorScheme": "/colors/SlateRose.xml",
+  "ui": {
+    "MainWindow.background": "#2B323E",
+    "MainToolbar.background": "#2B323E",
+    "ToolWindow.Stripe.background": "#2B323E",
+    "StatusBar.background": "#2B323E",
+    "ToolWindow.background": "#191D25",
+    "ToolWindow.Header.background": "#191D25",
+    "ToolWindow.Header.inactiveBackground": "#191D25",
+    "Island.borderColor": "#191D25",
+    "EditorTabs.background": "#191D25",
+    "EditorTabs.underlinedTabBackground": "#242A34",
+    "EditorTabs.inactiveUnderlinedTabBackground": "#242A34",
+    "EditorTabs.underlinedBorderColor": "#99C4E6",
+    "EditorTabs.inactiveUnderlinedTabBorderColor": "#2B323E",
+    "StatusBar.borderColor": "#191D2500",
+    "ToolWindow.Stripe.borderColor": "#191D2500",
+    "MainToolbar.borderColor": "#191D2500"
+  }
+}
