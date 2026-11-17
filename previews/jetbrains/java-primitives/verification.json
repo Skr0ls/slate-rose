@@ -1,0 +1,62 @@
+{
+  "status": "limited",
+  "host": "IntelliJ IDEA 2026.3 RC (263.7307.112)",
+  "java_plugin": "com.intellij.java 263.7307.112",
+  "project": {
+    "source_root": "idea",
+    "package": "preview",
+    "sdk_name": "25",
+    "sdk_version": "25.0.1",
+    "sdk_home": "/opt/homebrew/opt/java/libexec/openjdk.jdk/Contents/Home",
+    "language_level": "JDK_25",
+    "indexing": "startup scanning finished and indexing mode exited"
+  },
+  "compiler": "IntelliJ bundled javac 25.0.4.1; compiled offline, not executed",
+  "scheme": {
+    "name": "Slate Rose",
+    "imported_sha256": "d32c935015526a9b18891aa1a320d1c3cd37eec41b524d0a10fffef229a3aa38",
+    "packaged_sha256": "7f6e5d21ed7774f81abb5582be11ecbd681d143dce0f8da670bf7c964b0eed3c",
+    "imported_defaults": {
+      "DEFAULT_KEYWORD": "CAA1DE",
+      "DEFAULT_CLASS_NAME": "E0C38C"
+    }
+  },
+  "fixture_sha256": "96afe3d3f2943ce5ee2e8058593af6cdbfdd12aa3870454d2df421f6c1aa60a6",
+  "captures_sha256": {
+    "overview.png": "2bcddd4b09d58a13835171f89652b107b15307df1aba2e63a9d34af37c4fc4a6",
+    "keyword.png": "5b07ff3d902133987c56040c1bba3f7d79ce58209fe08c6fb2f3b4fa13516a5f"
+  },
+  "upstream_revision": "40b68d9360d885b27d5b41631b6a88ad34f83efb",
+  "installed_bytecode": {
+    "jar_base": "/Applications/IntelliJ IDEA.app/Contents/plugins/java/lib/",
+    "javap": "/opt/homebrew/opt/java/libexec/openjdk.jdk/Contents/Home/bin/javap",
+    "javap_version": "25.0.1",
+    "jars": [
+      {
+        "filename": "java-impl.jar",
+        "sha256": "8407a67d6d9ef616d05d1b10b24227f9e134fca12249422a4e656ec2aca568ac",
+        "targets": ["META-INF/plugin.xml"]
+      },
+      {
+        "filename": "intellij.java.frontback.psi.impl.jar",
+        "sha256": "bd280b7f413c1a3ec521ff967bdc0855366eba6967da0af8c674012e812be185",
+        "targets": ["com.intellij.ide.highlighter.JavaHighlightingColors.<clinit>"]
+      },
+      {
+        "filename": "intellij.java.frontback.impl.jar",
+        "sha256": "4ed9b0d1abce05031a1521e5ba594f5be706adeac49b483d867f2f0e8d6e72ce",
+        "targets": ["com.intellij.ide.highlighter.AbstractBasicJavaFileHighlighter.fillStandardMaps"]
+      },
+      {
+        "filename": "modules/intellij.java.analysis.impl.jar",
+        "sha256": "fd11dec28f828e33ea8b3712977eb54b7bdb53a322d58a4a3c5ddca7649a1da1",
+        "targets": [
+          "com.intellij.codeInsight.daemon.impl.analysis.JavaNamesHighlightVisitor.visitKeyword",
+          "com.intellij.codeInsight.daemon.impl.analysis.JavaNamesHighlightVisitor.highlightReferencedMethodOrClassName",
+          "com.intellij.codeInsight.daemon.impl.analysis.HighlightNamesUtil.highlightKeyword",
+          "com.intellij.codeInsight.daemon.impl.analysis.HighlightNamesUtil.getClassNameHighlightType"
+        ]
+      }
+    ]
+  }
+}

@@ -37,3 +37,19 @@ printf '{"sdk":{"version":"8.0.418"}}\n' > /tmp/sr-jb-review/projects/rider/buil
 Open `builtins/jetbrains/Builtins.csproj` in Rider and verify successful loading.
 The project links the sibling fixture; compilation is optional, and the fixture
 must not be run.
+
+For the focused Java primitive review, reuse the existing IDEA project and its
+`preview` source folder. Copy the fixture and optionally compile it offline with
+IntelliJ IDEA’s bundled JDK (adjust the application path if needed):
+
+```sh
+mkdir -p /tmp/sr-jb-review/projects/idea/preview /tmp/sr-jb-review/classes
+cp fixtures/jetbrains/PrimitiveTypes.java /tmp/sr-jb-review/projects/idea/preview/PrimitiveTypes.java
+"/Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home/bin/javac" -d /tmp/sr-jb-review/classes /tmp/sr-jb-review/projects/idea/preview/PrimitiveTypes.java
+```
+
+Open `projects/idea` in IntelliJ IDEA, confirm its SDK, source root and language
+level, and allow indexing to finish before reviewing. The local compiler reports
+`javac 25.0.4.1`. Compilation is optional; do not execute the fixture. See the
+[review notes](../../previews/jetbrains/java-primitives/README.md) for source
+evidence and the bounded native review.
