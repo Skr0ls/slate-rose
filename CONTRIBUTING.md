@@ -14,9 +14,15 @@ for project constraints.
 - `main` holds releases; `dev` is the integration branch.
 - Create `feature/<small-scope>` from `dev` and open a pull request into
   `dev`.
-- Create `release/*` from `dev`, open a pull request into `main`, and merge
-  the release back into `dev`.
-- Create a hotfix from `main` and merge it into both `main` and `dev`.
+- Open a pull request to promote a preview or release candidate from `dev`
+  to `main`. Tag the commit after its Quality push run passes.
+- At stable release, create `release/<major>.<minor>` from the stable tag
+  to maintain that series.
+  See the [release versioning policy](docs/releasing.md#release-versioning).
+- For a hotfix to `main`, branch from `main` and merge the fix into both
+  `main` and `dev`. For a patch to a maintained series, branch from its
+  `release/<major>.<minor>` branch and open the patch pull request there.
+  Carry the fix forward to `dev` where applicable.
 - The initial bootstrap may be committed directly to `main`; subsequent work
   uses feature pull requests. Publishing is never automatic.
 - Rebase a small linear feature branch when it has no dependent branches; use

@@ -9,6 +9,32 @@ The Quality workflow assembles three installable files as
 | `slate-rose-jetbrains.jar` | [JetBrains plugin](../packages/jetbrains/README.md) |
 | `slate-rose-zed.zip` | [Zed development extension](../packages/zed/README.md) |
 
+## Release versioning
+
+Git tags track the Slate Rose release across editors. Each editor package has
+its own manifest version.
+
+For each preview or release candidate, promote `dev` to `main` through a
+pull request. Tag the commit after its Quality push run passes and publish
+the three verified packages as a GitHub pre-release.
+
+1. Use `v0.1.0-preview.1` for the initial preview. Begin release candidates
+   once all three packages can be installed using the release instructions
+   and there are no known release blockers.
+2. Tag the first candidate `v0.1.0-rc.1`. Promote any blocking fixes through
+   the same flow and tag the next candidate `v0.1.0-rc.2`, incrementing the
+   suffix as needed.
+3. Once a candidate passes acceptance, tag its exact commit `v0.1.0` and
+   publish the stable release with the files attached to the accepted
+   candidate.
+4. At stable release, create `release/0.1` from `v0.1.0`. Keep one branch
+   per released series for patches such as `v0.1.1` while development of
+   the next series continues on `dev`.
+
+The current draft workflow accepts Quality bundles from pushes to `main`.
+Before shipping patches from a maintenance branch, extend the workflow to
+verify and select bundles built on that branch.
+
 ## Platform coverage
 
 All three packages are available in CI for a preview release. The package
@@ -31,20 +57,22 @@ tagged commit. Disable **dry_run** only when ready to create the draft.
 Keep the release tag fixed during preparation. The workflow rechecks the tag's
 commit immediately before draft creation.
 
-Review the draft in GitHub Releases before publishing. If an upload fails
+Review the draft in GitHub Releases before publishing. Select **This is a
+pre-release** for previews and release candidates. If an upload fails
 after creating the draft, attach the missing files from the verified bundle
 in the Releases UI. An existing draft blocks another automated creation.
 
 ## Manual fallback
 
 1. Bring the release commit onto `main` using the
-   [release branch flow](../CONTRIBUTING.md#git-workflow). Use an approved
+   [release promotion flow](../CONTRIBUTING.md#git-workflow). Use an approved
    tag already pushed to GitHub and pointing to that commit.
 2. Open a successful [Quality run](https://github.com/Skr0ls/slate-rose/actions/workflows/quality.yml)
    triggered by a push to `main` whose head SHA matches the tag's commit. Download its
    `slate-rose-release-assets` artifact and extract the three files.
 3. Create a draft release for the existing tag and attach the three files.
    From the extracted directory, set `tag` to the approved tag, then run
+   the following command. Add `--prerelease` for previews and release candidates.
 
    ```sh
    gh release create "$tag" --repo Skr0ls/slate-rose --verify-tag --draft \
