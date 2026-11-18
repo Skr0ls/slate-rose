@@ -129,8 +129,9 @@ results are recorded separately.
   covers the observed `if` and `for` scopes. TypeScript has a bounded
   [provider review](../previews/vscode/typescript-baseline/README.md) and a
   [native flow control fix](../previews/vscode/typescript-baseline/README.md#native-flow-control-verification)
-  for `if`, `for` and `throw`. Native verification of the wider TypeScript
-  baseline and the C# and Python reviews remain pending.
+  for `if`, `for` and `throw`. The [C# flow control fix](../previews/vscode/csharp-flow/README.md)
+  covers the sampled Microsoft C# semantic control keywords. The wider native
+  TypeScript and C# baselines and the Python review remain pending.
 - [ ] **Systems:** C, Go, Rust and Zig; cover declarations, control flow,
   types, functions and fields, plus language-specific constructs.
 - [ ] **JVM:** Java, Kotlin, Scala and Groovy; cover types, methods, fields,

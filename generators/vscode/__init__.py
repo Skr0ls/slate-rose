@@ -97,6 +97,7 @@ LEXICAL: tuple[tuple[str, tuple[str, ...]], ...] = (
 )
 
 SEMANTIC: dict[str, str] = {
+    "controlKeyword:csharp": "control",
     "type": "type",
     "class": "type",
     "enum": "type",
