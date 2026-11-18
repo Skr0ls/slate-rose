@@ -2,7 +2,13 @@
 
 The approved baseline is one repository, a shared Python generator, separate host packages and the MIT license. Palette values remain frozen in palette/colors.json.
 
-## Current change
+## Current work
+
+The [repository cleanup checklist](changes/clean-up-repository/tasks.md) tracks
+archiving and documentation. Native terminal acceptance and the live release
+draft are still open in the backlog below.
+
+## Earlier work
 
 [fix-rider-csharp-builtins](changes/fix-rider-csharp-builtins/tasks.md) tracks the focused alias mapping and native Rider review. The Islands shell and local package are integrated.
 
@@ -12,7 +18,7 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 [add-vscode-editor-theme](changes/add-vscode-editor-theme/tasks.md) and [define-workbench-states](changes/define-workbench-states/tasks.md) retain completed implementation checklists. Archive completed changes after their review and integration requirements are satisfied. Tasks are checked off only after their stated verification is complete.
 
-The [delivery plan](delivery-plan.md) defines five stages: Python tooling, palette validation, VS Code generation, local packaging and visual acceptance. Visual review was delivered as a follow-up commit in the still-open package PR 4; a separate PR 5 branch is not needed. [CONTRIBUTING.md](../CONTRIBUTING.md) defines agent roles and branch/review rules.
+The [delivery plan](delivery-plan.md) records the initial VS Code rollout.
 
 ## Follow-up backlog
 
@@ -45,10 +51,10 @@ The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrai
 
 ### 4. Zed — `add-zed-theme`
 
-The [initial theme package](../packages/zed/README.md) is tracked in
-[add-zed-theme](changes/add-zed-theme/tasks.md). Continue focused language
-follow-ups from the [language backlog](language-validation-backlog.md) as
-concrete mapping gaps arise.
+The [Zed theme spec](specs/zed-theme/spec.md) covers the initial package and
+its CI artifact. The [package guide](../packages/zed/README.md) records the
+installation smoke test. Keep broader UI review and focused language
+follow-ups in the backlog.
 
 - [x] Generate native theme JSON and provide an extension manifest. The official schema check and local install passed.
 - [ ] Review syntax, completion, search, tabs and panels while preserving Zed's native UI character. Done when screenshots and the host coverage table record observed results and limitations.
@@ -70,11 +76,17 @@ concrete mapping gaps arise.
 
 ### Repository cleanup
 
-- [ ] Archive completed OpenSpec changes in small batches. Preserve durable
-  requirements and repair links to evidence and current checklists.
-- [ ] Consolidate duplicated host instructions into the package guides and
-  organize review evidence by editor. Keep extension paths stable for CI and
-  marketplace submissions.
+Use the [cleanup checklist](changes/clean-up-repository/tasks.md) for progress.
+
+- Archive changes by editor or capability after verifying checklist
+  completion, integration, and acceptance for that change's scope. Sync
+  requirements into main specs first, repair incoming and outgoing links,
+  and keep outstanding acceptance in the active backlog. Each batch passes
+  strict OpenSpec validation.
+- Keep installation and build instructions in the package guides and
+  index existing review evidence by editor. Done when those pages are
+  reachable from the root README and package CI passes. Keep extension
+  paths stable for CI and marketplace submissions.
 
 ### Later candidates
 

@@ -6,5 +6,5 @@
 
 ## Verification
 
-See the [Zed package guide](../../../packages/zed/README.md#scope-and-verification)
+See the [Zed package guide](../../../../packages/zed/README.md#scope-and-verification)
 for local installation and smoke-test evidence.
