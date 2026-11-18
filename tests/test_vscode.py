@@ -38,6 +38,8 @@ class ThemeTests(unittest.TestCase):
             semantic["keyword.controlFlow:rust"], palette.colors["control"]
         )
         self.assertEqual(semantic["builtinType:rust"], palette.colors["primitive"])
+        self.assertNotIn("builtinType", semantic)
+        self.assertNotIn("keyword.controlFlow", semantic)
         self.assertEqual(semantic["type"], palette.colors["type"])
         self.assertNotIn("keyword:rust", semantic)
         self.assertNotIn("keyword", semantic)
