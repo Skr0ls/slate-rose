@@ -61,7 +61,7 @@ concrete mapping gaps arise.
 
 ### 5. Release preparation — `prepare-theme-releases`
 
-- [ ] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
+- [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
 - [ ] Add a manually triggered draft-release workflow after the tag and version policy is agreed. Reuse the assets built for the selected commit.
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
 - [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
