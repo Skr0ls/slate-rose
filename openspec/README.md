@@ -67,7 +67,7 @@ follow-ups in the backlog.
 
 ### 5. Release preparation — `prepare-theme-releases`
 
-- [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
+- [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/archive/2026-11-19-prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
 - [ ] Verify a manual draft-release dispatch on `main` for an approved tag. The [workflow change](changes/automate-draft-release/tasks.md) documents the implementation.
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
 - [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
