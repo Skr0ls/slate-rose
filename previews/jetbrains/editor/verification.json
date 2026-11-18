@@ -1,0 +1,29 @@
+{
+  "scheme_sha256": "bf20c88d3aac43bd7fdc9d701f8750cd58c330043eff26131b046b157f88fc81",
+  "core_palette_sha256": "9086de1f1a752b95db890fe531753e9ab7bfea05b0f0b6cf23de35f541a0581d",
+  "terminal_palette_sha256": "927c9765dc282e646f64ae7f5e0292c8be5ae75c9b1060653dc0ed2582e95c16",
+  "csharp_fixture_sha256": "7a045af9a077db1bbc491275f06276c221663c81660cae8641f14600a1f0e1d9",
+  "java_fixture_sha256": "411314e325517526101d1f5eb2b8030a56bf851eea60e2cb3cfcaa0b738c85c6",
+  "explicit_colors": 6,
+  "explicit_attributes": 22,
+  "comparison": "case-insensitive explicit hex values, not effective language overrides",
+  "hosts": {
+    "rider": {
+      "version": "2026.2.4",
+      "suffix": "",
+      "build": "262.11879.110",
+      "imported_explicit_values_match": true,
+      "imported_scheme_sha256": "d32c935015526a9b18891aa1a320d1c3cd37eec41b524d0a10fffef229a3aa38",
+      "overview_sha256": "96b45e4445d6531bed9f65779aef9f2b573301bfac89aa89dcf26b1c058417a0"
+    },
+    "idea": {
+      "version": "2026.3",
+      "suffix": "RC",
+      "build": "263.7307.112",
+      "imported_explicit_values_match": true,
+      "imported_scheme_sha256": "d32c935015526a9b18891aa1a320d1c3cd37eec41b524d0a10fffef229a3aa38",
+      "overview_sha256": "3c5ba452f83f737ac2b0c64f2ec0e7690d9f2a0fc39ccedaac3e22a91840f535"
+    }
+  },
+  "csharp_builtin_category_sha256": "f8c12f4155e791c45f6591cfb660401b028862285e493c6ab1fa964c9059655f"
+}

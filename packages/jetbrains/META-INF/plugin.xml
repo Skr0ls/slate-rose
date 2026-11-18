@@ -1,0 +1,12 @@
+<idea-plugin>
+  <id>com.github.skr0ls.slaterose</id>
+  <name>Slate Rose</name>
+  <version>0.1.0</version>
+  <vendor>Skr0ls</vendor>
+  <description>Slate Rose editor colors and an Islands Dark shell theme.</description>
+  <idea-version since-build="262" />
+  <depends>com.intellij.modules.lang</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <themeProvider id="b981d7bb-b7a6-4d8b-a2c1-94d502763610" path="/Slate Rose.theme.json" />
+  </extensions>
+</idea-plugin>

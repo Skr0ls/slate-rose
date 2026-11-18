@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-11-16T20:00:24.588Z",
+  "vscode": "1.146.0",
+  "extensions": [
+    {
+      "id": "vscode.php",
+      "present": true,
+      "version": "10.0.0"
+    },
+    {
+      "id": "vscode.php-language-features",
+      "present": true,
+      "version": "10.0.0"
+    },
+    {
+      "id": "vscode.ruby",
+      "present": true,
+      "version": "10.0.0"
+    }
+  ],
+  "activation": "activated",
+  "commands": [
+    "vscode.provideDocumentSemanticTokensLegend",
+    "vscode.provideDocumentSemanticTokens"
+  ],
+  "workspace": "/tmp/sr-web-context/javascript",
+  "results": [
+    {
+      "name": "showcase.php",
+      "languageId": "php",
+      "legend": null,
+      "legendOutcome": "undefined",
+      "tokensOutcome": "undefined",
+      "data": null
+    },
+    {
+      "name": "showcase.rb",
+      "languageId": "ruby",
+      "legend": null,
+      "legendOutcome": "undefined",
+      "tokensOutcome": "undefined",
+      "data": null
+    }
+  ]
+}

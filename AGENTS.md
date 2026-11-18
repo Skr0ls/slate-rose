@@ -5,6 +5,7 @@ Read `README.md` and `palette/colors.json` before editing.
 ## Source of truth
 - The user explicitly approved **Slate Rose v0.2 Contrast**. Treat every value in `palette/colors.json` as immutable unless the user asks to change it.
 - Do not claim this is an existing Neovim theme or that the original colors were recovered from source.
+- Describe design provenance neutrally; do not claim visual originality or uniqueness.
 - Preserve the semantic distinction: types sand, functions blue, fields rose, declarations lilac, flow-control coral, strings green.
 - No unrequested palette variants or automatic contrast-adjustment of approved colors.
 

@@ -1,6 +1,6 @@
 # Slate Rose
 
-Slate Rose is an original cross-editor dark color theme for VS Code, JetBrains IDEs, and Zed.
+Slate Rose is a cross-editor dark color theme for VS Code, JetBrains IDEs, and Zed.
 
 **Status:** design baseline v0.2 (Contrast). Implementation not started.
 

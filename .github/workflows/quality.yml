@@ -1,0 +1,119 @@
+name: Quality
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev, main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pre_commit run --all-files --show-diff-on-failure
+      - run: python -m unittest discover -s tests -v
+      - run: python -m generators validate
+      - run: python -m generators check vscode
+      - run: python -m generators check jetbrains
+      - run: python -m generators check jetbrains-ui
+      - run: python -m generators check zed
+      - run: python -m scripts.package_jetbrains
+      - run: python -m scripts.package_jetbrains --check
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: slate-rose-jetbrains-${{ matrix.python-version }}
+          path: dist/slate-rose-jetbrains.jar
+          if-no-files-found: error
+
+  vscode-package:
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SOURCE_DATE_EPOCH: 1794787200
+      TZ: UTC
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - run: python -m generators check vscode
+      - run: mkdir -p dist
+      - run: npx --yes @vscode/vsce@4.1.1 package --no-dependencies --out ../../dist/slate-rose.vsix
+        working-directory: packages/vscode
+      - run: python scripts/check_vsix.py dist/slate-rose.vsix
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: slate-rose-vscode
+          path: dist/slate-rose.vsix
+          if-no-files-found: error
+
+  zed-package:
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - run: python -m generators check zed
+      - run: python -m pip install check-jsonschema==0.39.0
+      - run: curl --fail --silent --show-error --location --retry 3 https://zed.dev/schema/themes/v0.2.0.json --output "$RUNNER_TEMP/zed-theme-schema.json"
+      - run: check-jsonschema --schemafile "$RUNNER_TEMP/zed-theme-schema.json" packages/zed/themes/slate-rose.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: slate-rose-zed
+          path: packages/zed
+          if-no-files-found: error
+
+  release-assets:
+    needs: [vscode-package, zed-package]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: slate-rose-vscode
+          path: dist/release
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: slate-rose-jetbrains-3.14
+          path: dist/release
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: slate-rose-zed
+          path: dist/zed
+      - run: python -m scripts.package_zed dist/zed dist/release/slate-rose-zed.zip
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: slate-rose-release-assets
+          path: dist/release/
+          if-no-files-found: error

@@ -1,0 +1,53 @@
+{
+  "host_version": "1.146.0",
+  "host_commit": "69047191fc427f2f92828279aae1d90d8eeda7ab",
+  "platform": "macOS arm64",
+  "first_workbench_commit": "a8f9cda",
+  "palette_sha256": "9086de1f1a752b95db890fe531753e9ab7bfea05b0f0b6cf23de35f541a0581d",
+  "theme_sha256": "37e4df3f7bb5d91224ffad979e69894bc4dceca0d970fc593c3018eb10ccac77",
+  "vsix_sha256": "fe28d78b5b0b31ee4bdd86363169d647011e6e8b5a05053781bb5fa567f17995",
+  "configured_colors": 133,
+  "added_keys": [
+    "editor.border",
+    "modernActivityBar.border",
+    "modernPanel.border",
+    "modernUI.inactiveShellBackground",
+    "modernUI.shellBackground",
+    "surface.background",
+    "surface.border",
+    "surface.foreground",
+    "titleBar.activeBackground",
+    "titleBar.activeForeground",
+    "titleBar.border",
+    "titleBar.inactiveBackground",
+    "titleBar.inactiveForeground"
+  ],
+  "generated_packaged_installed_theme_identical": true,
+  "repeated_fixed_metadata_vsix_identical": true,
+  "palette_syntax_and_previous_ui_values_unchanged": true,
+  "native_export_matches_all_configured_colors": true,
+  "active_window_state": {
+    "version": "1.146.0",
+    "trusted": true,
+    "theme": "Slate Rose",
+    "titleBarStyle": "custom",
+    "modernUI": true,
+    "windowFocused": true,
+    "colorCustomizations": {},
+    "extension": "/tmp/sr-ui-ext/skr0ls.slate-rose-0.3.0",
+    "fixture": "/tmp/sr-web-context/javascript/ui-review/workbench.ts",
+    "diagnostics": 4
+  },
+  "inactive_window_state": {
+    "version": "1.146.0",
+    "trusted": true,
+    "theme": "Slate Rose",
+    "titleBarStyle": "custom",
+    "modernUI": true,
+    "windowFocused": false,
+    "colorCustomizations": {},
+    "extension": "/tmp/sr-ui-ext/skr0ls.slate-rose-0.3.0",
+    "fixture": "/tmp/sr-web-context/javascript/ui-review/workbench.ts",
+    "diagnostics": 4
+  }
+}

@@ -1,0 +1,3 @@
+# Design
+
+Use a dependency-free Go fixture with a struct and field, builtin types, a generic function or type, and flow-control keywords. Check formatting and compilation without running the fixture. Compare the bundled Go grammar with native VS Code token inspection using an isolated profile and a minimal temporary module with gopls semantic tokens enabled. Map the bundled Go numeric, string, boolean, and flow keyword scopes. Compare the effective result with gopls semantic tokens off and on. Keep VS Code's default semantic keyword fallback, since gopls does not distinguish flow from declaration keywords.

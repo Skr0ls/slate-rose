@@ -1,0 +1,12 @@
+{
+  "version": "1.146.0",
+  "trusted": true,
+  "theme": "Slate Rose",
+  "titleBarStyle": "custom",
+  "modernUI": true,
+  "windowFocused": false,
+  "colorCustomizations": {},
+  "extension": "/tmp/sr-ui-ext/skr0ls.slate-rose-0.3.0",
+  "fixture": "/tmp/sr-web-context/javascript/ui-review/workbench.ts",
+  "diagnostics": 4
+}

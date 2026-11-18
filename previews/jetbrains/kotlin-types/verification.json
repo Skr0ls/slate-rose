@@ -1,0 +1,83 @@
+{
+  "native_review": "limited",
+  "host": {
+    "product": "IntelliJ IDEA",
+    "build": "263.7307.112",
+    "kotlin_plugin": "263.7307.112-IJ",
+    "kotlin_compiler": "2.4.10-release-377"
+  },
+  "artifacts": [
+    {
+      "path": "fixtures/jetbrains/TypeRoles.kt",
+      "sha256": "272e0245071784d4561498b103ad17fe675ec17694431ee1f1ec34467ad7cc19"
+    },
+    {
+      "path": "/tmp/sr-jb-review/idea/config/colors/Slate Rose.icls",
+      "sha256": "d32c935015526a9b18891aa1a320d1c3cd37eec41b524d0a10fffef229a3aa38"
+    },
+    {
+      "path": "/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-compiler.jar",
+      "sha256": "9905962cc86c684733b1c3f34d1cf1209f4b0be744b64436c95e4a8124fb34dc"
+    },
+    {
+      "path": "/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib.jar",
+      "sha256": "4ec0293bc3751423b203f1d8493251c57c42e73eb6377a6b8560d0974ff0a6df"
+    },
+    {
+      "path": "/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/lib/kotlin-plugin.jar",
+      "sha256": "3f3837ce3f4a21ab05f4f2629a881708dfd438cdd0552a98c31b0f933024d785",
+      "targets": [
+        "META-INF/plugin.xml"
+      ]
+    },
+    {
+      "path": "/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/lib/modules/intellij.kotlin.highlighting.minimal.jar",
+      "sha256": "1daec3720938c628435761057e95694268f3f215af72f4d889698de8334932b9",
+      "targets": [
+        "org.jetbrains.kotlin.idea.highlighter.KotlinHighlightingColors: static initializer",
+        "org.jetbrains.kotlin.idea.highlighter.KotlinHighlighter: static initializer",
+        "org.jetbrains.kotlin.idea.highlighter.BeforeResolveHighlightingVisitor.visitElement",
+        "org.jetbrains.kotlin.idea.highlighter.KotlinHighlightInfoTypeSemanticNames: static initializer"
+      ]
+    },
+    {
+      "path": "/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/lib/modules/intellij.kotlin.highlighting.jar",
+      "sha256": "360a7766d453be57e79c1eeeca5bc1bdac5be49072aeb43fd82e2fea2b6abfd6",
+      "targets": [
+        "org.jetbrains.kotlin.idea.highlighting.beforeResolve.DeclarationHighlightingVisitor.visitTypeAlias",
+        "org.jetbrains.kotlin.idea.highlighting.visitor.KotlinTypeSemanticHighlightingVisitor.createSemanticAnalyzer",
+        "org.jetbrains.kotlin.idea.highlighting.analyzers.KotlinTypeSemanticAnalyzer.highlightSimpleNameExpression/toInfoType",
+        "org.jetbrains.kotlin.idea.highlighting.analyzers.KotlinVariableReferenceSemanticAnalyzer.highlightBackingField"
+      ]
+    },
+    {
+      "path": "/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/lib/intellij.libraries.kotlinc.kotlin.compiler.common.jar",
+      "sha256": "e1162226856795dbc2f2bc01fea89ae41f3915d0458d8dc398dca391d63ce2fd",
+      "targets": [
+        "org.jetbrains.kotlin.lexer.KtTokens: static initializer"
+      ]
+    },
+    {
+      "path": "/Applications/IntelliJ IDEA.app/Contents/plugins/Kotlin/lib/modules/intellij.kotlin.base.resources.jar",
+      "sha256": "525892d2d45ad726fa865f10d5c56726e41f7d9ba13856160c70e1136ead445a",
+      "targets": [
+        "colorScheme/Darcula_Kotlin.xml"
+      ]
+    }
+  ],
+  "bytecode_inspection": {
+    "command_template": "/opt/homebrew/opt/java/libexec/openjdk.jdk/Contents/Home/bin/javap -c -p -classpath '<jar path>' '<class>'",
+    "note": "Inspect the listed methods or static initializers in each JAR; plugin.xml is an archive entry."
+  },
+  "offline_compile": "passed; output not executed",
+  "captures": [
+    {
+      "path": "overview.png",
+      "sha256": "732e106fc06cf845847fd8f7eeb4f9037a12491132fca531d5a090f34a2d52b3"
+    },
+    {
+      "path": "field-categories.png",
+      "sha256": "a2551c7f6162c23e9f5f795777a96365ccc3aeca599319c8fc73114974a9f1ca"
+    }
+  ]
+}

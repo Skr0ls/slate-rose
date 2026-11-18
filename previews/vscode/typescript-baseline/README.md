@@ -1,0 +1,38 @@
+# TypeScript baseline regression review
+
+On 2026-11-18, a bounded provider-level review used `fixtures/showcase.ts` at the then-current `origin/dev` commit `f243be06eac041c808fca3dcf6e805390f41770d`, the installed VS Code 1.146.0 bundled TypeScript grammar and TypeScript 6.0.3 language service. The fixture SHA-256 was `602d1ff8451307d3cf311e85be701b5d37f30fec6fc6a3be041d41bef3493f7d`; the checked-in generated theme SHA-256 was `e58481e490e2712fef1444f68066bf68f6cd98f00fd9e9d5ce32b9c5ade7c3e3`. The fixture was read, not executed. This is a different context from the historical [native review](../README.md), which used VS Code 1.143.1 and a standalone file without an opened folder or tsconfig. These probes do not establish effective native UI colors or a visual regression verdict.
+
+For the lexical probe, run VS Code's `Contents/MacOS/Code` as Node with `ELECTRON_RUN_AS_NODE=1`; load `vscode-textmate` and `vscode-oniguruma` from `Contents/Resources/app/node_modules.asar`, initialize the shipped `node_modules.asar.unpacked/vscode-oniguruma/release/onig.wasm`, and tokenize each fixture line in order with the `source.ts` grammar from `extensions/typescript-basics/syntaxes/TypeScript.tmLanguage.json`, passing the previous line's rule stack. For semantic evidence, load `extensions/node_modules/typescript/lib/typescript.js`, create a language service for the standalone file with ESNext target and `experimentalDecorators: true`, no project configuration, and call `getEncodedSemanticClassifications` over the complete source with `SemanticClassificationFormat.TwentyTwenty`. Compare the resulting scopes and classifications with the checked-in generated theme; this does not calculate native overlay precedence.
+
+| Fixture evidence | Lexical provider and existing theme mapping | Language service and semantic mapping |
+| --- | --- | --- |
+| `LabelRenderer` (8), `T` (3) | `entity.name.type` maps to sand | Class and type parameter map to sand |
+| `describe` (3), `render` (15) | `entity.name.function` maps to blue | Function and method map to blue |
+| `prefix` (9, 12) | Constructor parameter is `variable.parameter` (foreground); access is `variable.other.property` (rose) | Parameter declaration maps to foreground; property access maps to rose |
+| `Prefix` (11) | `entity.name.function` maps to blue | Property maps to rose |
+| `MAX_LABELS` (1, 17) | `variable.other.constant` maps to foreground | Readonly variable maps to foreground |
+| `describe` in `@describe` (7) | `variable.other.readwrite` maps to foreground | Function maps to blue |
+| `const` (1), `function` (3), `class` (8) | `storage.type.ts`, `storage.type.function.ts`, and `storage.type.class.ts` match `storage` and map to lilac | No semantic classifications for these keywords in this probe |
+| `return`, `await` (4, 16); `if`, `throw`, `for` (17, 18, 21) | `keyword.control.flow.ts` maps to coral; `keyword.control.conditional.ts`, `keyword.control.trycatch.ts`, and `keyword.control.loop.ts` respectively fall back to lilac | No semantic classifications for these keywords in this probe |
+| `string`, `number` (9, 15); string literal (18) | Primitive scopes map to primitive sand; string scope maps to green | No semantic classifications for these tokens in this probe |
+
+The provider results are consistent with the historical native observations of sand named types, blue functions and decorator, rose fields, and the quiet const binding, for the specific roles and contexts described. They do not independently verify those historical rendered colors. The accessor and constructor parameter show why role and provider matter: lexical and semantic classifications differ. The conditional, loop, and throw scopes map to the generic lilac keyword rule rather than coral; the existing JavaScript/TSX `trycatch` correction does not cover `source.ts`. This is a candidate for separate review, not a theme change in this baseline.
+
+The probes cover only this fixture and installed providers. The direct language-service classifications are not a VS Code semantic-token API or an inspection of semantic overlay precedence. Settings, extensions, project configuration, language-service versions, and TextMate injections may change results. Two attempts to inspect the isolated native window could not bind the computer-use surface to it; only Welcome or a blank surface was visible. No current native screenshot, token inspector, or effective color was captured; visual acceptance and other environments remain open.
+
+## Native flow-control verification
+
+VS Code 1.146.0 token inspector, bundled TypeScript 6.0.3, in the isolated test profile with the existing JavaScript test folder open. The TypeScript status reported no tsconfig. The fixture was copied without changes.
+
+| Token | Scope | Before | After |
+| --- | --- | --- | --- |
+| `if` (17:6) | `keyword.control.conditional.ts` | `#CAA1DE` | `#D7829B` |
+| `throw` (18:9) | `keyword.control.trycatch.ts` | `#CAA1DE` | `#D7829B` |
+| `for` (21:6) | `keyword.control.loop.ts` | `#CAA1DE` | `#D7829B` |
+| `class` (8:2) | `storage.type.class.ts` | `#CAA1DE` | `#CAA1DE` |
+| `await` (16:7) | `keyword.control.flow.ts` | `#D7829B` | `#D7829B` |
+
+The shipped TextMate engine matched these results and confirmed that `return`
+stays coral and primitive `string` stays sand. The three scopes also cover
+words such as `else`, `while`, and `catch`. The bundled grammar also assigns
+the loop scope to `await` in `for await` and to its legacy `goto` match.

@@ -1,35 +1,40 @@
 # Slate Rose
 
-Slate Rose is an original dark color theme for VS Code, JetBrains IDEs, and Zed.
+Slate Rose is a dark color theme for VS Code, JetBrains IDEs, and Zed. It uses
+sand for types, blue for functions, rose for fields, lilac for declarations,
+coral for flow control, and green for strings. Exact roles depend on the
+editor and language provider.
 
-**Status:** The v0.2 Contrast design baseline is approved; implementation has
-not started. There are no installable themes yet.
+## Installation
 
-## Design
+Find the three installable packages in
+[GitHub Releases](https://github.com/Skr0ls/slate-rose/releases) once a release
+is published, or download `slate-rose-release-assets` from a successful
+[Quality workflow run](https://github.com/Skr0ls/slate-rose/actions/workflows/quality.yml).
+GitHub requires sign-in for workflow downloads.
 
-Slate Rose pairs cool graphite surfaces with muted, legible syntax colors:
+| Editor | File | Instructions |
+| --- | --- | --- |
+| VS Code | `slate-rose.vsix` | [Install from VSIX](packages/vscode/README.md) |
+| JetBrains IDEs | `slate-rose-jetbrains.jar` | [Install from disk or import the editor scheme](packages/jetbrains/README.md) |
+| Zed | `slate-rose-zed.zip` | [Extract and install the development extension](packages/zed/README.md) |
 
-- Sand for types and blue for functions.
-- Rose for fields, lilac for declarations, and coral for flow control.
-- Green for strings, with ordinary variables and punctuation kept quiet.
+## Local VS Code installation
 
-The approved [palette](palette/colors.json) is the source of truth. The
-[design baseline](docs/design-baseline.md) records language examples, editor
-targets, architecture, and outstanding UI design work.
-
-## Editor support
-
-The project plans separate adapters for VS Code, JetBrains IDEs, and Zed, with
-Visual Studio investigated separately. VS Code is the first planned editor-only
-implementation. Host-specific limitations and mappings will be documented as
-each adapter is built.
+See the [local VSIX build and installation guide](packages/vscode/README.md#build-from-source).
 
 ## Development
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and local checks.
-[OpenSpec](openspec/README.md) contains the backlog and specifications; the
-first implementation checklist is
-[add-vscode-editor-theme](openspec/changes/add-vscode-editor-theme/tasks.md).
+The approved colors live in [palette](palette/). The Python
+[generators](generators/) build the host-specific files in [packages](packages/).
+[Fixtures](fixtures/) and [previews](previews/) record examples and review
+evidence. See [Contributing](CONTRIBUTING.md) for development commands,
+[OpenSpec](openspec/README.md) for the backlog, and the
+[release guide](docs/releasing.md) for preparing a GitHub Release.
+
+The [design baseline](docs/design-baseline.md) describes the palette roles and
+host design. The [VS Code mappings](docs/vscode-mappings.md) and
+[terminal notes](docs/vscode-terminal.md) record host-specific limits.
 
 ## License
 
