@@ -21,7 +21,7 @@ The checked VSIX SHA-256 is `f1e3f3b52f58e213d16510e4e4f62853abba2c8c8fbc7fe6ad7
 its theme matches generated JSON SHA-256
 `e58481e490e2712fef1444f68066bf68f6cd98f00fd9e9d5ce32b9c5ade7c3e3`.
 
-To reproduce, follow the [local VSIX packaging and installation guide](../../../README.md#local-vs-code-installation)
+To reproduce, follow the [local VSIX packaging and installation guide](../../../packages/vscode/README.md#build-from-source)
 using isolated user data `/tmp/sr-swift-code` and extensions `/tmp/sr-swift-extensions`,
 then select Slate Rose. Open the disposable project described in the fixture instructions.
 Use Go → Go to Line/Column for the positions below, then View → Command Palette →

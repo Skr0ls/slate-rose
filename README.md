@@ -19,16 +19,12 @@ GitHub requires sign-in for workflow downloads.
 | JetBrains IDEs | `slate-rose-jetbrains.jar` | [Install from disk or import the editor scheme](packages/jetbrains/README.md) |
 | Zed | `slate-rose-zed.zip` | [Extract and install the development extension](packages/zed/README.md) |
 
-## Local VS Code installation
-
-See the [local VSIX build and installation guide](packages/vscode/README.md#build-from-source).
-
 ## Development
 
 The approved colors live in [palette](palette/). The Python
 [generators](generators/) build the host-specific files in [packages](packages/).
-[Fixtures](fixtures/) and [previews](previews/) record examples and review
-evidence. See [Contributing](CONTRIBUTING.md) for development commands,
+[Fixtures](fixtures/) and [review evidence](previews/README.md) document examples
+and observed editor behavior. See [Contributing](CONTRIBUTING.md) for development commands,
 [OpenSpec](openspec/README.md) for the backlog, and the
 [release guide](docs/releasing.md) for preparing a GitHub Release.
 

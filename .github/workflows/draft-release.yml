@@ -113,6 +113,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          SERVER_URL: ${{ github.server_url }}
           TAG: ${{ inputs.tag }}
           VERIFIED_COMMIT: ${{ needs.verify.outputs.commit }}
         run: |
@@ -123,8 +124,15 @@ jobs:
             echo 'A release or draft already exists for this tag.' >&2
             exit 1
           fi
-          tag_ref=$(jq -nr --arg ref "tags/$TAG" '$ref | @uri')
-          remote_commit=$(gh api "repos/$GH_REPO/commits/$tag_ref" --jq .sha)
+          tag_ref="refs/tags/$TAG"
+          if ! remote_refs=$(git ls-remote --exit-code --tags "$SERVER_URL/$GH_REPO.git" \
+            "$tag_ref" "$tag_ref^{}"); then
+            echo 'The remote tag could not be resolved.' >&2
+            exit 1
+          fi
+          remote_commit=$(printf '%s\n' "$remote_refs" | awk -F '\t' \
+            -v tag="$tag_ref" '$2 == tag { direct = $1 } $2 == tag "^{}" { peeled = $1 }
+              END { if (peeled != "") print peeled; else print direct }')
           if [ "$remote_commit" != "$VERIFIED_COMMIT" ]; then
             echo 'The remote tag no longer resolves to the verified commit.' >&2
             exit 1

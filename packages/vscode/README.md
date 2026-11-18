@@ -12,7 +12,7 @@ classify tokens differently. Four standalone fixtures were reviewed in VS Code
 1.143.1 with specific providers. JavaScript, JSX, and TSX were reviewed in
 1.146.0; see the [initial review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/README.md)
 and [web review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/web/README.md)
-for observations and limitations. Terminal implementation acceptance remains pending.
+for observations and limitations.
 
 C# semantic keyword tokens can override the lexical primitive and flow colors;
 the theme retains semantic highlighting without a generic keyword override,

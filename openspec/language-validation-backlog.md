@@ -75,7 +75,7 @@ mapping gaps in small PRs. A review may identify limitations without requiring
 a code fix.
 
 - [x] **Rider C# builtin aliases:** The
-  [focused change](changes/fix-rider-csharp-builtins/tasks.md) and
+  [focused change](changes/archive/2026-11-19-fix-rider-csharp-builtins/tasks.md) and
   [bounded native review](../previews/jetbrains/csharp-builtins/README.md) cover `int`, `string`, `float` and
   `bool` using the registered `ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` category
   and the existing `primitive` color, keeping ordinary keywords unchanged.
@@ -108,7 +108,7 @@ a code fix.
   contextual `any` and `some` in type positions without blanket coloring them
   as types. The [limited VS Code review](../previews/vscode/swift/README.md)
   found built-in types sand, flow-control `if`/`throw`/`return` lilac, and a
-  generic declaration foreground. The [Swift flow control fix](changes/fix-vscode-swift-flow-colors/tasks.md)
+  generic declaration foreground. The [Swift flow control fix](changes/archive/2026-11-19-fix-vscode-swift-flow-colors/tasks.md)
   covers the observed control scopes. The generic declaration remains a
   separate candidate, and other hosts and contexts
   remain unreviewed. See Swift's [types](https://docs.swift.org/latest/documentation/the-swift-programming-language/types/)
@@ -125,7 +125,7 @@ results are recorded separately.
 - [ ] **Baseline regressions:** C++, C#, TypeScript and Python, using the
   existing fixtures and checking their established role distinctions.
   C++ has a bounded [lexical and native provider review](../previews/vscode/cpp-baseline/README.md)
-  for the sampled context. The [C++ flow control fix](changes/fix-vscode-cpp-flow-colors/tasks.md)
+  for the sampled context. The [C++ flow control fix](changes/archive/2026-11-19-fix-vscode-cpp-flow-colors/tasks.md)
   covers the observed `if` and `for` scopes. TypeScript has a bounded
   [provider review](../previews/vscode/typescript-baseline/README.md) and a
   [native flow control fix](../previews/vscode/typescript-baseline/README.md#native-flow-control-verification)

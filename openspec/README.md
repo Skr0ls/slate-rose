@@ -2,17 +2,23 @@
 
 The approved baseline is one repository, a shared Python generator, separate host packages and the MIT license. Palette values remain frozen in palette/colors.json.
 
-## Current change
+## Current work
 
-[fix-rider-csharp-builtins](changes/fix-rider-csharp-builtins/tasks.md) tracks the focused alias mapping and native Rider review. The Islands shell and local package are integrated.
+The [repository cleanup checklist](changes/clean-up-repository/tasks.md) tracks
+archiving and documentation. Native terminal acceptance and the live release
+draft are still open in the backlog below.
 
-[validate-jetbrains-editor-scheme](changes/validate-jetbrains-editor-scheme/tasks.md) records bounded C# review on Rider and one Java import smoke check on IntelliJ. The [initial adapter](changes/add-jetbrains-editor-scheme/tasks.md) is integrated.
+## Earlier work
+
+[fix-rider-csharp-builtins](changes/archive/2026-11-19-fix-rider-csharp-builtins/tasks.md) tracks the focused alias mapping and native Rider review. The Islands shell and local package are integrated.
+
+[validate-jetbrains-editor-scheme](changes/archive/2026-11-19-validate-jetbrains-editor-scheme/tasks.md) records bounded C# review on Rider and one Java import smoke check on IntelliJ. The [initial adapter](changes/archive/2026-11-19-add-jetbrains-editor-scheme/tasks.md) is integrated.
 
 [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/proposal.md) implements the owner-approved ANSI design. Workbench appearance is accepted; native terminal acceptance remains pending.
 
-[add-vscode-editor-theme](changes/add-vscode-editor-theme/tasks.md) and [define-workbench-states](changes/define-workbench-states/tasks.md) retain completed implementation checklists. Archive completed changes after their review and integration requirements are satisfied. Tasks are checked off only after their stated verification is complete.
+The [initial VS Code editor change](changes/add-vscode-editor-theme/tasks.md) still awaits its recorded owner acceptance. The [workbench spec](specs/vscode-workbench-states/spec.md) preserves the accepted UI requirements.
 
-The [delivery plan](delivery-plan.md) defines five stages: Python tooling, palette validation, VS Code generation, local packaging and visual acceptance. Visual review was delivered as a follow-up commit in the still-open package PR 4; a separate PR 5 branch is not needed. [CONTRIBUTING.md](../CONTRIBUTING.md) defines agent roles and branch/review rules.
+The [delivery plan](delivery-plan.md) records the initial VS Code rollout.
 
 ## Follow-up backlog
 
@@ -27,7 +33,7 @@ Python quality tooling, palette validation and validator tests run in basic PR c
 
 ### 2. UI design — `define-workbench-states`
 
-The [workbench change](changes/define-workbench-states/proposal.md) implements the accepted palette allocation; the [native review](../previews/vscode/workbench/README.md) records the tested workbench slice. Terminal ANSI is tracked in [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/tasks.md). The broader checkboxes below retain remaining state coverage and terminal implementation acceptance.
+The [workbench change](changes/archive/2026-11-19-define-workbench-states/proposal.md) implements the accepted palette allocation; the [native review](../previews/vscode/workbench/README.md) records the tested workbench slice. Terminal ANSI is tracked in [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/tasks.md). The broader checkboxes below retain remaining state coverage and terminal implementation acceptance.
 
 - [ ] Review cursor, active line, search, tabs, panels, menus, completion, focus and disabled states. Done when provisional mappings and any requested new colors have owner approval.
 - [ ] Define diagnostic, Git/diff and terminal roles separately from approved syntax colors. Done when representative states have reviewed previews and contrast observations, with no automatic palette changes.
@@ -35,7 +41,7 @@ The [workbench change](changes/define-workbench-states/proposal.md) implements t
 
 ### 3. JetBrains — `add-jetbrains-theme`
 
-The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
+The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/archive/2026-11-19-add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
 
 The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrains/csharp-builtins/README.md) records alias styling; Java, Kotlin and Swift reviews follow in the [language backlog](language-validation-backlog.md). Start each implementation from updated `dev` after its predecessor integrates.
 
@@ -45,10 +51,10 @@ The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrai
 
 ### 4. Zed — `add-zed-theme`
 
-The [initial theme package](../packages/zed/README.md) is tracked in
-[add-zed-theme](changes/add-zed-theme/tasks.md). Continue focused language
-follow-ups from the [language backlog](language-validation-backlog.md) as
-concrete mapping gaps arise.
+The [Zed theme spec](specs/zed-theme/spec.md) covers the initial package and
+its CI artifact. The [package guide](../packages/zed/README.md) records the
+installation smoke test. Keep broader UI review and focused language
+follow-ups in the backlog.
 
 - [x] Generate native theme JSON and provide an extension manifest. The official schema check and local install passed.
 - [ ] Review syntax, completion, search, tabs and panels while preserving Zed's native UI character. Done when screenshots and the host coverage table record observed results and limitations.
@@ -61,7 +67,7 @@ concrete mapping gaps arise.
 
 ### 5. Release preparation — `prepare-theme-releases`
 
-- [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
+- [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/archive/2026-11-19-prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
 - [ ] Verify a manual draft-release dispatch on `main` for an approved tag. The [workflow change](changes/automate-draft-release/tasks.md) documents the implementation.
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
 - [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
@@ -70,11 +76,17 @@ concrete mapping gaps arise.
 
 ### Repository cleanup
 
-- [ ] Archive completed OpenSpec changes in small batches. Preserve durable
-  requirements and repair links to evidence and current checklists.
-- [ ] Consolidate duplicated host instructions into the package guides and
-  organize review evidence by editor. Keep extension paths stable for CI and
-  marketplace submissions.
+Use the [cleanup checklist](changes/clean-up-repository/tasks.md) for progress.
+
+- Archive changes by editor or capability after verifying checklist
+  completion, integration, and acceptance for that change's scope. Sync
+  requirements into main specs first, repair incoming and outgoing links,
+  and keep outstanding acceptance in the active backlog. Each batch passes
+  strict OpenSpec validation.
+- Keep installation and build instructions in the package guides and
+  index existing review evidence by editor. Done when those pages are
+  reachable from the root README and package CI passes. Keep extension
+  paths stable for CI and marketplace submissions.
 
 ### Later candidates
 
