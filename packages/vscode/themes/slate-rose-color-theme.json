@@ -166,6 +166,7 @@
   "semanticTokenColors": {
     "class": "#E0C38C",
     "comment": "#8992A1",
+    "controlKeyword:csharp": "#D7829B",
     "decorator": "#CAA1DE",
     "enum": "#E0C38C",
     "enumMember": "#D99AAB",

@@ -18,6 +18,14 @@ ARTIFACT = ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
 class ThemeTests(unittest.TestCase):
+    def test_csharp_semantic_flow_control(self) -> None:
+        palette = load_palette(PALETTE)
+        theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
+        semantic = theme["semanticTokenColors"]
+        self.assertEqual(semantic["controlKeyword:csharp"], palette.colors["control"])
+        self.assertNotIn("controlKeyword", semantic)
+        self.assertNotIn("keyword", semantic)
+
     def test_ruby_instance_field_scope(self) -> None:
         palette = load_palette(PALETTE)
         scopes = {
