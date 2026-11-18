@@ -364,6 +364,9 @@
         "keyword.control.branch.swift",
         "keyword.control.exception.swift",
         "keyword.control.transfer.swift",
+        "keyword.control.conditional.ts",
+        "keyword.control.loop.ts",
+        "keyword.control.trycatch.ts",
         "source.js keyword.control.trycatch",
         "source.tsx keyword.control.trycatch",
         "keyword.operator.expression.await.cs"

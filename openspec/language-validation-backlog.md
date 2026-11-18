@@ -127,8 +127,10 @@ results are recorded separately.
   C++ has a bounded [lexical and native provider review](../previews/vscode/cpp-baseline/README.md)
   for the sampled context. The [C++ flow control fix](changes/fix-vscode-cpp-flow-colors/tasks.md)
   covers the observed `if` and `for` scopes. TypeScript has a bounded
-  [provider review](../previews/vscode/typescript-baseline/README.md); its current
-  native UI verification and C# and Python reviews remain pending.
+  [provider review](../previews/vscode/typescript-baseline/README.md) and a
+  [native flow control fix](../previews/vscode/typescript-baseline/README.md#native-flow-control-verification)
+  for `if`, `for` and `throw`. Native verification of the wider TypeScript
+  baseline and the C# and Python reviews remain pending.
 - [ ] **Systems:** C, Go, Rust and Zig; cover declarations, control flow,
   types, functions and fields, plus language-specific constructs.
 - [ ] **JVM:** Java, Kotlin, Scala and Groovy; cover types, methods, fields,

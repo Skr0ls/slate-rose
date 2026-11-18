@@ -19,3 +19,20 @@ For the lexical probe, run VS Code's `Contents/MacOS/Code` as Node with `ELECTRO
 The provider results are consistent with the historical native observations of sand named types, blue functions and decorator, rose fields, and the quiet const binding, for the specific roles and contexts described. They do not independently verify those historical rendered colors. The accessor and constructor parameter show why role and provider matter: lexical and semantic classifications differ. The conditional, loop, and throw scopes map to the generic lilac keyword rule rather than coral; the existing JavaScript/TSX `trycatch` correction does not cover `source.ts`. This is a candidate for separate review, not a theme change in this baseline.
 
 The probes cover only this fixture and installed providers. The direct language-service classifications are not a VS Code semantic-token API or an inspection of semantic overlay precedence. Settings, extensions, project configuration, language-service versions, and TextMate injections may change results. Two attempts to inspect the isolated native window could not bind the computer-use surface to it; only Welcome or a blank surface was visible. No current native screenshot, token inspector, or effective color was captured; visual acceptance and other environments remain open.
+
+## Native flow-control verification
+
+VS Code 1.146.0 token inspector, bundled TypeScript 6.0.3, in the isolated test profile with the existing JavaScript test folder open. The TypeScript status reported no tsconfig. The fixture was copied without changes.
+
+| Token | Scope | Before | After |
+| --- | --- | --- | --- |
+| `if` (17:6) | `keyword.control.conditional.ts` | `#CAA1DE` | `#D7829B` |
+| `throw` (18:9) | `keyword.control.trycatch.ts` | `#CAA1DE` | `#D7829B` |
+| `for` (21:6) | `keyword.control.loop.ts` | `#CAA1DE` | `#D7829B` |
+| `class` (8:2) | `storage.type.class.ts` | `#CAA1DE` | `#CAA1DE` |
+| `await` (16:7) | `keyword.control.flow.ts` | `#D7829B` | `#D7829B` |
+
+The shipped TextMate engine matched these results and confirmed that `return`
+stays coral and primitive `string` stays sand. The three scopes also cover
+words such as `else`, `while`, and `catch`. The bundled grammar also assigns
+the loop scope to `await` in `for await` and to its legacy `goto` match.

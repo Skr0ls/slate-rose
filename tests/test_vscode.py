@@ -74,6 +74,25 @@ class ThemeTests(unittest.TestCase):
         ):
             self.assertNotIn(scope, scopes)
 
+    def test_typescript_flow_control_scopes(self) -> None:
+        palette = load_palette(PALETTE)
+        theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
+        scopes = {
+            scope: rule["settings"]["foreground"]
+            for rule in theme["tokenColors"]
+            for scope in rule["scope"]
+        }
+        for scope in (
+            "keyword.control.conditional.ts",
+            "keyword.control.loop.ts",
+            "keyword.control.trycatch.ts",
+        ):
+            self.assertEqual(scopes[scope], palette.colors["control"])
+        self.assertEqual(scopes["keyword"], palette.colors["keyword"])
+        self.assertEqual(scopes["storage"], palette.colors["keyword"])
+        self.assertNotIn("keyword.control", scopes)
+        self.assertNotIn("keyword", theme["semanticTokenColors"])
+
     def test_web_trycatch_control_scope(self) -> None:
         palette = load_palette(PALETTE)
         scopes = {
