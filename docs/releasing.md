@@ -9,13 +9,39 @@ The Quality workflow assembles three installable files as
 | `slate-rose-jetbrains.jar` | [JetBrains plugin](../packages/jetbrains/README.md) |
 | `slate-rose-zed.zip` | [Zed development extension](../packages/zed/README.md) |
 
-## GitHub Releases
+## Platform coverage
+
+All three packages are available in CI for a preview release. The package
+guides record the tested editor versions and context.
+
+| Platform | Verified scope | Open acceptance |
+| --- | --- | --- |
+| VS Code | Local VSIX, editor, and accepted workbench slice | Native terminal acceptance and broader workbench states |
+| JetBrains | Resource plugin and scheme with bounded Rider and IntelliJ evidence | Compatibility across additional IDEs and builds |
+| Zed | Development extension installed on Zed 1.28.1, TypeScript editor smoke | Completion, search, tabs, and panel review |
+
+## Draft workflow
+
+The **Draft release** workflow becomes available when its file lands on
+`main`, the default branch. Run it on `main` with the existing release
+tag and leave **dry_run** enabled for the first pass. The summary identifies
+the tagged commit, the selected successful Quality run and the verified
+assets. If there is no matching run, check the Quality workflow for the
+tagged commit. Disable **dry_run** only when ready to create the draft.
+Keep the release tag fixed during preparation. The workflow rechecks the tag's
+commit immediately before draft creation.
+
+Review the draft in GitHub Releases before publishing. If an upload fails
+after creating the draft, attach the missing files from the verified bundle
+in the Releases UI. An existing draft blocks another automated creation.
+
+## Manual fallback
 
 1. Bring the release commit onto `main` using the
    [release branch flow](../CONTRIBUTING.md#git-workflow). Use an approved
    tag already pushed to GitHub and pointing to that commit.
 2. Open a successful [Quality run](https://github.com/Skr0ls/slate-rose/actions/workflows/quality.yml)
-   whose head SHA matches the tag's commit. Download its
+   triggered by a push to `main` whose head SHA matches the tag's commit. Download its
    `slate-rose-release-assets` artifact and extract the three files.
 3. Create a draft release for the existing tag and attach the three files.
    From the extracted directory, set `tag` to the approved tag, then run
