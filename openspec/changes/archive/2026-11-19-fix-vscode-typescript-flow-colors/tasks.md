@@ -8,4 +8,4 @@
 
 ## Verification
 
-See the [native flow-control verification](../../../previews/vscode/typescript-baseline/README.md#native-flow-control-verification).
+See the [native flow-control verification](../../../../previews/vscode/typescript-baseline/README.md#native-flow-control-verification).
