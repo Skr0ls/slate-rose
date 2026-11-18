@@ -5,10 +5,11 @@ inherit the host; a [bounded Rider shell review](../../previews/jetbrains/island
 is recorded. Generate and check it with
 `python -m generators build jetbrains-ui` and `python -m generators check jetbrains-ui`.
 
-Build the local resource-only plugin with `python -m scripts.package_jetbrains`;
-verify it with `python -m scripts.package_jetbrains --check`. In Rider, use
+Download `slate-rose-jetbrains.jar` from the release bundle. For a local
+build, run `python -m scripts.package_jetbrains` and verify with
+`python -m scripts.package_jetbrains --check`. In Rider, use
 **Settings | Plugins | gear | Install Plugin from Disk**, select
-`dist/slate-rose-jetbrains.jar`, restart if prompted, then select Slate Rose in
+`slate-rose-jetbrains.jar` (under `dist/` for a local build), restart if prompted, then select Slate Rose in
 **Settings | Appearance & Behavior | Appearance**. The descriptor requires
 platform build 262 or newer; compatibility with other IDEs has not been reviewed.
 See [Rider plugin installation](https://www.jetbrains.com/help/rider/Managing_Plugins.html).
