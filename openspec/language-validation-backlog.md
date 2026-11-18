@@ -123,8 +123,10 @@ results are recorded separately.
 
 - [ ] **Baseline regressions:** C++, C#, TypeScript and Python, using the
   existing fixtures and checking their established role distinctions.
-  TypeScript has a bounded [provider review](../previews/vscode/typescript-baseline/README.md);
-  current native UI verification and the other three languages remain pending.
+  C++ has a bounded [lexical and native provider review](../previews/vscode/cpp-baseline/README.md)
+  for the sampled context. TypeScript has a bounded
+  [provider review](../previews/vscode/typescript-baseline/README.md); its current
+  native UI verification and C# and Python reviews remain pending.
 - [ ] **Systems:** C, Go, Rust and Zig; cover declarations, control flow,
   types, functions and fields, plus language-specific constructs.
 - [ ] **JVM:** Java, Kotlin, Scala and Groovy; cover types, methods, fields,
