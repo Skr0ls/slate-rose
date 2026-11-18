@@ -75,7 +75,7 @@ mapping gaps in small PRs. A review may identify limitations without requiring
 a code fix.
 
 - [x] **Rider C# builtin aliases:** The
-  [focused change](changes/fix-rider-csharp-builtins/tasks.md) and
+  [focused change](changes/archive/2026-11-19-fix-rider-csharp-builtins/tasks.md) and
   [bounded native review](../previews/jetbrains/csharp-builtins/README.md) cover `int`, `string`, `float` and
   `bool` using the registered `ReSharper.CSHARP_BUILTIN_TYPE_KEYWORD` category
   and the existing `primitive` color, keeping ordinary keywords unchanged.
