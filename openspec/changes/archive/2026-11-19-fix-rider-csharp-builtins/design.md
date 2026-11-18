@@ -2,7 +2,7 @@
 
 ## Context
 
-See proposal.md. The editor renderer currently emits only shared `DEFAULT_*` attributes. The [native review](../../../previews/jetbrains/editor/README.md#c-builtin-type-follow-up) records Rider's C# category and registration evidence; that is not yet verification of an effective override. Implement after the Islands package PR is integrated, on a fresh branch from updated `dev`.
+See proposal.md. The editor renderer currently emits only shared `DEFAULT_*` attributes. The [native review](../../../../previews/jetbrains/editor/README.md#c-builtin-type-follow-up) records Rider's C# category and registration evidence; that is not yet verification of an effective override. Implement after the Islands package PR is integrated, on a fresh branch from updated `dev`.
 
 ## Goals / Non-Goals
 

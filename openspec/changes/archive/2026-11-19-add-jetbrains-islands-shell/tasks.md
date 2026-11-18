@@ -10,7 +10,7 @@
 - [x] 2.1 After code review, install/select the concrete package in the isolated Rider test context and record representative active/inactive shell framing and tabs with package hash/version and limitations; preserve native layout and preferences.
 
   Installation and active/inactive window evidence are recorded in
-  [the bounded Rider review](../../../previews/jetbrains/islands/README.md).
+  [the bounded Rider review](../../../../previews/jetbrains/islands/README.md).
 
 ## 3. Integration
 

@@ -4,9 +4,9 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current change
 
-[fix-rider-csharp-builtins](changes/fix-rider-csharp-builtins/tasks.md) tracks the focused alias mapping and native Rider review. The Islands shell and local package are integrated.
+[fix-rider-csharp-builtins](changes/archive/2026-11-19-fix-rider-csharp-builtins/tasks.md) tracks the focused alias mapping and native Rider review. The Islands shell and local package are integrated.
 
-[validate-jetbrains-editor-scheme](changes/validate-jetbrains-editor-scheme/tasks.md) records bounded C# review on Rider and one Java import smoke check on IntelliJ. The [initial adapter](changes/add-jetbrains-editor-scheme/tasks.md) is integrated.
+[validate-jetbrains-editor-scheme](changes/archive/2026-11-19-validate-jetbrains-editor-scheme/tasks.md) records bounded C# review on Rider and one Java import smoke check on IntelliJ. The [initial adapter](changes/archive/2026-11-19-add-jetbrains-editor-scheme/tasks.md) is integrated.
 
 [add-vscode-terminal-colors](changes/add-vscode-terminal-colors/proposal.md) implements the owner-approved ANSI design. Workbench appearance is accepted; native terminal acceptance remains pending.
 
@@ -35,7 +35,7 @@ The [workbench change](changes/define-workbench-states/proposal.md) implements t
 
 ### 3. JetBrains — `add-jetbrains-theme`
 
-The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
+The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/archive/2026-11-19-add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
 
 The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrains/csharp-builtins/README.md) records alias styling; Java, Kotlin and Swift reviews follow in the [language backlog](language-validation-backlog.md). Start each implementation from updated `dev` after its predecessor integrates.
 
