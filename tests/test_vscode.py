@@ -18,6 +18,26 @@ ARTIFACT = ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
 class ThemeTests(unittest.TestCase):
+    def test_go_lexical_primitive_and_control_scopes(self) -> None:
+        palette = load_palette(PALETTE)
+        theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
+        scopes = {
+            scope: rule["settings"]["foreground"]
+            for rule in theme["tokenColors"]
+            for scope in rule["scope"]
+        }
+        for scope in (
+            "storage.type.numeric.go",
+            "storage.type.string.go",
+            "storage.type.boolean.go",
+        ):
+            self.assertEqual(scopes[scope], palette.colors["primitive"])
+        self.assertEqual(scopes["keyword.control.go"], palette.colors["control"])
+        self.assertEqual(scopes["keyword"], palette.colors["keyword"])
+        self.assertNotIn("keyword.control", scopes)
+        self.assertNotIn("keyword.control.import.go", scopes)
+        self.assertNotIn("keyword", theme["semanticTokenColors"])
+
     def test_csharp_semantic_flow_control(self) -> None:
         palette = load_palette(PALETTE)
         theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
