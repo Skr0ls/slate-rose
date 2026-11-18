@@ -50,6 +50,30 @@ class ThemeTests(unittest.TestCase):
         self.assertEqual(scopes["storage"], palette.colors["keyword"])
         self.assertNotIn("keyword.control", scopes)
 
+    def test_swift_flow_control_scopes(self) -> None:
+        palette = load_palette(PALETTE)
+        scopes = {
+            scope: rule["settings"]["foreground"]
+            for rule in json.loads(
+                render_theme(palette, load_terminal_palette(TERMINAL))
+            )["tokenColors"]
+            for scope in rule["scope"]
+        }
+        for scope in (
+            "keyword.control.branch.swift",
+            "keyword.control.exception.swift",
+            "keyword.control.transfer.swift",
+        ):
+            self.assertEqual(scopes[scope], palette.colors["control"])
+        for scope in (
+            "keyword.other.generic-constraint-introducer.swift",
+            "storage.type.enum.case.swift",
+            "storage.modifier.exception.swift",
+            "keyword.other.operator.type.existential.swift",
+            "keyword.other.operator.type.opaque.swift",
+        ):
+            self.assertNotIn(scope, scopes)
+
     def test_web_trycatch_control_scope(self) -> None:
         palette = load_palette(PALETTE)
         scopes = {
