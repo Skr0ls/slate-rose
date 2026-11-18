@@ -108,8 +108,9 @@ remain open. A review may identify limitations without requiring a code fix.
   contextual `any` and `some` in type positions without blanket coloring them
   as types. The [limited VS Code review](../previews/vscode/swift/README.md)
   found built-in types sand, flow-control `if`/`throw`/`return` lilac, and a
-  generic declaration foreground. Narrow flow-control and generic declaration
-  mapping candidates remain separate follow-up work; other hosts and contexts
+  generic declaration foreground. The [Swift flow control fix](changes/fix-vscode-swift-flow-colors/tasks.md)
+  covers the observed control scopes. The generic declaration remains a
+  separate candidate, and other hosts and contexts
   remain unreviewed. See Swift's [types](https://docs.swift.org/latest/documentation/the-swift-programming-language/types/)
   and [lexical structure](https://docs.swift.org/latest/documentation/the-swift-programming-language/lexicalstructure/).
 
