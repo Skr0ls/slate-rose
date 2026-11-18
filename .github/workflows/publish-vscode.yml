@@ -84,8 +84,8 @@ jobs:
           RUN_ID: ${{ steps.select.outputs.run_id }}
         run: |
           set -euo pipefail
-          gh release download "$TAG" --repo "$GH_REPO" \
-            --pattern slate-rose.vsix --dir release-asset
+          gh release download --repo "$GH_REPO" \
+            --pattern slate-rose.vsix --dir release-asset -- "$TAG"
           gh run download "$RUN_ID" --repo "$GH_REPO" \
             --name slate-rose-release-assets --dir quality-assets
           cmp release-asset/slate-rose.vsix quality-assets/slate-rose.vsix
