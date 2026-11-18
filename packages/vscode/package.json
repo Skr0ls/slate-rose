@@ -5,10 +5,11 @@
   "version": "0.3.0",
   "description": "A dark color theme for the VS Code editor and workbench.",
   "license": "MIT",
+  "icon": "icon.png",
   "engines": { "vscode": "^1.143.0" },
   "categories": ["Themes"],
   "repository": { "type": "git", "url": "https://github.com/Skr0ls/slate-rose.git" },
-  "files": ["themes/slate-rose-color-theme.json", "README.md", "LICENSE"],
+  "files": ["themes/slate-rose-color-theme.json", "README.md", "LICENSE", "icon.png"],
   "contributes": {
     "themes": [
       { "label": "Slate Rose", "uiTheme": "vs-dark", "path": "./themes/slate-rose-color-theme.json" }

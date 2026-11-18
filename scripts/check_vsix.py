@@ -21,6 +21,10 @@ def check_vsix(path: Path) -> None:
     """Raise VsixError when the archive does not match this package."""
     try:
         source = json.loads((PACKAGE / "package.json").read_text(encoding="utf-8"))
+        icon = source.get("icon")
+        if icon != "icon.png":
+            raise VsixError("package.json has incorrect icon")
+        expected_icon_path = f"extension/{icon}"
         license_bytes = (ROOT / "LICENSE").read_bytes()
         if (PACKAGE / "LICENSE").read_bytes() != license_bytes:
             raise VsixError("package LICENSE differs from root LICENSE")
@@ -31,6 +35,13 @@ def check_vsix(path: Path) -> None:
             ):
                 raise VsixError("archive contains duplicate entries")
             manifest = ET.fromstring(archive.read("extension.vsixmanifest"))
+            icons = [
+                element.text
+                for element in manifest.iter()
+                if element.tag.rsplit("}", 1)[-1] == "Icon"
+            ]
+            if icons != [expected_icon_path]:
+                raise VsixError("VSIX manifest has incorrect icon")
             assets = {
                 element.attrib["Type"]: element.attrib["Path"]
                 for element in manifest.iter()
@@ -40,12 +51,16 @@ def check_vsix(path: Path) -> None:
             }
             license_path = assets["Microsoft.VisualStudio.Services.Content.License"]
             readme_path = assets["Microsoft.VisualStudio.Services.Content.Details"]
+            icon_path = assets["Microsoft.VisualStudio.Services.Icons.Default"]
+            if icon_path != expected_icon_path:
+                raise VsixError("VSIX manifest has incorrect icon path")
             embedded = json.loads(archive.read("extension/package.json"))
             for key in (
                 "name",
                 "publisher",
                 "version",
                 "license",
+                "icon",
                 "engines",
                 "contributes",
             ):
@@ -61,6 +76,7 @@ def check_vsix(path: Path) -> None:
                 theme_path,
                 license_path,
                 readme_path,
+                icon_path,
             }
             if names != expected:
                 raise VsixError(
@@ -70,6 +86,8 @@ def check_vsix(path: Path) -> None:
                 raise VsixError("archived license differs from root LICENSE")
             if archive.read(readme_path) != (PACKAGE / "README.md").read_bytes():
                 raise VsixError("archived README differs from package README")
+            if archive.read(icon_path) != (PACKAGE / icon).read_bytes():
+                raise VsixError("archived icon differs from package icon")
             if (
                 archive.read(theme_path)
                 != (PACKAGE / theme_path.removeprefix("extension/")).read_bytes()
