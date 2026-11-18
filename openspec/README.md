@@ -53,7 +53,7 @@ concrete mapping gaps arise.
 - [x] Generate native theme JSON and provide an extension manifest. The official schema check and local install passed.
 - [ ] Review syntax, completion, search, tabs and panels while preserving Zed's native UI character. Done when screenshots and the host coverage table record observed results and limitations.
 - [x] Check generated Zed output for drift in the Quality workflow.
-- [ ] Integrate official schema validation and release packaging into CI.
+- [x] Validate the official schema in CI and upload the installable `slate-rose-zed` development extension artifact.
 
 ### Language validation
 
