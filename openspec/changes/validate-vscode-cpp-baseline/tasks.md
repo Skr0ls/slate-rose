@@ -8,4 +8,4 @@
 
 ## 2. Integration
 
-- [ ] 2.1 Run project checks and independent review, verify protected files, and prepare a small PR into dev.
+- [x] 2.1 Run project checks and independent review, verify protected files, and prepare a small PR into dev.
