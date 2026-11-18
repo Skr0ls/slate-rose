@@ -1,15 +1,24 @@
 # Slate Rose for Zed
 
 Slate Rose is a dark editor theme generated from the shared
-[palette](../../palette/colors.json). The package contains a theme manifest,
+[palette](https://github.com/Skr0ls/slate-rose/blob/dev/palette/colors.json). The package contains a theme manifest,
 one generated theme, and the MIT notice.
 
 ## Local installation
 
-1. From the repository root, run `python -m generators check zed`.
-2. In Zed, run **zed: install dev extension** from the command palette and
-   select this `packages/zed` directory.
-3. Run **theme selector: toggle** and choose **Slate Rose**.
+Choose a package source:
+
+- From a source checkout, run `python -m generators check zed` at the
+  repository root and use its `packages/zed` directory.
+- Download the `slate-rose-zed` artifact from a successful Quality workflow
+  run on [GitHub Actions](https://github.com/Skr0ls/slate-rose/actions/workflows/quality.yml).
+  GitHub requires sign-in to download artifacts; see its
+  [artifact download documentation](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts).
+  Extract the archive to a stable directory, since Zed's development extension
+  installation references that directory.
+
+In Zed, run **zed: install dev extension** from the command palette and select
+the package directory. Run **theme selector: toggle** and choose **Slate Rose**.
 
 After a palette mapping change, run `python -m generators build zed` from the
 repository root and reload the development extension if needed. The
@@ -26,8 +35,8 @@ generated JSON.
 
 The package installed as a development extension in Zed 1.28.1 on macOS.
 In an isolated profile, Slate Rose appeared in the selector and rendered the
-[TypeScript fixture](../../fixtures/showcase.ts) with sand types, blue functions,
+[TypeScript fixture](https://github.com/Skr0ls/slate-rose/blob/dev/fixtures/showcase.ts) with sand types, blue functions,
 rose property access, and green strings. The sampled declaration and control
 words were lilac through the common keyword style. Coverage depends on each
 language grammar. A broader workbench review is tracked in the
-[Zed backlog](../../openspec/README.md#4-zed--add-zed-theme).
+[Zed backlog](https://github.com/Skr0ls/slate-rose/blob/dev/openspec/README.md#4-zed--add-zed-theme).
