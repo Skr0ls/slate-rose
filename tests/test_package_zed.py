@@ -23,6 +23,11 @@ class PackageZedTests(unittest.TestCase):
             output = root / "release" / "zed.zip"
             package(source, output)
             original = output.read_bytes()
+            with self.assertRaisesRegex(ValueError, "refers to a Zed package input"):
+                package(source, source / "extension.toml")
+            self.assertEqual(
+                (source / "extension.toml").read_bytes(), b"extension.toml"
+            )
             with zipfile.ZipFile(output) as archive:
                 self.assertEqual(archive.namelist(), names)
                 for name in names:

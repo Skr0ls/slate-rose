@@ -11,6 +11,8 @@ MEMBERS = ("LICENSE", "README.md", "extension.toml", "themes/slate-rose.json")
 
 def package(source: Path, output: Path) -> None:
     entries = [(name, (source / name).read_bytes()) for name in MEMBERS]
+    if output.exists() and any(output.samefile(source / name) for name in MEMBERS):
+        raise ValueError("Output path refers to a Zed package input")
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_STORED) as archive:
         for name, data in entries:
@@ -29,7 +31,7 @@ def main() -> int:
     args = parser.parse_args()
     try:
         package(args.source, args.output)
-    except OSError as exc:
+    except (OSError, ValueError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
     return 0
