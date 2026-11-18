@@ -1,0 +1,134 @@
+name: Draft release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to release
+        required: true
+        type: string
+      dry_run:
+        description: Verify only; do not create a release
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: draft-release-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      commit: ${{ steps.select.outputs.commit }}
+    steps:
+      - name: Require dispatch from main
+        env:
+          DISPATCH_REF: ${{ github.ref }}
+        run: |
+          if [ "$DISPATCH_REF" != refs/heads/main ]; then
+            echo 'Dispatch this workflow from main.' >&2
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Select matching Quality run
+        id: select
+        env:
+          TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          git check-ref-format "refs/tags/$TAG"
+          commit=$(git rev-parse --verify "refs/tags/$TAG^{commit}")
+          git merge-base --is-ancestor "$commit" HEAD
+          run_id=$(gh run list --workflow quality.yml --repo "$GH_REPO" \
+            --branch main --event push --status success --commit "$commit" \
+            --limit 100 --json databaseId,headSha \
+            --jq "[.[] | select(.headSha == \"$commit\") | .databaseId] | first // empty")
+          if [ -z "$run_id" ]; then
+            echo 'No successful Quality push run on main matches the tag commit.' >&2
+            exit 1
+          fi
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+      - name: Download and verify release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_ID: ${{ steps.select.outputs.run_id }}
+          COMMIT: ${{ steps.select.outputs.commit }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          gh run download "$RUN_ID" --repo "$GH_REPO" \
+            --name slate-rose-release-assets --dir release-assets
+          python3 - <<'PY'
+          from pathlib import Path
+
+          directory = Path('release-assets')
+          expected = {'slate-rose.vsix', 'slate-rose-jetbrains.jar', 'slate-rose-zed.zip'}
+          entries = list(directory.iterdir())
+          if {entry.name for entry in entries} != expected or any(
+              not entry.is_file() or entry.is_symlink() for entry in entries
+          ):
+              raise SystemExit('Release bundle must contain exactly the three expected files at its root.')
+          PY
+          {
+            printf '## Draft release verification\n\n'
+            printf -- '- Tag: %s\n- Commit: %s\n- Quality run: %s\n' "$TAG" "$COMMIT" "$RUN_ID"
+            printf '%s\n' '- Assets: slate-rose.vsix, slate-rose-jetbrains.jar, slate-rose-zed.zip'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Transfer verified assets
+        if: ${{ !inputs.dry_run }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: verified-release-assets
+          path: release-assets/
+          if-no-files-found: error
+
+  draft:
+    needs: verify
+    if: ${{ !inputs.dry_run }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: verified-release-assets
+          path: release-assets
+      - name: Create draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag }}
+          VERIFIED_COMMIT: ${{ needs.verify.outputs.commit }}
+        run: |
+          set -euo pipefail
+          existing_release=$(gh api --paginate "repos/$GH_REPO/releases?per_page=100" |
+            jq -rs --arg tag "$TAG" '[.[][] | select(.tag_name == $tag)][0].id // empty')
+          if [ -n "$existing_release" ]; then
+            echo 'A release or draft already exists for this tag.' >&2
+            exit 1
+          fi
+          tag_ref=$(jq -nr --arg ref "tags/$TAG" '$ref | @uri')
+          remote_commit=$(gh api "repos/$GH_REPO/commits/$tag_ref" --jq .sha)
+          if [ "$remote_commit" != "$VERIFIED_COMMIT" ]; then
+            echo 'The remote tag no longer resolves to the verified commit.' >&2
+            exit 1
+          fi
+          gh release create --repo "$GH_REPO" --draft --verify-tag --generate-notes -- \
+            "$TAG" release-assets/slate-rose.vsix release-assets/slate-rose-jetbrains.jar \
+            release-assets/slate-rose-zed.zip

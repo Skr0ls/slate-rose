@@ -23,7 +23,7 @@ These are queued work items, not active or approved implementation specification
 Python quality tooling, palette validation and validator tests run in basic PR checks. Extend that baseline as each adapter lands.
 
 - [x] Run generated-output checks on pull requests when generation is implemented. Stale artifacts fail CI.
-- [ ] Build implemented host packages as downloadable CI artifacts. VS Code packaging is configured; local installation and license verification remain part of acceptance.
+- [x] Build all three host packages as downloadable CI artifacts. See the [release bundle](../docs/releasing.md).
 
 ### 2. UI design — `define-workbench-states`
 
@@ -41,7 +41,7 @@ The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrai
 
 - [ ] Generate an editor color scheme and minimal UI theme resources from approved mappings. Done when they load in Rider and IntelliJ IDEA and language-specific differences are documented.
 - [ ] Package a standalone theme plugin with MIT notice and installation instructions. Done when a local build installs successfully and fixtures are reviewed in the relevant IDEs.
-- [ ] Add host validation and packaging to CI. Done when shared-input changes also validate the JetBrains output.
+- [x] Validate generated JetBrains output and package the plugin in CI.
 
 ### 4. Zed — `add-zed-theme`
 
@@ -62,7 +62,7 @@ concrete mapping gaps arise.
 ### 5. Release preparation — `prepare-theme-releases`
 
 - [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
-- [ ] Add a manually triggered draft-release workflow after the tag and version policy is agreed. Reuse the assets built for the selected commit.
+- [ ] Verify a manual draft-release dispatch on `main` for an approved tag. The [workflow change](changes/automate-draft-release/tasks.md) documents the implementation.
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
 - [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
 - [ ] Configure separately triggered VS Code and JetBrains publication jobs when publisher accounts are ready. Done when credentials are scoped to their host and a reviewed release can be published without rebuilding different inputs.
