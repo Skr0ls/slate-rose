@@ -66,6 +66,8 @@ LEXICAL: tuple[tuple[str, tuple[str, ...]], ...] = (
             "storage.type.numeric.go",
             "storage.type.string.go",
             "storage.type.boolean.go",
+            "entity.name.type.primitive.rust",
+            "entity.name.type.numeric.rust",
             "support.type.primitive",
             "source.cs keyword.type",
             "support.type.python",
@@ -102,6 +104,8 @@ LEXICAL: tuple[tuple[str, tuple[str, ...]], ...] = (
 
 SEMANTIC: dict[str, str] = {
     "controlKeyword:csharp": "control",
+    "keyword.controlFlow:rust": "control",
+    "builtinType:rust": "primitive",
     "type": "type",
     "class": "type",
     "enum": "type",

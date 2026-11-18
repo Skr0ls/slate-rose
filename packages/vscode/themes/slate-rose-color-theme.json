@@ -164,6 +164,7 @@
   "name": "Slate Rose",
   "semanticHighlighting": true,
   "semanticTokenColors": {
+    "builtinType:rust": "#D8B981",
     "class": "#E0C38C",
     "comment": "#8992A1",
     "controlKeyword:csharp": "#D7829B",
@@ -173,6 +174,7 @@
     "event": "#E28DA4",
     "function": "#8CC6F1",
     "interface": "#E0C38C",
+    "keyword.controlFlow:rust": "#D7829B",
     "method": "#8CC6F1",
     "namespace": "#C98BA8",
     "number": "#E0B77C",
@@ -342,6 +344,8 @@
         "storage.type.numeric.go",
         "storage.type.string.go",
         "storage.type.boolean.go",
+        "entity.name.type.primitive.rust",
+        "entity.name.type.numeric.rust",
         "support.type.primitive",
         "source.cs keyword.type",
         "support.type.python"
