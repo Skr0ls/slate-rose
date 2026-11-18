@@ -61,10 +61,20 @@ concrete mapping gaps arise.
 
 ### 5. Release preparation — `prepare-theme-releases`
 
+- [ ] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
+- [ ] Add a manually triggered draft-release workflow after the tag and version policy is agreed. Reuse the assets built for the selected commit.
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
 - [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
 - [ ] Configure separately triggered VS Code and JetBrains publication jobs when publisher accounts are ready. Done when credentials are scoped to their host and a reviewed release can be published without rebuilding different inputs.
 - [ ] Prepare Zed registry submission using the monorepository package path. Done when the registry accepts the extension and its published version is installable.
+
+### Repository cleanup
+
+- [ ] Archive completed OpenSpec changes in small batches. Preserve durable
+  requirements and repair links to evidence and current checklists.
+- [ ] Consolidate duplicated host instructions into the package guides and
+  organize review evidence by editor. Keep extension paths stable for CI and
+  marketplace submissions.
 
 ### Later candidates
 

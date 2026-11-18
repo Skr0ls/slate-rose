@@ -24,4 +24,16 @@ The separate approved ANSI palette colors the integrated terminal; the
 [terminal review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/terminal/README.md)
 records native states and host contrast/bold behavior. This package is not published to the Marketplace.
 
+## Build from source
+
+Use Node.js 22 or newer and Python 3.11 or newer. Run these commands
+from the repository root.
+
+```sh
+python -m generators check vscode
+mkdir -p dist
+(cd packages/vscode && SOURCE_DATE_EPOCH=1794787200 TZ=UTC npx --yes @vscode/vsce@4.1.1 package --no-dependencies --out ../../dist/slate-rose.vsix)
+python scripts/check_vsix.py dist/slate-rose.vsix
+```
+
 Licensed under the MIT License; see the included LICENSE notice.

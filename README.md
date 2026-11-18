@@ -1,84 +1,40 @@
 # Slate Rose
 
-Slate Rose is a dark color theme for VS Code, JetBrains IDEs, and Zed.
+Slate Rose is a dark color theme for VS Code, JetBrains IDEs, and Zed. It uses
+sand for types, blue for functions, rose for fields, lilac for declarations,
+coral for flow control, and green for strings. Exact roles depend on the
+editor and language provider.
 
-**Status:** The v0.2 Contrast design baseline is approved and palette validation
-and VS Code theme generation and local VSIX packaging are available. Workbench
-mappings and a representative native workbench review are available and accepted by the owner. The ANSI design is approved; native terminal acceptance is pending.
-Modern UI shell gutters and frame colors are included; native window controls and layout settings are preserved.
+## Installation
 
-## Design
+Find the three installable packages in
+[GitHub Releases](https://github.com/Skr0ls/slate-rose/releases) once a release
+is published, or download `slate-rose-release-assets` from a successful
+[Quality workflow run](https://github.com/Skr0ls/slate-rose/actions/workflows/quality.yml).
+GitHub requires sign-in for workflow downloads.
 
-Slate Rose pairs cool graphite surfaces with muted, legible syntax colors:
-
-- Sand for types and blue for functions.
-- Rose for fields, lilac for declarations, and coral for flow control.
-- Green for strings, with ordinary variables and punctuation kept quiet.
-
-The approved [palette](palette/colors.json) is the source of truth. The
-[design baseline](docs/design-baseline.md) records language examples, editor
-targets, architecture, and outstanding UI design work.
-
-## Editor support
-
-The project plans separate adapters for VS Code, JetBrains IDEs, and Zed, with
-Visual Studio investigated separately. VS Code is the first editor and workbench
-implementation. An initial [JetBrains editor scheme](packages/jetbrains/README.md)
-is available with an initial [C#/Java import review](previews/jetbrains/editor/README.md); an Islands shell plugin is available for local review.
-The initial [Zed theme package](packages/zed/README.md) supports local
-installation. Host-specific limitations and mappings are documented as each
-adapter is built.
-
-## Development
-
-With Python 3.11 or newer, validate the palette, build or check the generated themes, and run the tests:
-
-```sh
-python -m generators validate
-python -m generators build vscode
-python -m generators check vscode
-python -m generators build jetbrains
-python -m generators check jetbrains
-python -m generators check jetbrains-ui
-python -m generators build zed
-python -m generators check zed
-python -m unittest discover -s tests -v
-```
-
-Pass a path after `validate` to check another core palette. The schema requires only
-`name`, `version`, and `colors` at the root, with all 24 supported color tokens.
-Validation reads the input without modifying it. Build and check accept optional
-`--palette PATH`, `--terminal-palette PATH` and `--output PATH`; validate also accepts `--terminal-palette PATH`. Both palettes are validated before output is written. The terminal source contains sixteen ANSI tokens; see [terminal mappings](docs/vscode-terminal.md). Defaults resolve relative to this project
-even from another working directory. Check is read-only and reports missing or
-stale output. See [VS Code mappings](docs/vscode-mappings.md) for limitations.
+| Editor | File | Instructions |
+| --- | --- | --- |
+| VS Code | `slate-rose.vsix` | [Install from VSIX](packages/vscode/README.md) |
+| JetBrains IDEs | `slate-rose-jetbrains.jar` | [Install from disk or import the editor scheme](packages/jetbrains/README.md) |
+| Zed | `slate-rose-zed.zip` | [Extract and install the development extension](packages/zed/README.md) |
 
 ## Local VS Code installation
 
-Use Node.js 22 or newer and Python 3.11 or newer. No publisher credentials are
-needed to package locally:
+See the [local VSIX build and installation guide](packages/vscode/README.md#build-from-source).
 
-```sh
-python -m generators check vscode
-mkdir -p dist
-(cd packages/vscode && SOURCE_DATE_EPOCH=1794787200 TZ=UTC npx --yes @vscode/vsce@4.1.1 package --no-dependencies --out ../../dist/slate-rose.vsix)
-python scripts/check_vsix.py dist/slate-rose.vsix
-```
+## Development
 
-In VS Code, run **Extensions: Install from VSIX...**, choose the generated file,
-then select **Slate Rose** using **Preferences: Color Theme**. The manifest
-supports VS Code 1.143 and newer. The initial four fixtures were reviewed in
-VS Code 1.143.1; JavaScript, JSX, TSX, PHP and Ruby were reviewed in 1.146.0. See the
-[initial review](previews/vscode/README.md), [web review](previews/vscode/web/README.md),
-[PHP and Ruby review](previews/vscode/php-ruby/README.md),
-[workbench review](previews/vscode/workbench/README.md),
-[terminal review](previews/vscode/terminal/README.md), and [VS Code mappings](docs/vscode-mappings.md) for observations and provider
-limitations. These reviews do not cover every intermediate version or host.
-Terminal implementation acceptance remains pending.
+The approved colors live in [palette](palette/). The Python
+[generators](generators/) build the host-specific files in [packages](packages/).
+[Fixtures](fixtures/) and [previews](previews/) record examples and review
+evidence. See [Contributing](CONTRIBUTING.md) for development commands,
+[OpenSpec](openspec/README.md) for the backlog, and the
+[release guide](docs/releasing.md) for preparing a GitHub Release.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and local checks.
-[OpenSpec](openspec/README.md) contains the backlog and specifications; the
-first implementation checklist is
-[add-vscode-editor-theme](openspec/changes/add-vscode-editor-theme/tasks.md).
+The [design baseline](docs/design-baseline.md) describes the palette roles and
+host design. The [VS Code mappings](docs/vscode-mappings.md) and
+[terminal notes](docs/vscode-terminal.md) record host-specific limits.
 
 ## License
 

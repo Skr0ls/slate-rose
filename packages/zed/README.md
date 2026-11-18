@@ -10,12 +10,16 @@ Choose a package source:
 
 - From a source checkout, run `python -m generators check zed` at the
   repository root and use its `packages/zed` directory.
+- From [GitHub Releases](https://github.com/Skr0ls/slate-rose/releases), use
+  `slate-rose-zed.zip`. The same ZIP is in the
+  `slate-rose-release-assets` workflow artifact.
 - Download the `slate-rose-zed` artifact from a successful Quality workflow
   run on [GitHub Actions](https://github.com/Skr0ls/slate-rose/actions/workflows/quality.yml).
   GitHub requires sign-in to download artifacts; see its
   [artifact download documentation](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts).
-  Extract the archive to a stable directory, since Zed's development extension
-  installation references that directory.
+
+Extract downloads to a stable directory, since the development extension
+installation references that directory.
 
 In Zed, run **zed: install dev extension** from the command palette and select
 the package directory. Run **theme selector: toggle** and choose **Slate Rose**.
