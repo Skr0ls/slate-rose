@@ -139,7 +139,9 @@ results are recorded separately.
   C has a bounded [lexical and IntelliSense review](../previews/vscode/c-baseline/README.md)
   with a shared flow-control scope limitation. The [Go review](../previews/vscode/go-baseline/README.md)
   covers lexical primitive and flow-color corrections and the semantic
-  keyword limitation with gopls. Rust and Zig remain pending.
+  keyword limitation with gopls. The [Rust review](../previews/vscode/rust-baseline/README.md)
+  covers primitive types, semantic flow control, and the shared lexical scope
+  limitation. Zig remains pending.
 - [ ] **JVM:** Java, Kotlin, Scala and Groovy; cover types, methods, fields,
   annotations and generics where applicable.
 - [ ] **Apple:** Swift and Objective-C; cover declarations, types, methods,

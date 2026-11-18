@@ -18,6 +18,32 @@ ARTIFACT = ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 
 
 class ThemeTests(unittest.TestCase):
+    def test_rust_primitive_and_semantic_control_scopes(self) -> None:
+        palette = load_palette(PALETTE)
+        theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
+        scopes = {
+            scope: rule["settings"]["foreground"]
+            for rule in theme["tokenColors"]
+            for scope in rule["scope"]
+        }
+        for scope in (
+            "entity.name.type.primitive.rust",
+            "entity.name.type.numeric.rust",
+        ):
+            self.assertEqual(scopes[scope], palette.colors["primitive"])
+        self.assertNotIn("keyword.control.rust", scopes)
+        self.assertEqual(scopes["keyword"], palette.colors["keyword"])
+        semantic = theme["semanticTokenColors"]
+        self.assertEqual(
+            semantic["keyword.controlFlow:rust"], palette.colors["control"]
+        )
+        self.assertEqual(semantic["builtinType:rust"], palette.colors["primitive"])
+        self.assertNotIn("builtinType", semantic)
+        self.assertNotIn("keyword.controlFlow", semantic)
+        self.assertEqual(semantic["type"], palette.colors["type"])
+        self.assertNotIn("keyword:rust", semantic)
+        self.assertNotIn("keyword", semantic)
+
     def test_go_lexical_primitive_and_control_scopes(self) -> None:
         palette = load_palette(PALETTE)
         theme = json.loads(render_theme(palette, load_terminal_palette(TERMINAL)))
