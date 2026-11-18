@@ -130,8 +130,10 @@ results are recorded separately.
   [provider review](../previews/vscode/typescript-baseline/README.md) and a
   [native flow control fix](../previews/vscode/typescript-baseline/README.md#native-flow-control-verification)
   for `if`, `for` and `throw`. The [C# flow control fix](../previews/vscode/csharp-flow/README.md)
-  covers the sampled Microsoft C# semantic control keywords. The wider native
-  TypeScript and C# baselines and the Python review remain pending.
+  covers the sampled Microsoft C# semantic control keywords. Python has a
+  bounded [MagicPython and Pylance review](../previews/vscode/python-baseline/README.md)
+  with a documented dataclass field limitation. The wider native TypeScript
+  and C# baselines remain pending.
 - [ ] **Systems:** C, Go, Rust and Zig; cover declarations, control flow,
   types, functions and fields, plus language-specific constructs.
 - [ ] **JVM:** Java, Kotlin, Scala and Groovy; cover types, methods, fields,
