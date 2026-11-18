@@ -108,7 +108,7 @@ a code fix.
   contextual `any` and `some` in type positions without blanket coloring them
   as types. The [limited VS Code review](../previews/vscode/swift/README.md)
   found built-in types sand, flow-control `if`/`throw`/`return` lilac, and a
-  generic declaration foreground. The [Swift flow control fix](changes/fix-vscode-swift-flow-colors/tasks.md)
+  generic declaration foreground. The [Swift flow control fix](changes/archive/2026-11-19-fix-vscode-swift-flow-colors/tasks.md)
   covers the observed control scopes. The generic declaration remains a
   separate candidate, and other hosts and contexts
   remain unreviewed. See Swift's [types](https://docs.swift.org/latest/documentation/the-swift-programming-language/types/)
