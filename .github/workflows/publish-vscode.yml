@@ -1,0 +1,133 @@
+name: Publish VS Code extension
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release tag
+        required: true
+        type: string
+      dry_run:
+        description: Verify only; do not publish
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: publish-vscode
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      sha256: ${{ steps.verify.outputs.sha256 }}
+    steps:
+      - name: Require dispatch from main
+        env:
+          DISPATCH_REF: ${{ github.ref }}
+        run: |
+          if [ "$DISPATCH_REF" != refs/heads/main ]; then
+            echo 'Dispatch this workflow from main.' >&2
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Select matching Quality run and published release
+        id: select
+        env:
+          TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          git check-ref-format "refs/tags/$TAG"
+          commit=$(git rev-parse --verify "refs/tags/$TAG^{commit}")
+          git merge-base --is-ancestor "$commit" HEAD
+          run_id=$(gh run list --workflow quality.yml --repo "$GH_REPO" \
+            --branch main --event push --status success --commit "$commit" \
+            --limit 100 --json databaseId,headSha \
+            --jq "[.[] | select(.headSha == \"$commit\") | .databaseId] | first // empty")
+          if [ -z "$run_id" ]; then
+            echo 'No successful Quality push run on main matches the tag commit.' >&2
+            exit 1
+          fi
+          gh api --paginate "repos/$GH_REPO/releases?per_page=100" |
+            jq -es --arg tag "$TAG" '
+              [.[][] | select(.tag_name == $tag)] as $releases |
+              ($releases | length) == 1 and
+              ($releases[0].draft == false) and
+              ($releases[0].published_at != null) and
+              ([$releases[0].assets[] | select(.name == "slate-rose.vsix")] as $assets |
+                ($assets | length) == 1 and $assets[0].state == "uploaded")
+            ' > /dev/null || {
+              echo 'Expected a published release with exactly one uploaded slate-rose.vsix.' >&2
+              exit 1
+            }
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+      - name: Download and verify the release package
+        id: verify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag }}
+          COMMIT: ${{ steps.select.outputs.commit }}
+          RUN_ID: ${{ steps.select.outputs.run_id }}
+        run: |
+          set -euo pipefail
+          gh release download --repo "$GH_REPO" \
+            --pattern slate-rose.vsix --dir release-asset -- "$TAG"
+          gh run download "$RUN_ID" --repo "$GH_REPO" \
+            --name slate-rose-release-assets --dir quality-assets
+          cmp release-asset/slate-rose.vsix quality-assets/slate-rose.vsix
+          git checkout --detach "$COMMIT"
+          python3 scripts/check_vsix.py release-asset/slate-rose.vsix
+          version=$(python3 -c 'import json; p = json.load(open("packages/vscode/package.json", encoding="utf-8")); assert (p["publisher"], p["name"]) == ("skr0ls", "slate-rose"), "Unexpected package identity"; print(p["version"])')
+          sha256=$(sha256sum release-asset/slate-rose.vsix | cut -d ' ' -f 1)
+          echo "sha256=$sha256" >> "$GITHUB_OUTPUT"
+          {
+            printf '## VS Code publication verification\n\n'
+            printf -- '- Tag: %s\n- Commit: %s\n- Quality run: %s\n' "$TAG" "$COMMIT" "$RUN_ID"
+            printf -- '- Package: skr0ls.slate-rose %s\n- SHA256: %s\n' "$version" "$sha256"
+          } >> "$GITHUB_STEP_SUMMARY"
+          printf 'Verified skr0ls.slate-rose %s (SHA256 %s)\n' "$version" "$sha256"
+      - name: Transfer verified package
+        if: ${{ !inputs.dry_run }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: verified-vscode-package
+          path: release-asset/slate-rose.vsix
+          if-no-files-found: error
+
+  publish:
+    needs: verify
+    if: ${{ !inputs.dry_run }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: vscode-marketplace
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: verified-vscode-package
+          path: verified
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Publish verified package
+        env:
+          VERIFIED_SHA256: ${{ needs.verify.outputs.sha256 }}
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$VERIFIED_SHA256" verified/slate-rose.vsix | sha256sum -c -
+          npx --yes @vscode/vsce@4.1.1 publish --oidc --packagePath verified/slate-rose.vsix

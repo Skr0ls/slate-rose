@@ -84,9 +84,9 @@ in the Releases UI. An existing draft blocks another automated creation.
 
 ## Editor marketplaces
 
-- **VS Code Marketplace**. Confirm ownership of the manifest's publisher ID
-  and prepare listing metadata before publishing the VSIX. Set up publishing
-  credentials when the publisher is ready. [Publishing guide](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+- **VS Code Marketplace**. Publish the verified GitHub Release VSIX with
+  [Trusted Publishing](#vs-code-trusted-publishing). The extension ID is
+  `skr0ls.slate-rose`.
 - **JetBrains Marketplace**. Set up the vendor profile and verify the plugin
   and its compatibility against the intended IDE builds. Prepare listing
   metadata and submit the approved build. [Plugin upload guide](https://plugins.jetbrains.com/docs/marketplace/uploading-a-new-plugin.html)
@@ -94,3 +94,33 @@ in the Releases UI. An existing draft blocks another automated creation.
   `zed-industries/extensions` with `path = "packages/zed"` and the version
   from `extension.toml`. Zed packages the extension from that repository
   entry. [Registry publishing guide](https://zed.dev/docs/extensions/publishing/publishing-guide)
+
+### VS Code Trusted Publishing
+
+In the GitHub repository settings, open the `vscode-marketplace` environment.
+Under deployment branches and tags, select **Selected branches and tags** and
+allow only the `main` branch. Create the environment first if it is missing.
+
+In the [publisher management portal](https://marketplace.visualstudio.com/manage/publishers/),
+open `skr0ls` and create a Trusted Publishing policy with these values.
+
+| Field | Value |
+| --- | --- |
+| Policy name | `Slate Rose` |
+| Repository owner | `Skr0ls` |
+| Repository | `slate-rose` |
+| Workflow | `publish-vscode.yml` |
+| Environment | `vscode-marketplace` |
+
+After publishing the GitHub Release, run **Publish VS Code extension** from
+`main` with that tag and `dry_run` enabled. The summary shows the package
+version, source Quality run, and SHA-256. The corresponding Quality artifact
+must still be available so the workflow can compare the two files.
+
+Run the workflow again with `dry_run` disabled when ready to update the
+Marketplace. The publish job uses OIDC and sends the verified VSIX as built
+by Quality. GitHub pre-release status applies to the project release. The
+VSIX built by Quality is published in the regular Marketplace channel.
+Check the version and appearance of the
+[public listing](https://marketplace.visualstudio.com/items?itemName=skr0ls.slate-rose)
+after publishing. See the [Microsoft setup guide](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#publish-with-github-actions-and-trusted-publishing).

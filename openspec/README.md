@@ -4,9 +4,9 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current work
 
-The [repository cleanup checklist](changes/clean-up-repository/tasks.md) tracks
-archiving and documentation. Native terminal acceptance and the live release
-draft are still open in the backlog below.
+The [repository cleanup checklist](changes/clean-up-repository/tasks.md) records
+the archive and documentation work. The first preview is published. Native
+terminal acceptance and marketplace preparation remain in the backlog.
 
 ## Earlier work
 
@@ -68,7 +68,7 @@ follow-ups in the backlog.
 ### 5. Release preparation — `prepare-theme-releases`
 
 - [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/archive/2026-11-19-prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
-- [ ] Verify a manual draft-release dispatch on `main` for an approved tag. The [workflow change](changes/automate-draft-release/tasks.md) documents the implementation.
+- [x] Verify a manual draft-release dispatch on `main` for an approved tag. The [workflow verification](changes/automate-draft-release/tasks.md#verification) records the draft and the published preview.
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
 - [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
 - [ ] Configure separately triggered VS Code and JetBrains publication jobs when publisher accounts are ready. Done when credentials are scoped to their host and a reviewed release can be published without rebuilding different inputs.
