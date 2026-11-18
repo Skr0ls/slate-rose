@@ -136,6 +136,8 @@ results are recorded separately.
   and C# baselines remain pending.
 - [ ] **Systems:** C, Go, Rust and Zig; cover declarations, control flow,
   types, functions and fields, plus language-specific constructs.
+  C has a bounded [lexical and IntelliSense review](../previews/vscode/c-baseline/README.md)
+  with a shared flow-control scope limitation. Go, Rust and Zig remain pending.
 - [ ] **JVM:** Java, Kotlin, Scala and Groovy; cover types, methods, fields,
   annotations and generics where applicable.
 - [ ] **Apple:** Swift and Objective-C; cover declarations, types, methods,
