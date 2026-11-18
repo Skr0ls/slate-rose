@@ -7,15 +7,15 @@ editor and language provider.
 
 ## Installation
 
-Find the three installable packages in
-[GitHub Releases](https://github.com/Skr0ls/slate-rose/releases) once a release
-is published, or download `slate-rose-release-assets` from a successful
+Download the three installable packages from
+[GitHub Releases](https://github.com/Skr0ls/slate-rose/releases) or get
+`slate-rose-release-assets` from a successful
 [Quality workflow run](https://github.com/Skr0ls/slate-rose/actions/workflows/quality.yml).
 GitHub requires sign-in for workflow downloads.
 
 | Editor | File | Instructions |
 | --- | --- | --- |
-| VS Code | `slate-rose.vsix` | [Install from VSIX](packages/vscode/README.md) |
+| VS Code | `slate-rose.vsix` | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=skr0ls.slate-rose) · [Install from VSIX](packages/vscode/README.md#installation) |
 | JetBrains IDEs | `slate-rose-jetbrains.jar` | [Install from disk or import the editor scheme](packages/jetbrains/README.md) |
 | Zed | `slate-rose-zed.zip` | [Extract and install the development extension](packages/zed/README.md) |
 

@@ -1,28 +1,33 @@
 # Slate Rose
 
-Slate Rose is a prototype dark editor, workbench and terminal theme. Install the local VSIX using
-**Extensions: Install from VSIX...**, then choose **Preferences: Color Theme**
-and select **Slate Rose**. The package targets VS Code 1.143 and newer;
-documented reviews cover 1.143.1 and 1.146.0, not every intermediate version
-or host.
+Slate Rose is a dark theme for the VS Code editor, workbench, and integrated
+terminal. It uses sand for types, blue for functions, rose for fields, lilac
+for declarations, coral for flow control, and green for strings.
 
-The intended syntax roles are sand types, blue functions, rose fields, lilac
-declarations, coral flow control and green strings. Language providers can
-classify tokens differently. Four standalone fixtures were reviewed in VS Code
-1.143.1 with specific providers. JavaScript, JSX, and TSX were reviewed in
-1.146.0; see the [initial review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/README.md)
-and [web review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/web/README.md)
-for observations and limitations.
+![Slate Rose showing syntax highlighting, editor tabs, and the sidebar in VS Code](https://raw.githubusercontent.com/Skr0ls/slate-rose/main/previews/vscode/workbench/framing-overview.png)
 
-C# semantic keyword tokens can override the lexical primitive and flow colors;
-the theme retains semantic highlighting without a generic keyword override,
-which cannot distinguish those roles. The owner accepted the workbench appearance and the separate ANSI design; a representative
-[native workbench review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/workbench/README.md)
-records tested states, contrast observations and remaining coverage. Native terminal acceptance remains pending. Modern UI shell gutters, floating-card borders and supported custom
-title bars use the theme palette without changing window settings or controls.
-The separate approved ANSI palette colors the integrated terminal; the
-[terminal review](https://github.com/Skr0ls/slate-rose/blob/dev/previews/vscode/terminal/README.md)
-records native states and host contrast/bold behavior. This package is not published to the Marketplace.
+## Installation
+
+1. Install **Slate Rose** from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=skr0ls.slate-rose).
+   For manual installation, download `slate-rose.vsix` from
+   [GitHub Releases](https://github.com/Skr0ls/slate-rose/releases) and run
+   **Extensions: Install from VSIX...** in the Command Palette.
+2. Run **Preferences: Color Theme** and select **Slate Rose**.
+
+## Coverage
+
+The package targets VS Code 1.143 and newer. Documented reviews cover 1.143.1
+and 1.146.0 on macOS. Language providers can assign different token categories.
+For example, C# semantic keyword tokens can override the lexical primitive
+and flow colors.
+
+The theme covers editor and workbench states, including modern window framing
+where VS Code supports it. The integrated terminal uses a separate ANSI
+palette. Native terminal acceptance is still open, and VS Code's contrast
+and bold settings can affect the rendered colors.
+
+[Review evidence](https://github.com/Skr0ls/slate-rose/blob/main/previews/README.md) ·
+[Report an issue](https://github.com/Skr0ls/slate-rose/issues)
 
 ## Build from source
 
