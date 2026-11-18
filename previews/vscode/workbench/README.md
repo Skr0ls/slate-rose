@@ -1,6 +1,6 @@
 # VS Code workbench review
 
-Local native review on 2026-11-17, VS Code 1.146.0 arm64 on macOS, commit `69047191fc427f2f92828279aae1d90d8eeda7ab`. This review covers the installed workbench slice, not owner acceptance or universal host/provider support. [Mappings](../../../docs/vscode-mappings.md) list all 133 configured colors and alpha bytes. The initial ten screenshots below retain the first workbench build; three framing screenshots document the subsequent owner-requested correction. Existing UI colors and syntax were unchanged by that correction.
+Local native review on 2026-11-17, VS Code 1.146.0 arm64 on macOS, commit `69047191fc427f2f92828279aae1d90d8eeda7ab`. This review covers representative states in the installed workbench slice. [Mappings](../../../docs/vscode-mappings.md) list all 133 configured colors and alpha bytes. The initial ten screenshots below retain the first workbench build; three framing screenshots document the subsequent owner-requested correction. Existing UI colors and syntax were unchanged by that correction.
 
 ## Initial review package identity
 
@@ -44,7 +44,7 @@ Foreground contrast calculated from the unmodified palette is 11.39:1 on editor 
 
 ## Reproduction
 
-Build and install the [local VSIX](../../../README.md#local-vs-code-installation). The retained [fixtures](fixtures/workbench.ts) are display-only and must not be executed. [Before](fixtures/before.ts), [after](fixtures/after.ts) and [reference](fixtures/reference.ts) supply the other tabs. The [review helper](review-helper/extension.js) registers controlled diagnostics, one synthetic hover, and commands that open native UI; it is review tooling and is not shipped in the VSIX.
+Build and install the [local VSIX](../../../packages/vscode/README.md#build-from-source). The retained [fixtures](fixtures/workbench.ts) are display-only and must not be executed. [Before](fixtures/before.ts), [after](fixtures/after.ts) and [reference](fixtures/reference.ts) supply the other tabs. The [review helper](review-helper/extension.js) registers controlled diagnostics, one synthetic hover, and commands that open native UI; it is review tooling and is not shipped in the VSIX.
 
 To reproduce the exact paths, copy the four fixtures into `/tmp/sr-web-context/javascript/ui-review`, and copy the helper's [manifest](review-helper/package.json) and `extension.js` into `/tmp/sr-ui-probe`. Install the VSIX into an isolated extensions directory and open an empty development window:
 
@@ -57,4 +57,4 @@ Select Slate Rose if the profile is new. Run `Slate Rose Review: Overview`, `Hov
 
 ## Remaining coverage
 
-Windows/Linux, older host rendering, repository Git file decorations and gutters, debugger status, notifications, validation error popups, disabled controls and custom-rendered menus remain unreviewed natively. Their configured colors are checked in generated output only. Native macOS controls and menus retain host behavior; custom title-bar and shell colors now follow the theme. This is a representative state review, not inspection of every one of the 133 keys. Terminal ANSI colors, bracket rainbow redesign, specialized extension views and other editor adapters are separate work. Owner acceptance remains pending.
+Windows/Linux, older host rendering, repository Git file decorations and gutters, debugger status, notifications, validation error popups, disabled controls and custom-rendered menus remain unreviewed natively. Their configured colors are checked in generated output only. Native macOS controls and menus retain host behavior; custom title-bar and shell colors now follow the theme. This is a representative state review, not inspection of every one of the 133 keys. Terminal ANSI colors, bracket rainbow redesign, specialized extension views and other editor adapters are separate work. The owner accepted the workbench appearance. The coverage gaps above remain open.

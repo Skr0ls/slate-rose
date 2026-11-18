@@ -34,7 +34,7 @@ The [mapping document](../../../docs/vscode-terminal.md) lists the keys and limi
 
 ## Reproduction
 
-Build the [local VSIX](../../../README.md#local-vs-code-installation). Copy the helper's [manifest](review-helper/package.json) and `extension.js` into `/tmp/sr-term-probe`; adjust its read-only `terminal.json` path when the checkout is elsewhere. Create the named profile before installing into it:
+Build the [local VSIX](../../../packages/vscode/README.md#build-from-source). Copy the helper's [manifest](review-helper/package.json) and `extension.js` into `/tmp/sr-term-probe`; adjust its read-only `terminal.json` path when the checkout is elsewhere. Create the named profile before installing into it:
 
 ```sh
 code --profile "Slate Rose Terminal Review" --new-window
