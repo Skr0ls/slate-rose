@@ -7,5 +7,5 @@
 
 ## Verification
 
-See the [Go baseline review](../../../previews/vscode/go-baseline/README.md)
+See the [Go baseline review](../../../../previews/vscode/go-baseline/README.md)
 for the separate lexical and semantic inspection results.

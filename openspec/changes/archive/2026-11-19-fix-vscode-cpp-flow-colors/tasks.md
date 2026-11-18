@@ -8,4 +8,4 @@
 
 ## Verification
 
-VS Code 1.146.0 reported `#D7829B` for `if` at 13:10 and `for` at 17:10 on the same C++ fixture and test profile used for the [baseline](../../../previews/vscode/cpp-baseline/README.md). Both tokens had previously used `#CAA1DE`. The shipped TextMate engine reproduced the change and preserved the sampled colors for `class`, `int`, `throw`, and `return`.
+VS Code 1.146.0 reported `#D7829B` for `if` at 13:10 and `for` at 17:10 on the same C++ fixture and test profile used for the [baseline](../../../../previews/vscode/cpp-baseline/README.md). Both tokens had previously used `#CAA1DE`. The shipped TextMate engine reproduced the change and preserved the sampled colors for `class`, `int`, `throw`, and `return`.

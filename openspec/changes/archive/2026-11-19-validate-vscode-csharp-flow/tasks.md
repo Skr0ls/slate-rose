@@ -7,5 +7,5 @@
 
 ## Verification
 
-See the [C# flow-color review](../../../previews/vscode/csharp-flow/README.md)
+See the [C# flow-color review](../../../../previews/vscode/csharp-flow/README.md)
 for lexical and native inspector results.

@@ -125,7 +125,7 @@ results are recorded separately.
 - [ ] **Baseline regressions:** C++, C#, TypeScript and Python, using the
   existing fixtures and checking their established role distinctions.
   C++ has a bounded [lexical and native provider review](../previews/vscode/cpp-baseline/README.md)
-  for the sampled context. The [C++ flow control fix](changes/fix-vscode-cpp-flow-colors/tasks.md)
+  for the sampled context. The [C++ flow control fix](changes/archive/2026-11-19-fix-vscode-cpp-flow-colors/tasks.md)
   covers the observed `if` and `for` scopes. TypeScript has a bounded
   [provider review](../previews/vscode/typescript-baseline/README.md) and a
   [native flow control fix](../previews/vscode/typescript-baseline/README.md#native-flow-control-verification)

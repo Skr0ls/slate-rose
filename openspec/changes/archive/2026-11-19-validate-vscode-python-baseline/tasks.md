@@ -6,5 +6,5 @@
 
 ## Verification
 
-See the [Python baseline review](../../../previews/vscode/python-baseline/README.md)
+See the [Python baseline review](../../../../previews/vscode/python-baseline/README.md)
 for the lexical and native Pylance results.
