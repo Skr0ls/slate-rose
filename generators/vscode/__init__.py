@@ -81,6 +81,8 @@ LEXICAL: tuple[tuple[str, tuple[str, ...]], ...] = (
             "keyword.control.co_await",
             "keyword.control.co_yield",
             "keyword.control.exception.throw",
+            "keyword.control.if.cpp",
+            "keyword.control.for.cpp",
             "source.js keyword.control.trycatch",
             "source.tsx keyword.control.trycatch",
             "keyword.operator.expression.await.cs",
