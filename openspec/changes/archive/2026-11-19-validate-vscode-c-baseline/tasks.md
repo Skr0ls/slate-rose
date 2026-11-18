@@ -6,5 +6,5 @@
 
 ## Verification
 
-See the [C baseline review](../../../previews/vscode/c-baseline/README.md)
+See the [C baseline review](../../../../previews/vscode/c-baseline/README.md)
 for the syntax check, lexical evidence, and native inspection.

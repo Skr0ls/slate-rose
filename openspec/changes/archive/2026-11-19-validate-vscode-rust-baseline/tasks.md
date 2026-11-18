@@ -7,5 +7,5 @@
 
 ## Verification
 
-See the [Rust baseline review](../../../previews/vscode/rust-baseline/README.md)
+See the [Rust baseline review](../../../../previews/vscode/rust-baseline/README.md)
 for lexical and native evidence.
