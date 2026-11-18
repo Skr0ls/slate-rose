@@ -45,11 +45,15 @@ The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrai
 
 ### 4. Zed — `add-zed-theme`
 
-Return to Zed after the prioritized language reviews and remaining selected batches in the [language backlog](language-validation-backlog.md).
+The [initial theme package](../packages/zed/README.md) is tracked in
+[add-zed-theme](changes/add-zed-theme/tasks.md). Continue focused language
+follow-ups from the [language backlog](language-validation-backlog.md) as
+concrete mapping gaps arise.
 
-- [ ] Generate native theme JSON and extension.toml using the current official schema. Done when schema checks pass and the theme installs locally.
+- [x] Generate native theme JSON and provide an extension manifest. The official schema check and local install passed.
 - [ ] Review syntax, completion, search, tabs and panels while preserving Zed's native UI character. Done when screenshots and the host coverage table record observed results and limitations.
-- [ ] Add host validation and packaging to CI. Done when shared-input changes also validate Zed output.
+- [x] Check generated Zed output for drift in the Quality workflow.
+- [ ] Integrate official schema validation and release packaging into CI.
 
 ### Language validation
 

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
+  "author": "Skr0ls",
+  "name": "Slate Rose",
+  "themes": [
+    {
+      "appearance": "dark",
+      "name": "Slate Rose",
+      "style": {
+        "editor.active_line.background": "#242A34",
+        "editor.active_line_number": "#D1D4DC",
+        "editor.background": "#191D25",
+        "editor.foreground": "#D1D4DC",
+        "editor.gutter.background": "#191D25",
+        "editor.line_number": "#8992A1",
+        "syntax": {
+          "attribute": {
+            "color": "#CAA1DE"
+          },
+          "comment": {
+            "color": "#8992A1"
+          },
+          "comment.doc": {
+            "color": "#8992A1"
+          },
+          "constant": {
+            "color": "#D99AAB"
+          },
+          "constructor": {
+            "color": "#8CC6F1"
+          },
+          "function": {
+            "color": "#8CC6F1"
+          },
+          "keyword": {
+            "color": "#CAA1DE"
+          },
+          "number": {
+            "color": "#E0B77C"
+          },
+          "operator": {
+            "color": "#AEB5C1"
+          },
+          "property": {
+            "color": "#E28DA4"
+          },
+          "punctuation": {
+            "color": "#D1D4DC"
+          },
+          "string": {
+            "color": "#A9CE91"
+          },
+          "type": {
+            "color": "#E0C38C"
+          },
+          "type.builtin": {
+            "color": "#D8B981"
+          },
+          "variable": {
+            "color": "#D1D4DC"
+          },
+          "variable.parameter": {
+            "color": "#D1D4DC"
+          }
+        }
+      }
+    }
+  ]
+}

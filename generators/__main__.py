@@ -9,6 +9,7 @@ from .jetbrains import render_scheme
 from .jetbrains.ui import render_ui
 from .palette import PaletteValidationError, load_palette, load_terminal_palette
 from .vscode import render_theme
+from .zed import render_theme as render_zed
 
 _ROOT = Path(__file__).resolve().parent.parent
 _PALETTE = _ROOT / "palette/colors.json"
@@ -16,6 +17,7 @@ _TERMINAL_PALETTE = _ROOT / "palette/terminal.json"
 _OUTPUT = _ROOT / "packages/vscode/themes/slate-rose-color-theme.json"
 _JETBRAINS_OUTPUT = _ROOT / "packages/jetbrains/colors/Slate Rose.icls"
 _JETBRAINS_UI_OUTPUT = _ROOT / "packages/jetbrains/resources/Slate Rose.theme.json"
+_ZED_OUTPUT = _ROOT / "packages/zed/themes/slate-rose.json"
 
 
 def _same_file(first: Path, second: Path) -> bool:
@@ -37,7 +39,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     validate.add_argument("--terminal-palette", type=Path, default=_TERMINAL_PALETTE)
     for command in ("build", "check"):
         sub = commands.add_parser(command, help=f"{command} a generated theme")
-        sub.add_argument("host", choices=("vscode", "jetbrains", "jetbrains-ui"))
+        sub.add_argument("host", choices=("vscode", "jetbrains", "jetbrains-ui", "zed"))
         sub.add_argument("--palette", type=Path, default=_PALETTE)
         sub.add_argument("--terminal-palette", type=Path, default=_TERMINAL_PALETTE)
         sub.add_argument("--output", type=Path)
@@ -46,6 +48,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         palette_path = args.path if args.command == "validate" else args.palette
         palette = load_palette(palette_path)
         terminal_palette = load_terminal_palette(args.terminal_palette)
+        # The UI and editor scheme share the XML-compatible palette name.
         jetbrains_scheme = (
             render_scheme(palette)
             if args.command != "validate" and args.host in ("jetbrains", "jetbrains-ui")
@@ -64,6 +67,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 "vscode": _OUTPUT,
                 "jetbrains": _JETBRAINS_OUTPUT,
                 "jetbrains-ui": _JETBRAINS_UI_OUTPUT,
+                "zed": _ZED_OUTPUT,
             }[args.host]
         if any(
             _same_file(args.output, path)
@@ -76,13 +80,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         ):
             print(f"Output {args.output} conflicts with a palette", file=sys.stderr)
             return 1
-        expected = (
-            render_theme(palette, terminal_palette)
-            if args.host == "vscode"
-            else render_ui(palette)
-            if args.host == "jetbrains-ui"
-            else jetbrains_scheme
-        ).encode("utf-8")
+        if args.host == "vscode":
+            rendered = render_theme(palette, terminal_palette)
+        elif args.host == "jetbrains-ui":
+            rendered = render_ui(palette)
+        elif args.host == "zed":
+            rendered = render_zed(palette)
+        else:
+            rendered = jetbrains_scheme
+        expected = rendered.encode("utf-8")
         if args.command == "check":
             if args.output.read_bytes() != expected:
                 print(f"Generated theme is stale: {args.output}", file=sys.stderr)

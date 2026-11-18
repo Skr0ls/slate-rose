@@ -4,7 +4,8 @@ This is a queue for future OpenSpec changes, not approval to implement them or a
 claim of language support. Review each host separately; results do not imply
 parity across hosts. The JetBrains UI plugin is integrated; start each selected
 language change from fresh `dev` after its predecessor integrates.
-Review the selected language changes below before returning to Zed.
+Continue focused language reviews alongside the Zed adapter as concrete
+mapping gaps arise.
 The batches below are practical groupings, not a popularity ranking. Split a
 batch further if it cannot fit in a small, reviewable PR.
 
@@ -69,10 +70,9 @@ If a category mixes inseparable roles, document the limitation and seek an
 owner decision. For an actual fix, use relevant fixtures, before/after evidence,
 regression checks and native verification under the [criteria above](#review-and-completion-criteria).
 The [JetBrains native editor review](../previews/jetbrains/editor/README.md)
-records the initial evidence. Execute the selected changes in the order below,
-then review remaining systems, scripting, JVM and
-configuration batches in small PRs before returning to Zed. Other batches
-remain open. A review may identify limitations without requiring a code fix.
+records the initial evidence. Use the remaining batches to track concrete
+mapping gaps in small PRs. A review may identify limitations without requiring
+a code fix.
 
 - [x] **Rider C# builtin aliases:** The
   [focused change](changes/fix-rider-csharp-builtins/tasks.md) and

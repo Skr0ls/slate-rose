@@ -1,0 +1,7 @@
+id = "slate-rose-theme"
+name = "Slate Rose"
+version = "0.1.0"
+schema_version = 1
+authors = ["Skr0ls"]
+description = "A dark editor theme based on the Slate Rose palette."
+repository = "https://github.com/Skr0ls/slate-rose"

@@ -24,8 +24,10 @@ targets, architecture, and outstanding UI design work.
 The project plans separate adapters for VS Code, JetBrains IDEs, and Zed, with
 Visual Studio investigated separately. VS Code is the first editor and workbench
 implementation. An initial [JetBrains editor scheme](packages/jetbrains/README.md)
-is available with an initial [C#/Java import review](previews/jetbrains/editor/README.md); an Islands shell plugin is available for local review. Host-specific limitations and mappings are
-documented as each adapter is built.
+is available with an initial [C#/Java import review](previews/jetbrains/editor/README.md); an Islands shell plugin is available for local review.
+The initial [Zed theme package](packages/zed/README.md) supports local
+installation. Host-specific limitations and mappings are documented as each
+adapter is built.
 
 ## Development
 
@@ -38,6 +40,8 @@ python -m generators check vscode
 python -m generators build jetbrains
 python -m generators check jetbrains
 python -m generators check jetbrains-ui
+python -m generators build zed
+python -m generators check zed
 python -m unittest discover -s tests -v
 ```
 
