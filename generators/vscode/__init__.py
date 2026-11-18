@@ -63,6 +63,9 @@ LEXICAL: tuple[tuple[str, tuple[str, ...]], ...] = (
             "storage.type.primitive",
             "storage.type.built-in.primitive",
             "storage.type.integral",
+            "storage.type.numeric.go",
+            "storage.type.string.go",
+            "storage.type.boolean.go",
             "support.type.primitive",
             "source.cs keyword.type",
             "support.type.python",
@@ -72,6 +75,7 @@ LEXICAL: tuple[tuple[str, tuple[str, ...]], ...] = (
         "control",
         (
             "keyword.control.flow",
+            "keyword.control.go",
             "keyword.control.return",
             "keyword.control.throw",
             "keyword.control.break",

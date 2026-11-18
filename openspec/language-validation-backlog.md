@@ -137,7 +137,9 @@ results are recorded separately.
 - [ ] **Systems:** C, Go, Rust and Zig; cover declarations, control flow,
   types, functions and fields, plus language-specific constructs.
   C has a bounded [lexical and IntelliSense review](../previews/vscode/c-baseline/README.md)
-  with a shared flow-control scope limitation. Go, Rust and Zig remain pending.
+  with a shared flow-control scope limitation. The [Go review](../previews/vscode/go-baseline/README.md)
+  covers lexical primitive and flow-color corrections and the semantic
+  keyword limitation with gopls. Rust and Zig remain pending.
 - [ ] **JVM:** Java, Kotlin, Scala and Groovy; cover types, methods, fields,
   annotations and generics where applicable.
 - [ ] **Apple:** Swift and Objective-C; cover declarations, types, methods,
