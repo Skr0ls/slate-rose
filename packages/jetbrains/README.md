@@ -12,7 +12,9 @@ build, run `python -m scripts.package_jetbrains` and verify with
 `slate-rose-jetbrains.jar` (under `dist/` for a local build), restart if prompted, then select Slate Rose in
 **Settings | Appearance & Behavior | Appearance**. The descriptor requires
 platform build 262 or newer; compatibility with other IDEs has not been reviewed.
-See [Rider plugin installation](https://www.jetbrains.com/help/rider/Managing_Plugins.html).
+An installation from disk can show an update-source notice until the IDE
+knows where to find updates. See [Rider plugin installation](https://www.jetbrains.com/help/rider/Managing_Plugins.html)
+and [IntelliJ IDEA update sources](https://www.jetbrains.com/help/idea/managing-plugins.html#plugin-update-sources).
 
 See the [Marketplace submission guide](marketplace.md) for listing details.
 
