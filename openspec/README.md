@@ -4,9 +4,13 @@ The approved baseline is one repository, a shared Python generator, separate hos
 
 ## Current work
 
+Next is [the first JetBrains Marketplace submission](#6-jetbrains-marketplace).
+Slate Rose is available in [GitHub Releases](https://github.com/Skr0ls/slate-rose/releases)
+and in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=skr0ls.slate-rose),
+where `0.3.1` shipped through
+[Trusted Publishing](changes/publish-vscode-marketplace/tasks.md#verification).
 The [repository cleanup checklist](changes/clean-up-repository/tasks.md) records
-the archive and documentation work. The first preview is published. Native
-terminal acceptance and marketplace preparation remain in the backlog.
+the completed archive and documentation work.
 
 ## Earlier work
 
@@ -41,13 +45,16 @@ The [workbench change](changes/archive/2026-11-19-define-workbench-states/propos
 
 ### 3. JetBrains — `add-jetbrains-theme`
 
-The initial editor scheme is tracked in [add-jetbrains-editor-scheme](changes/archive/2026-11-19-add-jetbrains-editor-scheme/tasks.md); the broader acceptance below remains open.
+The [editor scheme](changes/archive/2026-11-19-add-jetbrains-editor-scheme/tasks.md)
+was imported in Rider and IntelliJ IDEA. The separate
+[Islands shell review](../previews/jetbrains/islands/README.md) records the
+bundled UI theme in Rider. The [language backlog](language-validation-backlog.md)
+tracks focused syntax reviews and remaining gaps.
 
-The Islands UI plugin is integrated. The [focused C# review](../previews/jetbrains/csharp-builtins/README.md) records alias styling; Java, Kotlin and Swift reviews follow in the [language backlog](language-validation-backlog.md). Start each implementation from updated `dev` after its predecessor integrates.
-
-- [ ] Generate an editor color scheme and minimal UI theme resources from approved mappings. Done when they load in Rider and IntelliJ IDEA and language-specific differences are documented.
-- [ ] Package a standalone theme plugin with MIT notice and installation instructions. Done when a local build installs successfully and fixtures are reviewed in the relevant IDEs.
+- [x] Generate an editor scheme and Islands UI resources from the approved mappings.
+- [x] Package the standalone MIT plugin, document installation, and verify local plugin installation in Rider.
 - [x] Validate generated JetBrains output and package the plugin in CI.
+- [ ] Verify the full plugin on the IDE builds claimed for Marketplace. Reuse the Rider evidence and check the packaged theme on IntelliJ IDEA where it will be listed as compatible.
 
 ### 4. Zed — `add-zed-theme`
 
@@ -69,11 +76,26 @@ follow-ups in the backlog.
 
 - [x] Assemble the three validated assets in one CI bundle and document draft releases. See [prepare-release-assets](changes/archive/2026-11-19-prepare-release-assets/tasks.md) and the [release guide](../docs/releasing.md).
 - [x] Verify a manual draft-release dispatch on `main` for an approved tag. The [workflow verification](changes/automate-draft-release/tasks.md#verification) records the draft and the published preview.
-- [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
-- [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
+- [x] Document the [release version policy](../docs/releasing.md#release-versioning) and per-editor package versions.
+- [x] Document installation from released artifacts for all three editors. See the [installation index](../README.md#installation).
 - [x] Publish a verified GitHub Release VSIX to the VS Code Marketplace using Trusted Publishing. See the [publication evidence](changes/publish-vscode-marketplace/tasks.md#verification).
-- [ ] Configure a separately triggered JetBrains publication job when the vendor account is ready. The job should publish the reviewed package from the release.
-- [ ] Prepare Zed registry submission using the monorepository package path. Done when the registry accepts the extension and its published version is installable.
+- [ ] Keep the semantic coverage and supported IDE builds aligned with the manifests and the [review evidence](../previews/README.md).
+
+### 6. JetBrains Marketplace
+
+Use `prepare-jetbrains-marketplace` for the first submission. Start from
+the [published plugin package](https://github.com/Skr0ls/slate-rose/releases/tag/v0.1.0-preview.2)
+and the [JetBrains approval criteria](https://plugins.jetbrains.com/docs/marketplace/jetbrains-marketplace-approval-guidelines.html).
+
+- [ ] Confirm the maintainer can select the intended [Vendor profile](https://plugins.jetbrains.com/docs/marketplace/organizations.html) and that its contact and website are current.
+- [ ] Prepare the listing for `com.github.skr0ls.slaterose`. Include the English description, change notes, MIT license and source links, a 40 × 40 SVG logo, and representative theme screenshots.
+- [ ] Verify the submission package format and compatibility with Plugin Verifier for the intended IDE builds. Use the published package if it meets the criteria. Use a new Quality build if packaging changes are required.
+- [ ] Hand off the verified package and listing to the maintainer for the [first upload](https://plugins.jetbrains.com/docs/marketplace/uploading-a-new-plugin.html). Close this item once the listing is approved and installation from Marketplace is verified.
+- [ ] After the first listing is live, add a separately triggered workflow for verified JetBrains updates.
+
+### 7. Zed extension registry
+
+- [ ] After the first JetBrains submission, prepare the Zed registry entry using the monorepository path `packages/zed`. Close this item once the registry accepts the extension and its published version is installable.
 
 ### Repository cleanup
 
