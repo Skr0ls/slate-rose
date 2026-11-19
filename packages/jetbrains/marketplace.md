@@ -22,6 +22,7 @@ tool windows, tabs, and status bar.
 
 Select **Slate Rose** under **Settings → Appearance & Behavior → Appearance**
 after installing. Exact syntax colors depend on the IDE and language plugin.
+The integrated terminal uses the IDE's default colors.
 
 ## Change notes
 
