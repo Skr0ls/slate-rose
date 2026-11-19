@@ -1,9 +1,10 @@
 <idea-plugin>
   <id>com.github.skr0ls.slaterose</id>
   <name>Slate Rose</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <vendor>Skr0ls</vendor>
-  <description>Slate Rose editor colors and an Islands Dark shell theme.</description>
+  <description>Slate Rose is a dark theme for JetBrains IDEs, combining editor colors with an Islands Dark interface.</description>
+  <change-notes>First JetBrains Marketplace package of the Slate Rose theme.</change-notes>
   <idea-version since-build="262" />
   <depends>com.intellij.modules.lang</depends>
   <extensions defaultExtensionNs="com.intellij">
