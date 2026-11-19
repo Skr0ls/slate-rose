@@ -14,6 +14,8 @@ build, run `python -m scripts.package_jetbrains` and verify with
 platform build 262 or newer; compatibility with other IDEs has not been reviewed.
 See [Rider plugin installation](https://www.jetbrains.com/help/rider/Managing_Plugins.html).
 
+See the [Marketplace submission guide](marketplace.md) for listing details.
+
 Generate the scheme with `python -m generators build jetbrains`. In a JetBrains
 IDE, open **Settings | Editor | Color Scheme**, use the scheme menu to import
 `colors/Slate Rose.icls`, then select Slate Rose. See the [official import

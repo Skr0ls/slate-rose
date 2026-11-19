@@ -24,6 +24,7 @@ def build_archive(root: Path, output: Path) -> bytes:
     palette_path = root / "palette/colors.json"
     terminal_path = root / "palette/terminal.json"
     descriptor_path = root / "packages/jetbrains/META-INF/plugin.xml"
+    icon_path = root / "packages/jetbrains/META-INF/pluginIcon.svg"
     theme_path = root / "packages/jetbrains/resources/Slate Rose.theme.json"
     scheme_path = root / "packages/jetbrains/colors/Slate Rose.icls"
     license_path = root / "LICENSE"
@@ -31,6 +32,7 @@ def build_archive(root: Path, output: Path) -> bytes:
         palette_path,
         terminal_path,
         descriptor_path,
+        icon_path,
         theme_path,
         scheme_path,
         license_path,
@@ -56,15 +58,17 @@ def build_archive(root: Path, output: Path) -> bytes:
                 "version",
                 "vendor",
                 "description",
+                "change-notes",
                 "idea-version",
                 "depends",
                 "extensions",
             ]
             or xml.findtext("id") != "com.github.skr0ls.slaterose"
             or xml.findtext("name") != "Slate Rose"
-            or xml.findtext("version") != "0.1.0"
+            or xml.findtext("version") != "0.1.1"
             or xml.findtext("vendor") != "Skr0ls"
             or not (xml.findtext("description") or "").strip()
+            or not (xml.findtext("change-notes") or "").strip()
             or xml.find("idea-version").attrib != {"since-build": "262"}
             or [e.text for e in xml.findall("depends")] != ["com.intellij.modules.lang"]
             or len(xml.findall("extensions")) != 1
@@ -78,8 +82,21 @@ def build_archive(root: Path, output: Path) -> bytes:
             raise ValueError("invalid plugin descriptor")
     except (ET.ParseError, AttributeError, KeyError, ValueError) as exc:
         raise ValueError("invalid plugin descriptor") from exc
+    icon = icon_path.read_bytes()
+    try:
+        svg = ET.fromstring(icon)
+        if (
+            svg.tag != "{http://www.w3.org/2000/svg}svg"
+            or svg.get("width") != "40"
+            or svg.get("height") != "40"
+            or svg.get("viewBox") != "0 0 40 40"
+        ):
+            raise ValueError("invalid plugin icon")
+    except ET.ParseError as exc:
+        raise ValueError("invalid plugin icon") from exc
     entries = (
         ("META-INF/plugin.xml", descriptor),
+        ("META-INF/pluginIcon.svg", icon),
         ("Slate Rose.theme.json", theme),
         ("colors/SlateRose.xml", scheme),
         ("META-INF/LICENSE", license_path.read_bytes()),
