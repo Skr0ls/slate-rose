@@ -71,7 +71,8 @@ follow-ups in the backlog.
 - [x] Verify a manual draft-release dispatch on `main` for an approved tag. The [workflow verification](changes/automate-draft-release/tasks.md#verification) records the draft and the published preview.
 - [ ] Choose package IDs, publisher identity, supported editor versions and release version policy. Done when manifests, compatibility notes and changelogs agree.
 - [ ] Add installation guides, screenshots and a semantic-coverage comparison for every supported host. Done when a reviewer can install the artifacts from the documentation.
-- [ ] Configure separately triggered VS Code and JetBrains publication jobs when publisher accounts are ready. Done when credentials are scoped to their host and a reviewed release can be published without rebuilding different inputs.
+- [x] Publish a verified GitHub Release VSIX to the VS Code Marketplace using Trusted Publishing. See the [publication evidence](changes/publish-vscode-marketplace/tasks.md#verification).
+- [ ] Configure a separately triggered JetBrains publication job when the vendor account is ready. The job should publish the reviewed package from the release.
 - [ ] Prepare Zed registry submission using the monorepository package path. Done when the registry accepts the extension and its published version is installable.
 
 ### Repository cleanup
