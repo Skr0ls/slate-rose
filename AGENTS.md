@@ -25,9 +25,9 @@ Read `README.md` and `palette/colors.json` before editing.
 - At the end of each step report tests, installation steps, and unresolved TODOs.
 
 ## Release publishing
-- A human maintainer must personally initiate every public release, including previews and updates on GitHub Releases and editor marketplaces.
-- Agents may build and verify packages, prepare unpublished drafts, and run dry runs. Hand off the verified draft or workflow inputs to the maintainer before publication.
-- Human initiation applies to publishing a draft, submitting a marketplace upload, dispatching or rerunning a publish-enabled workflow, and any push or merge that triggers publication.
+- A human maintainer initiates public releases by default. An agent may initiate a public release only after a human maintainer separately and explicitly asks the agent to publish that specific release.
+- Agents may build and verify packages, prepare unpublished drafts, and run dry runs. For preparation requests, hand off the verified draft or workflow inputs to the maintainer.
+- Treat general requests to implement a plan, prepare a release, or verify a workflow as preparation. The separate request applies to publishing drafts, uploading to a public marketplace, running or rerunning a workflow in publish mode, and pushing or merging changes that trigger publication. It covers public previews and updates as well as stable releases.
 
 ## Suggested first task
 Implement a palette validator and a VS Code editor-only theme generator, with fixtures and instructions. Keep JetBrains, Zed and Visual Studio as subsequent adapters.
