@@ -15,6 +15,7 @@ INPUTS = (
     "palette/colors.json",
     "palette/terminal.json",
     "packages/jetbrains/META-INF/plugin.xml",
+    "packages/jetbrains/META-INF/pluginIcon.svg",
     "packages/jetbrains/resources/Slate Rose.theme.json",
     "packages/jetbrains/colors/Slate Rose.icls",
     "LICENSE",
@@ -38,8 +39,9 @@ class JetBrainsPackageTests(unittest.TestCase):
         with zipfile.ZipFile(io.BytesIO(data)) as archive:
             expected = {
                 "META-INF/plugin.xml": INPUTS[2],
-                "Slate Rose.theme.json": INPUTS[3],
-                "colors/SlateRose.xml": INPUTS[4],
+                "META-INF/pluginIcon.svg": INPUTS[3],
+                "Slate Rose.theme.json": INPUTS[4],
+                "colors/SlateRose.xml": INPUTS[5],
                 "META-INF/LICENSE": "LICENSE",
             }
             self.assertEqual(archive.namelist(), list(expected))
@@ -71,7 +73,7 @@ class JetBrainsPackageTests(unittest.TestCase):
                 if alias != source:
                     alias.unlink()
         self.assertFalse(self.output.parent.exists())
-        for name, content in ((INPUTS[3], b"stale"), (INPUTS[2], b"<idea-plugin/>")):
+        for name, content in ((INPUTS[4], b"stale"), (INPUTS[2], b"<idea-plugin/>")):
             path = self.root / name
             original = path.read_bytes()
             path.write_bytes(content)
@@ -80,14 +82,34 @@ class JetBrainsPackageTests(unittest.TestCase):
             self.assertFalse(self.output.parent.exists())
             path.write_bytes(original)
         descriptor = self.root / INPUTS[2]
-        descriptor.write_bytes(
-            descriptor.read_bytes().replace(
-                b"Slate Rose editor colors and an Islands Dark shell theme.", b"  "
-            )
-        )
-        with self.assertRaises(ValueError):
+        original = descriptor.read_bytes()
+        for tag in ("description", "change-notes"):
+            with self.subTest(tag=tag):
+                xml = ET.fromstring(original)
+                xml.find(tag).text = "  "
+                descriptor.write_bytes(ET.tostring(xml))
+                with self.assertRaises(ValueError):
+                    build_archive(self.root, self.output)
+                self.assertFalse(self.output.parent.exists())
+
+    def test_invalid_or_missing_icon_fails(self) -> None:
+        icon = self.root / INPUTS[3]
+        original = icon.read_bytes()
+        for content in (
+            b"<svg",
+            b'<svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 40 40"/>',
+            b'<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 20 20"/>',
+            b'<other xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"/>',
+        ):
+            with self.subTest(content=content):
+                icon.write_bytes(content)
+                with self.assertRaisesRegex(ValueError, "invalid plugin icon"):
+                    build_archive(self.root, self.output)
+        icon.unlink()
+        with self.assertRaises(FileNotFoundError):
             build_archive(self.root, self.output)
         self.assertFalse(self.output.parent.exists())
+        icon.write_bytes(original)
 
     def test_cli_check_is_read_only(self) -> None:
         def run(*args: str) -> subprocess.CompletedProcess[bytes]:
