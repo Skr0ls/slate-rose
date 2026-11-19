@@ -40,7 +40,7 @@ JPEG data. Upload it with a `.jpg` extension.
 Build or check `dist/slate-rose-jetbrains.jar` using the
 [package guide](README.md).
 
-1. Open the [Marketplace upload form](https://plugins.jetbrains.com/docs/marketplace/uploading-a-new-plugin.html)
+1. Open the [Marketplace upload form](https://plugins.jetbrains.com/plugin/add)
    and accept the Developer Agreement. Create the
    [Vendor profile](https://plugins.jetbrains.com/docs/marketplace/organizations.html)
    with public name `Skr0ls`, a working contact email and website, and the
