@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a problem with Slate Rose in your editor.
+body:
+  - type: input
+    id: editor
+    attributes:
+      label: Editor or IDE and version
+      placeholder: e.g. Rider 2025.3
+    validations:
+      required: true
+  - type: input
+    id: theme-version
+    attributes:
+      label: Slate Rose version
+      description: Enter Unknown if you cannot find the version.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Code sample or screenshot
+      description: For highlighting issues, include the language and a short snippet if possible. Attach a screenshot if it helps show the problem.

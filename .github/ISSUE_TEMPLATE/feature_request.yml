@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an improvement to Slate Rose.
+body:
+  - type: input
+    id: context
+    attributes:
+      label: Where would this help?
+      description: Name the editors or parts of Slate Rose this would affect.
+      placeholder: e.g. the integrated terminal in VS Code and Zed
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What would you like to see?
+    validations:
+      required: true
